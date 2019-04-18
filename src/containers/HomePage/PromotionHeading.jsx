@@ -30,6 +30,7 @@ const BottomTitle = styled.div`
   font-weight: normal;
   font-size: 20px;
   line-height: 1em;
+
 `
 
 class PromotionHeading extends Component{

@@ -2,56 +2,82 @@ import React, { Component } from 'react'
 import '../../styles/HomePageStyle.css'
 // import logo from '../../assets/images/logo_barbarkos_white.png'
 import { Link } from 'react-router-dom'
+import * as PropTypes from "prop-types";
 
 
-class NavBar extends Component {
-    state = {
-        isSetMasuk: false,
-        isSetCari: false
-    };
-
+class RightSideNav extends Component {
     render() {
-        return (
-            <nav className="nav-before">
-                <div>
-                    <img src="assets/images/logo_barbarkos_white.png" alt="" width="300px" height="100%" />
+        return <div id="right-side" className={this.props.className}>
+            <Link>
+                <div className="wrapper mobile-nav-item">
+                    <div>Download App</div>
                 </div>
-                <div id="right-side">
-                    <Link><div className="wrapper"><div>Download App</div></div></Link>
-                    <span>
+            </Link>
+            <span>
                         <div className="wrapper">
                             <div id="button-cari">
                                 <div id="masuk-title">
                                     Cari Iklan &#9662;
                                 </div>
-                                <div id="cari-wrapper" className="child-wrapper" style={{ visibility: "hidden" }}>
-                                    <div>Cari Kost</div>
-                                    <div id="pemilik-masuk-btn">Cari Apartement</div>
+                                <div id="cari-wrapper" className="child-wrapper">
+                                    <div className="mobile-nav-item">Cari Kost</div>
+                                    <div id="pemilik-masuk-btn" className="mobile-nav-item">Cari Apartement</div>
                                 </div>
                             </div>
                         </div>
                     </span>
-                    <Link><div className="wrapper"><div>Promosikan Iklan Anda</div></div></Link>
-                    <span>
+            <Link>
+                <div className="wrapper">
+                    <div className=" mobile-nav-item">Promosikan Iklan Anda</div>
+                </div>
+            </Link>
+            <span>
                         <div className="wrapper">
                             <div id="button-masuk">
                                 <div id="masuk-title">
                                     Masuk
                                 </div>
-                                <div id="login-wrapper" className="child-wrapper" style={{ visibility: "hidden" }}>
-                                    <div>Sebagai Pencari</div>
-                                    <Link to="/login"><div id="pemilik-masuk-btn" style={{color:"black"}}>Sebagai Pemilik</div></Link>
+                                <div id="login-wrapper" className="child-wrapper">
+                                    <div className="mobile-nav-item" onClick={this.props.onClick}><span
+                                        className="mobile-only-show">Masuk</span> Sebagai Pencari</div>
+                                    <Link to="/login"><div id="pemilik-masuk-btn" className="mobile-nav-item"
+                                                           style={{color: "black"}}><span
+                                        className="mobile-only-show">Masuk</span> Sebagai Pemilik</div></Link>
                                 </div>
                             </div>
                         </div>
                     </span>
+        </div>;
+    }
+}
+
+RightSideNav.propTypes = {onClick: PropTypes.func};
+
+class NavBar extends Component {
+
+    state = {
+        isSetMasuk: false,
+        isSetCari: false,
+        isShowMobileNav:false
+    };
+
+    toogleMobileNav(){
+        this.setState({ isShowMobileNav: !this.state.isShowMobileNav });
+    }
+
+    render() {
+        return (
+            <nav className="nav-before">
+                <div>
+                    <img src="assets/images/logo_barbarkos_white.png" alt="" width="200vw" height="100%"/>
                 </div>
+                <button id="mobile-button" style={{height: "20px"}} onClick={() => this.toogleMobileNav()}>O</button>
+                {this.state.isShowMobileNav ? <RightSideNav className="mobile-show" onClick={() => this.props.pencariClick()}/> : <RightSideNav className="mobile-hide" onClick={() => this.props.pencariClick()}/>}
             </nav>
         )
     }
 
-    onClickCari() {
-        console.log(this.state.isSetCari);
+    onClickCari(event) {
         this.setState({ isSetCari: !this.state.isSetCari });
         if (this.state.isSetCari) {
             document.getElementById("cari-wrapper").classList.add("pop-block");
@@ -67,8 +93,7 @@ class NavBar extends Component {
         }
     }
 
-    onClickMasuk() {
-        console.log(this.state.isSetMasuk);
+    onClickMasuk(event) {
         this.setState({ isSetMasuk: !this.state.isSetMasuk });
 
         if (this.state.isSetMasuk) {
@@ -103,8 +128,6 @@ class NavBar extends Component {
         document.getElementById("button-masuk").addEventListener('click', this.onClickMasuk.bind(this));
         document.getElementById("button-cari").addEventListener('click', this.onClickCari.bind(this));
     }
-
-
 
 }
 

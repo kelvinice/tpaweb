@@ -18,18 +18,18 @@
 }
 
 @keyframes nav-before-animation {
-    from{background-color: rgb(211, 62, 62);}
+    from{background-color: rgb(39, 171, 39);}
     to{background-color: transparent;}
 }
 
 @keyframes nav-after-animation {
     from{background-color: transparent;}
-    to{background-color: rgb(211, 62, 62);}
+    to{background-color: rgb(39, 171, 39);}
 }
 
 @keyframes pop-block-animation {
-    from{background-color: transparent;transform: translateY(-20px);visibility: hidden;}
-    to{background-color: white;transform: translateY(0px);visibility: unset;}
+    from{transform: translateY(-20px);visibility: hidden;}
+    to{transform: translateY(0px);visibility: unset;}
 }
 
 @keyframes pop-hide-animation {
@@ -48,7 +48,7 @@
     animation-name: nav-after-animation;
     animation-timing-function: linear;
     animation-duration: 300ms;
-    background-color: rgb(211, 62, 62);
+    background-color: rgb(39, 171, 39);
 }
 
 .pop-hide{
@@ -72,6 +72,14 @@ nav{
     top: 0;
     width: 100%;
     z-index: 1;
+
+}
+nav div{
+    vertical-align: middle;
+}
+nav img{
+    vertical-align: middle;
+
 }
 
 #right-side{
@@ -122,6 +130,7 @@ input{
     z-index: 2;
     background-color: white;
     margin-top: 18px;
+    visibility: hidden;
 }
 
 #cari-wrapper{
@@ -143,10 +152,126 @@ input{
     background-color: lightslategray;
 }
 
+.mobile-only-show{
+    display: none;
+}
+#mobile-button{
+    display: none;
+}
 
+@media only screen and (max-width: 600px) {
+    nav{
+        height: 100%;
+    }
+    nav img{
+        height: 60px;
+    }
 
+    .nav-before{
+        background-color: transparent !important;
+        animation: none !important;
+    }
 
+    .nav-after{
+        background-color: transparent !important;
+        animation: none !important;
+    }
+    #right-side{
+        flex-direction: column;
+        background-color: white;
+        color: black;
+        padding: 10px;
+        width: 50%;
+        margin-right: 0;
+        height: 100%;
+        float: right;
+    }
+    #right-side div{
+        color: black;
+        left: 0px;
+        padding-left: 0 !important;
+        padding-top: 0 ;
+        padding-right: 0 !important;
+        padding-bottom: 0 ;
+        width: 100%;
+    }
 
+    #right-side a{
+        padding-left: 0!important;
+        position: relative;
+    }
+
+    .child-wrapper{
+        display: block;
+        visibility: unset;
+        position: relative;
+        width: 100px;
+        box-sizing: border-box;
+        margin: 0 0;
+        border-radius: unset !important;
+    }
+    .child-wrapper div{
+        color: black;
+        width: 100%;
+    }
+
+    .pop-hide{
+        visibility: unset ;
+        animation:none;
+     }
+    .pop-block{
+        visibility: unset ;
+        animation:none;
+    }
+    #cari-wrapper{
+        width: 100%;
+        margin-left: 0px;
+    }
+    #masuk-title{
+        display: none;
+    }
+    .wrapper {
+        border-bottom: 0px !important;
+    }
+
+    .mobile-nav-item{
+        padding-top: 5px !important;
+        padding-bottom: 20px!important;
+        border-bottom: 2px solid gray !important;
+        margin-top: 10px;
+        text-transform: uppercase;
+    }
+    .child-wrapper div:hover{
+        background-color: white;
+    }
+    nav div,input,
+     textarea,
+     button,
+     select,
+     a{
+         -webkit-tap-highlight-color: transparent;
+     }
+    nav div:hover{
+        color: green !important;
+        font-weight: bolder;
+    }
+
+    .mobile-only-show{
+        display: inline-block;
+    }
+    #mobile-button{
+        display: block;
+    }
+
+    .mobile-hide{
+        display: none !important;
+    }
+
+    .mobile-show{
+        display: flex !important;
+    }
+
+}
 
 
 
