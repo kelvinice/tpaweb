@@ -17,28 +17,52 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-@keyframes before-animation {
-    from{background-color: #27ab27;}
+@keyframes nav-before-animation {
+    from{background-color: rgb(211, 62, 62);}
     to{background-color: transparent;}
 }
 
+@keyframes nav-after-animation {
+    from{background-color: transparent;}
+    to{background-color: rgb(211, 62, 62);}
+}
+
+@keyframes pop-block-animation {
+    from{background-color: transparent;transform: translateY(-20px);visibility: hidden;}
+    to{background-color: white;transform: translateY(0px);visibility: unset;}
+}
+
+@keyframes pop-hide-animation {
+    from{background-color: white;transform: translateY(0px);visibility: unset;}
+    to{background-color: transparent;transform: translateY(-20px);visibility: hidden;}
+}
+
 .nav-before{
-    animation-name: before-animation;
+    animation-name: nav-before-animation;
     animation-timing-function: linear;
     animation-duration: 300ms;
     background-color: transparent;
 }
 
-@keyframes after-animation {
-    from{background-color: transparent;}
-    to{background-color: #27ab27;}
-}
-
 .nav-after{
-    animation-name: after-animation;
+    animation-name: nav-after-animation;
     animation-timing-function: linear;
     animation-duration: 300ms;
-    background-color: #27ab27;
+    background-color: rgb(211, 62, 62);
+}
+
+.pop-hide{
+    visibility: hidden;
+    animation-name: pop-hide-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
+}
+
+.pop-block{
+    visibility: unset;
+    animation-name: pop-block-animation;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
 }
 
 nav{
@@ -88,7 +112,7 @@ input{
     background-color: blue;
 }
 
-#login-child-wrapper{
+.child-wrapper{
     /* display: none; */
     position: absolute;
     margin-left: -50px;
@@ -100,19 +124,22 @@ input{
     margin-top: 18px;
 }
 
+#cari-wrapper{
+    width: 15%;
+    margin-left: -10px;
+}
+
 #masuk-title{
     box-sizing: border-box;
     padding:0 0 !important;
-    display: block;
-    
+    display: block; 
 }
 
-#login-child-wrapper div{
+.child-wrapper div{
     position: relative;
-    
 }
 
-#login-child-wrapper div:hover{
+.child-wrapper div:hover{
     background-color: lightslategray;
 }
 

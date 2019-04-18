@@ -26,7 +26,7 @@ const SearchField = styled('div')`
 `
 
 const LeftSearchIcon = styled('span')`
-  font-family: Glyphicons Halflings;
+ 
 `
 
 const SearchInput = styled('div')`

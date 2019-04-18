@@ -1,13 +1,13 @@
 import React,{Component} from 'react'
 import styled from 'styled-components'
-import promotion from '../../assets/images/promotion.jpg'
+// import promotion from '../../assets/images/promotion.jpg'
 import PromotionLocationSearchBox from "../../components/HomePage/PromotionLocationSearchBox";
 
 const PromotionStyles = styled.div`
     position: relative;
     top: 0;
     color: white;
-    background-image: url(${promotion});
+    background-image: url('assets/images/promotion.jpg');
     height: 65vh;
     width: 100%;
     background-position: center;
