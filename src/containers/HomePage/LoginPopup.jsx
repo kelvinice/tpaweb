@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton} from "../BeautyComponent";
+import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../BeautyComponent";
 import {NavLink} from 'react-router-dom'
 
 const WrapperPops = styled('div')`
@@ -31,16 +31,7 @@ const ButtonEsc = styled('div')`
   font-weight: bolder;
 `
 
-const NavLinkWrapper = styled('div')`
-  ${'a'}{
-    color: black;
-    text-decoration: none;
-  }
-  ${'a'}:hover{
-    color: green;
-    text-decoration: underline;
-  }
-`
+
 
 class LoginPopup extends Component{
     render(){

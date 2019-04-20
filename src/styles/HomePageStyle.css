@@ -37,6 +37,18 @@
     to{background-color: transparent;transform: translateY(-20px);visibility: hidden;}
 }
 
+@keyframes mobile-nav-show-animation {
+    from{transform: translateX(100%);}
+    to{transform: translateX(0%);}
+}
+
+@keyframes mobile-nav-hide-animation {
+    from{transform: translateX(0%);}
+    to{transform: translateX(100%);}
+}
+
+
+
 .nav-before{
     animation-name: nav-before-animation;
     animation-timing-function: linear;
@@ -162,20 +174,16 @@ input{
 @media only screen and (max-width: 600px) {
     nav{
         height: 100%;
+
+        font-weight: bolder;
     }
     nav img{
         height: 60px;
+        width: 50px !important;
+        background-position: left !important;
+        background-size: unset !important;
     }
 
-    .nav-before{
-        background-color: transparent !important;
-        animation: none !important;
-    }
-
-    .nav-after{
-        background-color: transparent !important;
-        animation: none !important;
-    }
     #right-side{
         flex-direction: column;
         background-color: white;
@@ -184,8 +192,12 @@ input{
         width: 50%;
         margin-right: 0;
         height: 100%;
-        float: right;
+
     }
+    #right-side span{
+        left: 0;
+    }
+
     #right-side div{
         color: black;
         left: 0px;
@@ -237,9 +249,10 @@ input{
     .mobile-nav-item{
         padding-top: 5px !important;
         padding-bottom: 20px!important;
-        border-bottom: 2px solid gray !important;
+        border-bottom: 1px solid #bfbfbf !important;
         margin-top: 10px;
         text-transform: uppercase;
+        background-color: white;
     }
     .child-wrapper div:hover{
         background-color: white;
@@ -251,24 +264,45 @@ input{
      a{
          -webkit-tap-highlight-color: transparent;
      }
-    nav div:hover{
+    nav div div:hover{
         color: green !important;
-        font-weight: bolder;
     }
 
+    .mobile-nav-item:hover{
+        margin-bottom: 10px !important;
+    }
     .mobile-only-show{
         display: inline-block;
+
     }
     #mobile-button{
-        display: block;
+        display: flex;
+        background-color: transparent;
+        border: none;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 3px 0;
+        padding: 11px 12px;
+        box-sizing: unset;
+        margin-right: -15px;
+    }
+
+    #mobile-button:focus{
+        outline:0;
     }
 
     .mobile-hide{
-        display: none !important;
+        /*display: none !important;*/
+        animation-name: mobile-nav-hide-animation;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
     }
 
     .mobile-show{
-        display: flex !important;
+        /*display: flex !important;*/
+        animation-name: mobile-nav-show-animation;
+        animation-duration: 500ms;
+        animation-fill-mode: forwards;
     }
 
 }
