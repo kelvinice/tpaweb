@@ -305,6 +305,10 @@ input{
         animation-fill-mode: forwards;
     }
 
+    .hide-on-mobile{
+        display: none !important;
+    }
+
 }
 
 

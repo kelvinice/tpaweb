@@ -5,15 +5,14 @@ import { Link } from 'react-router-dom'
 import * as PropTypes from "prop-types";
 import styled from 'styled-components'
 
-
 class RightSideNav extends Component {
     render() {
         return <div id="right-side" className={this.props.className}>
-            <Link>
-                <div className="wrapper mobile-nav-item">
+            <a href="#app-download">
+                <div className="wrapper hide-on-mobile">
                     <div>Download App</div>
                 </div>
-            </Link>
+            </a>
             <span>
                         <div className="wrapper">
                             <div id="button-cari">
@@ -41,7 +40,9 @@ class RightSideNav extends Component {
                                 <div id="login-wrapper" className="child-wrapper">
                                     <div className="mobile-nav-item" onClick={this.props.onClick}><span
                                         className="mobile-only-show">Masuk</span> Sebagai Pencari</div>
-                                    <Link to="/login"><div id="pemilik-masuk-btn" className="mobile-nav-item"
+                                    <Link to={{
+                                        pathname:"/login"
+                                    }}><div id="pemilik-masuk-btn" className="mobile-nav-item"
                                                            style={{color: "black"}}><span
                                         className="mobile-only-show">Masuk</span> Sebagai Pemilik</div></Link>
                                 </div>
@@ -65,14 +66,13 @@ const IconBar = styled('span')`
 `
 
 const LogoImage = styled('div')`
-  background-image: url("assets/images/logo_barbarkos_white.png");
+  background-image: url('assets/images/logo_barbarkos_white.png');
   width: 310px;
   height: 100%;
   position: relative;
   background-size: cover;
   background-position: center;
   @media only screen and (max-width: 600px) {
-    //margin: 10px;
     height: 50px;
     width: 50px;
     background-size: cover;
@@ -107,7 +107,6 @@ class NavBar extends Component {
 
     render() {
         return (
-
             <nav className="nav-before">
                 {this.state.isScrollOver?
                     <Coverer id="nav-cover" className="nav-after"></Coverer>:
@@ -116,11 +115,8 @@ class NavBar extends Component {
 
                 <div style={{height:"inherit",position:"relative"}}>
                     <LogoImage></LogoImage>
-                    {/*<img src="assets/images/logo_barbarkos_white.png" alt="" width="200vw" height="100%"/>*/}
                 </div>
 
-
-                {/*{this.state.isShowMobileNav ? <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toogleMobileNav()}>O</button> : <button className="mobile-hide" id="mobile-button" style={{height: "20px",position:"absolute",right:"25px"}} onClick={() => this.toogleMobileNav()}>O</button> }*/}
                 {this.state.isShowMobileNav ?
                     <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toogleMobileNav()}>
                         <IconBar></IconBar>
@@ -177,23 +173,10 @@ class NavBar extends Component {
 
     onScroll() {
         if (window.scrollY > 0) {
-            // let nav = document.getElementsByTagName("nav")[0];
-            // nav.classList.add('nav-after');
-            // nav.classList.remove('nav-before');
-            // let navCover = document.getElementById('nav-cover');
-            // console.log(navCover);
-            // navCover.classList.add('nav-after');
-            // navCover.classList.remove('nav-before');
             this.setState(
                 {isScrollOver:true}
             )
         } else {
-            // let nav = document.getElementsByTagName("nav")[0];
-            // nav.classList.add('nav-before')
-            // nav.classList.remove('nav-after');
-            // let navCover = document.getElementById('nav-cover')
-            // navCover.classList.add('nav-after');
-            // navCover.classList.remove('nav-before');
             this.setState(
                 {isScrollOver:false}
             )

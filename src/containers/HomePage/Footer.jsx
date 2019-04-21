@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
-import {GreenNavLinkWrapper} from "../BeautyComponent";
+import {GreenNavLinkWrapper} from "../../components/BeautyComponent";
 
 const LogoImages = styled('div')`
   background-image: url("assets/images/logo_barbarkos_green.png");
@@ -52,7 +52,7 @@ class Footer extends Component {
                 <LogoImages></LogoImages>
                 <div>Dapatkan "info kost murah" hanya di MamiKos App. </div>
                 <div>Mau "Sewa Kost Murah"?</div>
-                <div>Download MamiKos App Sekarang</div>
+                <div  style={{fontWeight:"bolder",fontSize:"13px"}}>Download BarbarKos App Sekarang</div>
 
                 <GreenNavLinkWrapper><Link> Tentang Kami</Link></GreenNavLinkWrapper>
                 |
@@ -62,7 +62,7 @@ class Footer extends Component {
                 <br/>
 
                 <FaceBookLogo/><TwitterLogo/><InstagramLogo/>
-                <div style={{marginBottom:"20px"}}>📧 saran@mamikos.com 📞 0878-7773-6663</div>
+                <div style={{marginBottom:"20px"}}>📧 saran@barbarkos.com 📞 0878-7773-6663</div>
 
             </Centerer>
         );

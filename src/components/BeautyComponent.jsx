@@ -17,7 +17,7 @@ const BeautyGreenTitle = styled('div')`
 
 const BeautyInput = styled('input')`
   background-color: white;
-  padding: 5px;
+  padding: 10px;
   border: none;
   border-bottom: 2px solid gray;
   display: block;
@@ -25,7 +25,7 @@ const BeautyInput = styled('input')`
   box-sizing: border-box;
   outline: none;
   &:focus{
-    border-bottom: 2px solid green;
+    border-bottom: 2px solid #00ac00;
   }
 `
 
@@ -58,6 +58,7 @@ const BeautyTomatoButton = styled('button')`
     opacity: .2;
     transition: 0s;
   }
+
   background-color: #fe522a;
   padding: 15px;
   width: 100%;
@@ -93,5 +94,49 @@ const GreenNavLinkWrapper = styled('div')`
   }
 `
 
+const OrangeNavLinkWrapper = styled('div')`
+  display: inline-block;
+  padding: 5px;
+  ${'a'}{
+    color: #ff4537;
+    text-decoration: underline;
+  }
+  ${'a'}:hover{
+    color: #ff4537;
+    text-decoration: underline;
+  }
+`
 
-export {BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}
+const OutlineButton = styled('button')`
+  padding: 10px;
+  border: 1px solid #31bc31;
+  background-color: white;
+  border-radius: 3px;
+  color: #31bc31;
+  //outline: none;
+  &:hover,&:active{
+    color: white;
+    background-color: #31bc31;
+  }
+`
+
+const OrangeOutlineButton = styled('button')`
+  padding: 15px;
+  border: 1px solid #ee3e22;
+  background-color: white;
+  border-radius: 3px;
+  color: #ee3e22;
+  //outline: none;
+  &:hover{
+    color: white;
+    background-color: #ee3e22;
+  }
+  &:active{
+    color: white;
+    background-color: #ee3e22;
+  }
+`
+
+
+
+export {OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}
