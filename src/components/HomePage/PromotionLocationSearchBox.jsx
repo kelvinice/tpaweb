@@ -41,7 +41,7 @@ class PromotionLocationSearchBox extends Component{
             <SearchBoxPad>
                 <SearchTitle>Pilih Lokasi</SearchTitle>
                 <SearchField>
-                    <LeftSearchIcon>&#128269;</LeftSearchIcon>
+                    <LeftSearchIcon><span role="img" aria-label="magnifier">&#128269;</span></LeftSearchIcon>
                     <SearchInput>Cari nama tempat atau alamat..</SearchInput>
                 </SearchField>
             </SearchBoxPad>

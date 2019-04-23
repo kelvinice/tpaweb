@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import '../../styles/HomePageStyle.css'
-// import logo from '../../assets/images/logo_barbarkos_white.png'
-import { Link } from 'react-router-dom'
+import { Link,withRouter } from 'react-router-dom'
 import * as PropTypes from "prop-types";
 import styled from 'styled-components'
 
@@ -14,41 +13,41 @@ class RightSideNav extends Component {
                 </div>
             </a>
             <span>
-                        <div className="wrapper">
-                            <div id="button-cari">
-                                <div id="masuk-title">
-                                    Cari Iklan &#9662;
-                                </div>
-                                <div id="cari-wrapper" className="child-wrapper">
-                                    <div className="mobile-nav-item">Cari Kost</div>
-                                    <div id="pemilik-masuk-btn" className="mobile-nav-item">Cari Apartement</div>
-                                </div>
-                            </div>
+                <div className="wrapper">
+                    <div id="button-cari">
+                        <div id="masuk-title">
+                            Cari Iklan &#9662;
                         </div>
-                    </span>
-            <Link>
+                        <div id="cari-wrapper" className="child-wrapper">
+                            <div className="mobile-nav-item">Cari Kost</div>
+                            <div id="pemilik-masuk-btn" className="mobile-nav-item">Cari Apartement</div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <Link to="#">
                 <div className="wrapper">
                     <div className=" mobile-nav-item">Promosikan Iklan Anda</div>
                 </div>
             </Link>
             <span>
-                        <div className="wrapper">
-                            <div id="button-masuk">
-                                <div id="masuk-title">
-                                    Masuk
-                                </div>
-                                <div id="login-wrapper" className="child-wrapper">
-                                    <div className="mobile-nav-item" onClick={this.props.onClick}><span
-                                        className="mobile-only-show">Masuk</span> Sebagai Pencari</div>
-                                    <Link to={{
-                                        pathname:"/login"
-                                    }}><div id="pemilik-masuk-btn" className="mobile-nav-item"
-                                                           style={{color: "black"}}><span
-                                        className="mobile-only-show">Masuk</span> Sebagai Pemilik</div></Link>
-                                </div>
-                            </div>
+                <div className="wrapper">
+                    <div id="button-masuk">
+                        <div id="masuk-title">
+                            Masuk
                         </div>
-                    </span>
+                        <div id="login-wrapper" className="child-wrapper">
+                            <div className="mobile-nav-item" onClick={this.props.onClick}><span
+                                className="mobile-only-show">Masuk</span> Sebagai Pencari</div>
+                            <Link to={{
+                                pathname:"/login"
+                            }}><div id="pemilik-masuk-btn" className="mobile-nav-item"
+                                                   style={{color: "black"}}><span
+                                className="mobile-only-show">Masuk</span> Sebagai Pemilik</div></Link>
+                        </div>
+                    </div>
+                </div>
+            </span>
         </div>;
     }
 }
@@ -189,6 +188,10 @@ class NavBar extends Component {
         document.getElementById("button-cari").addEventListener('click', this.onClickCari.bind(this));
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll.bind(this));
+    }
+
 }
 
-export default NavBar;
+export default withRouter(NavBar);

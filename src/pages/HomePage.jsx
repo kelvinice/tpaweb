@@ -15,7 +15,6 @@ const Pads = styled('div')`
     padding: 50px;
 `
 
-
 class HomePage extends Component {
     state = {
         pencariToogle : false
@@ -49,7 +48,7 @@ class HomePage extends Component {
                     <br/><br/>
                     <AppPromotion />
                 </Pads>
-                <Footer/>
+                <Footer history={this.props.history}/>
             </div>
         )
     }

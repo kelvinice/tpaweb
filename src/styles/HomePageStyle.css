@@ -292,14 +292,12 @@ input{
     }
 
     .mobile-hide{
-        /*display: none !important;*/
         animation-name: mobile-nav-hide-animation;
         animation-duration: 500ms;
         animation-fill-mode: forwards;
     }
 
     .mobile-show{
-        /*display: flex !important;*/
         animation-name: mobile-nav-show-animation;
         animation-duration: 500ms;
         animation-fill-mode: forwards;

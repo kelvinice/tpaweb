@@ -39,7 +39,7 @@ class LoginPemilik extends Component {
 
                 <div style={{float:"right"}}>
                     <NavLinkWrapper>
-                        <a href="" onClick={(e) => this.lupaClick(e)}>
+                        <a href="." onClick={(e) => this.lupaClick(e)}>
                             Lupa password?
                         </a>
                     </NavLinkWrapper>
@@ -52,7 +52,7 @@ class LoginPemilik extends Component {
                     <b>
                         Belum punya akun?
                         <OrangeNavLinkWrapper>
-                            <a href="" onClick={(e) => this.daftarClick(e)}>
+                            <a href="." onClick={(e) => this.daftarClick(e)}>
                                 Yuk Daftar
                             </a>
                         </OrangeNavLinkWrapper>

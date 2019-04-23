@@ -2,13 +2,16 @@ import React,{Component} from 'react'
 import styled from "styled-components";
 import LoginPemilik from "../containers/LoginPage/LoginPemilik";
 import {Link} from 'react-router-dom'
-import {BeautyTomatoButton, GreenNavLinkWrapper} from "../components/BeautyComponent";
+import {GreenNavLinkWrapper} from "../components/BeautyComponent";
 import DaftarLeft from "../containers/LoginPage/DaftarLeft";
+import {SuccessAlert,ErrorAlert} from "../components/Alerts";
 
 const LoginPageContainer = styled('div')`
   display: flex;
   height: 100%;
   width: 100%;
+  position: relative;
+  min-height: 100vh;
 `
 
 const RightContainer = styled('div')`
@@ -16,11 +19,12 @@ const RightContainer = styled('div')`
   box-sizing: border-box;
   background-color: #00ab40;
   width: 100%;
-  height: 100vh;
+  
   text-align: center;
   @media only screen and (max-width: 991px){
     display: none;
   }
+  position: relative;
 `
 
 const Illustration = styled('div')`
@@ -66,59 +70,9 @@ const Logo = styled('div')`
   border-radius: 50%;
 `
 
-const PopHolder = styled('div')`
-width: 100%;
-height: 100%;
-position: fixed;
-background-color: rgba(178,178,178,0.68);
-z-index: 1;
-padding: 10px;
-display: flex;
-align-items: center;
-`
-
-const PopMessager = styled('div')`
-  width: 500px;
-  border-radius: 5px;
-  background-color: white;
-  overflow-y: auto;
-  padding: 20px;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-`
-
-const ErrorImage = styled('div')`
-  width: 200px;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  background-image: url("assets/images/error.png");
-  margin:0 auto;
-  background-color: rgba(255,192,203,0.44);
-  border-radius: 50%;
-`
-
-const CorrectImage = styled('div')`
-  width: 200px;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  background-image: url("assets/images/correct.gif");
-  margin:0 auto;
-  background-color: rgba(255,192,203,0.44);
-  border-radius: 50%;
-`
-
-const BigGreyText = styled('div')`
-  color: #767676;
-  font-size: 20px;
-`
-
-
 class LoginPage extends Component{
     state = {
-        leftState : "daftar",
+        leftState : null,
         popMessage : null,
         testState : this.props.location
     }
@@ -141,54 +95,23 @@ class LoginPage extends Component{
     MessageChanger(event,message){
         if(event != null)
             event.preventDefault();
-        if(event == null || event.target==event.currentTarget)
+        if(event == null || event.target===event.currentTarget)
             this.setState({popMessage: message});
     }
 
     MessageHandler(){
-        if(this.state.popMessage==="login"){
-            return <PopHolder>
-                <PopMessager>
-                    <div style={{float:"right",cursor:"pointer"}} onClick={(event,message)=>this.MessageChanger(event,null)}>X</div>
-                    Login Gagal
-                    <BeautyTomatoButton>Kembali</BeautyTomatoButton>
-                </PopMessager>
-            </PopHolder>
-
-        }else if(this.state.popMessage==="register"){
-            return <PopHolder onClick={(event,message)=>this.MessageChanger(event,null)}>
-                <PopMessager>
-
-                    <div style={{float:"right",cursor:"pointer"}} onClick={(event,message)=>this.MessageChanger(event,null)}>X</div>
-                    <ErrorImage/>
-                    <div style={{fontSize:"30px"}}><b>Register Gagal</b></div>
-                    <BigGreyText>Password telah digunakan oleh user : admin@admin.com</BigGreyText>
-                    <BigGreyText>Silahkan gunakan Password lain</BigGreyText>
-                    <br/>
-                    <BeautyTomatoButton onClick={(event,message)=>this.MessageChanger(event,null)}>Register Kembali</BeautyTomatoButton>
-                </PopMessager>
-            </PopHolder>
-        }else if(this.state.popMessage==="success"){
-            return <PopHolder onClick={(event,message)=>this.MessageChanger(event,null)}>
-                <PopMessager>
-
-                    <div style={{float:"right",cursor:"pointer"}} onClick={(event,message)=>this.MessageChanger(event,null)}>X</div>
-                    <CorrectImage/>
-                    <div style={{fontSize:"30px"}}><b>Register Sukses</b></div>
-                    <BigGreyText>Sukses Register</BigGreyText>
-
-                    <br/>
-                    <BeautyTomatoButton onClick={(event,message)=>this.MessageChanger(event,null)}>Next</BeautyTomatoButton>
-                </PopMessager>
-            </PopHolder>
+        if(this.state.popMessage===null){
+            return null;
+        }else if(this.state.popMessage==="success-register"){
+            return <SuccessAlert message="Success Register" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
+        }else{
+            return <ErrorAlert message={this.state.popMessage} onClick={(event, message) => this.MessageChanger(event, null)}/>
         }
     }
-
 
     render() {
         return(
             <LoginPageContainer>
-                {/*{console.log(this.state.testState)}*/}
                 {this.MessageHandler()}
                 <LeftWrapper>
                     <GreenNavLinkWrapper><Link to="/"><b>&#8592;Kembali ke Beranda</b></Link></GreenNavLinkWrapper>

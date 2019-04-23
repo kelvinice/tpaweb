@@ -137,6 +137,18 @@ const OrangeOutlineButton = styled('button')`
   }
 `
 
+const BeautySelectInput = styled('select')`
+  width: 100%;
+  padding: 10px;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 2px solid #7b7b7b;
+  text-transform: uppercase;
+  ${'option'}{
+    background-color: #e5e5e5;
+  }
+`
 
 
-export {OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}
+
+export {BeautySelectInput,OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}

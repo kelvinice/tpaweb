@@ -46,23 +46,25 @@ const InstagramLogo = styled('div')`
 `
 
 class Footer extends Component {
+
     render() {
         return (
             <Centerer>
+                {/*TODO*/}
                 <LogoImages></LogoImages>
                 <div>Dapatkan "info kost murah" hanya di MamiKos App. </div>
                 <div>Mau "Sewa Kost Murah"?</div>
                 <div  style={{fontWeight:"bolder",fontSize:"13px"}}>Download BarbarKos App Sekarang</div>
 
-                <GreenNavLinkWrapper><Link> Tentang Kami</Link></GreenNavLinkWrapper>
+                <GreenNavLinkWrapper><Link to="#"> Tentang Kami</Link></GreenNavLinkWrapper>
                 |
-                <GreenNavLinkWrapper><Link> Promosikan Kost Anda - GRATIS </Link></GreenNavLinkWrapper>
+                <GreenNavLinkWrapper><Link to="#"> Promosikan Kost Anda - GRATIS </Link></GreenNavLinkWrapper>
                 |
-                <GreenNavLinkWrapper><Link> Kebijakan Privasi </Link></GreenNavLinkWrapper>
+                <GreenNavLinkWrapper><Link to="#"> Kebijakan Privasi </Link></GreenNavLinkWrapper>
                 <br/>
 
-                <FaceBookLogo/><TwitterLogo/><InstagramLogo/>
-                <div style={{marginBottom:"20px"}}>📧 saran@barbarkos.com 📞 0878-7773-6663</div>
+                <FaceBookLogo /><TwitterLogo/><InstagramLogo/>
+                <div style={{marginBottom:"20px"}}><span role="img" aria-label="mail">📧</span> saran@barbarkos.com <span role="img" aria-label="phone">📞</span> 0878-7773-6663</div>
 
             </Centerer>
         );

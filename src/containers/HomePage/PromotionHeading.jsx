@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import styled from 'styled-components'
-// import promotion from '../../assets/images/promotion.jpg'
 import PromotionLocationSearchBox from "../../components/HomePage/PromotionLocationSearchBox";
 
 const PromotionStyles = styled.div`

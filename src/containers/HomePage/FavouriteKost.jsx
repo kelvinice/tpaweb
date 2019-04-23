@@ -18,7 +18,6 @@ const DummyImage = styled('div')`
     height: 250px;
     background-position: 50%;
     background-size: cover;
-
 `
 
 const ContentDecription = styled('div')`
