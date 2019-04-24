@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled,{ keyframes } from 'styled-components'
 import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/BeautyComponent";
-import {NavLink,Redirect} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const WrapperPops = styled('div')`
@@ -65,6 +65,18 @@ const SuccessImage = styled('div')`
   background-color: transparent;
 `
 
+const RedWrap = styled('div')`
+    padding:3px;
+    color:white;
+    font-weight: bolder;
+    background-color: #ff4236;
+    border-radius: 5px;
+    margin: 5px 0;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+`
+
 class LoginPopup extends Component{
     state = {
         popState : null,
@@ -72,7 +84,7 @@ class LoginPopup extends Component{
         redirect : false
     };
 
-    doLogin(e,thise){
+    doLogin(e){
         e.preventDefault();
         this.setState({popState:"loading"})
         let form = e.target;
@@ -83,18 +95,26 @@ class LoginPopup extends Component{
         axios.post("http://localhost:8000/loginguestbyemail",{
             email : email,
             password : password,
-            type : 1
         }).then((response) => {
             console.log("ini sukses:")
             console.log(response.data);
+            localStorage.setItem('token', response.data.token);
+
             this.setState({popState:"success"})
 
         }).catch((error) => {
             console.log("ini error:")
             console.log(error.response)
-            this.setState({popState:null,error:error.response})
+            this.setState({popState:null,loginError:error.response})
         });
 
+    }
+
+    continueLogin(){
+        let token = localStorage.getItem('token');
+
+        console.log(token)
+        window.location.reload();
     }
 
     popHandler(){
@@ -104,12 +124,12 @@ class LoginPopup extends Component{
             return <Poper>
                 <SuccessImage></SuccessImage>
                 <br/>
-                <BeautyTomatoButton onClick={()=> this.setState({redirect:true})}>Next</BeautyTomatoButton>
+                <BeautyTomatoButton onClick={this.continueLogin}>Next</BeautyTomatoButton>
             </Poper>;
         }else{
             return <Poper>
                 <ButtonEsc onClick={()=>this.props.exitCalled()}>×</ButtonEsc>
-                <form action="" onSubmit={(e,thise)=>this.doLogin(e,thise)}>
+                <form action="" onSubmit={(e)=>this.doLogin(e)}>
                     <BeautyGreenTitle>
                         Login Akun
                     </BeautyGreenTitle>
@@ -124,11 +144,19 @@ class LoginPopup extends Component{
                         <BeautyInput type="password" name="password"></BeautyInput>
                     </BeautyInputWrapper>
                     <br/>
+
                     <NavLinkWrapper style={{textAlign:'right'}}>
                         <NavLink tabIndex="-1" to=".">Lupa Password</NavLink>
                     </NavLinkWrapper>
 
-                    <BeautyTomatoButton type="submit">LOGIN</BeautyTomatoButton>
+                    <BeautyTomatoButton type="submit" >LOGIN</BeautyTomatoButton>
+                    {
+                        this.state.loginError ?
+                            <RedWrap>Unauthorized</RedWrap>
+                            :
+                            null
+                    }
+
                 </form>
             </Poper>
         }
