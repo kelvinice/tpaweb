@@ -29,6 +29,20 @@ const BeautyInput = styled('input')`
   }
 `
 
+const BeautyInputOutlined = styled('input')`
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 100%;  
+  box-sizing: border-box;
+  outline: none;
+  color: black;
+  background-color: white;
+  &:focus{
+    border: 1px solid #00ac00;
+  }
+`
+
 const BeautyTomatoButton = styled('button')`
   position: relative;
   overflow: hidden;
@@ -151,4 +165,6 @@ const BeautySelectInput = styled('select')`
 
 
 
-export {BeautySelectInput,OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}
+
+
+export {BeautyInputOutlined,BeautySelectInput,OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}

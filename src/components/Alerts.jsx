@@ -67,8 +67,6 @@ class SuccessAlert extends Component {
         }
     }
 
-
-
     render() {
         return <PopHolder onClick={this.props.onClick}>
             {this.redirect()}

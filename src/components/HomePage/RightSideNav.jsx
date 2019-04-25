@@ -5,7 +5,7 @@ import * as PropTypes from "prop-types";
 import {connect} from "react-redux";
 
 const SmallProfile = styled('div')`
-  background-image: url("assets/images/ic_akun_user.png");
+  background-image: url("/assets/images/ic_akun_user.png");
   background-position: center;
   background-size: cover;
   border-radius: 50%;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import NavBar from "../containers/HomePage/HomeNavBar";
+import NavBar from "../containers/HomePage/NavBar";
 import PromotionHeading from "../containers/HomePage/PromotionHeading";
 import LoginPopup from '../containers/HomePage/LoginPopup';
 import Footer from "../containers/HomePage/Footer";
@@ -40,8 +40,8 @@ class HomePage extends Component {
                 'token':token
             }
         }).then((response) => {
-            if(response.data.message=="success"){
-                // console.log(response.data.user);
+            if(response.data.message==="success"){
+                //console.log(response.data.user);
                 this.props.updateUserlogin(response.data.user)
             }else{
                 console.log("no login");
@@ -56,7 +56,7 @@ class HomePage extends Component {
     render() {
         return (
             <div >
-                <NavBar rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
+                <NavBar position={"fixed"} animatedGreen={true} rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
 
                 <PromotionHeading/>
                 {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}

@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import '../../styles/HomePageStyle.css'
-import { Link,withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import RightSideNav from "../../components/HomePage/RightSideNav";
 import {connect} from "react-redux";
-
 
 const IconBar = styled('span')`
   width: 22px;
@@ -17,8 +14,8 @@ const IconBar = styled('span')`
 `
 
 const LogoImage = styled('div')`
-  background-image: url('assets/images/logo_barbarkos_white.png');
-  width: 310px;
+  background-image: url('/assets/images/logo_barbarkos_white.png');
+  width: 330px;
   height: 100%;
   position: relative;
   background-size: cover;
@@ -41,19 +38,20 @@ const Coverer = styled('div')`
     position: absolute;
 `
 
-class HomeNavBar extends Component {
+class NavBar extends Component {
     state = {
         isShowMobileNav:true,
         isScrollOver:false
     };
 
-    toogleMobileNav(){
+    toggleMobileNav(){
         this.props.toggleMobile();
     }
 
     render() {
         return (
-            <nav className="nav-before">
+            <nav className="nav-before" style={{position:this.props.position}}>
+
                 {this.state.isScrollOver?
                     <Coverer id="nav-cover" className="nav-after"></Coverer>:
                     <Coverer id="nav-cover" className="nav-before"></Coverer>
@@ -64,13 +62,13 @@ class HomeNavBar extends Component {
                 </div>
 
                 {this.props.isShowMobileNav ?
-                    <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toogleMobileNav()}>
+                    <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toggleMobileNav()}>
                         <IconBar></IconBar>
                         <IconBar></IconBar>
                         <IconBar></IconBar>
                     </button>
                     :
-                    <button className="mobile-show" id="mobile-button" style={{height: "20px",position:"absolute",right:"25px"}} onClick={() =>this.toogleMobileNav()}>
+                    <button className="mobile-show" id="mobile-button" style={{height: "20px",position:"absolute",right:"25px"}} onClick={() =>this.toggleMobileNav()}>
                         <IconBar></IconBar>
                         <IconBar></IconBar>
                         <IconBar></IconBar>
@@ -94,7 +92,12 @@ class HomeNavBar extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.onScroll.bind(this));
+        if(this.props.animatedGreen){
+            window.addEventListener('scroll', this.onScroll.bind(this));
+
+        }else{
+            this.setState({isScrollOver:true});
+        }
 
     }
 
@@ -104,7 +107,7 @@ class HomeNavBar extends Component {
 
 }
 
-// export default withRouter(HomeNavBar);
+// export default withRouter(NavBar);
 
 const MapStateToProps = state => {
     return {
@@ -117,4 +120,4 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps)(HomeNavBar);
+export default connect(MapStateToProps,MapDispatchToProps)(NavBar);

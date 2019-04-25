@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
-import styled from "styled-components";
+import NavBar from "../HomePage/NavBar";
+import LoginPopup from "../HomePage/LoginPopup";
+import RightSideNav from "../../components/HomePage/RightSideNav";
 
-const SmallProfile = styled('div')`
-  background-image: url("assets/images/ic_akun_user.png");
-  background-position: center;
-  background-size: cover;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-`
 
 class UserNavBar extends Component {
+    state={
+        pencariToogle : false
+    }
+    pencariOnClick(){
+        this.setState({pencariToogle : true});
+    }
+
+    pencariExitCalled(){
+        this.setState({pencariToogle : false});
+    }
+
     render() {
         return (
-            <div>
-
+            <div >
+                <NavBar position={"sticky"}  rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
+                {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
             </div>
         );
     }
