@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled,{ keyframes } from 'styled-components'
 import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/BeautyComponent";
 import {NavLink} from 'react-router-dom'
-
+import {InnerBeautyLoading} from "../../components/BeautyLoading";
 
 const WrapperPops = styled('div')`
     position:fixed;
@@ -23,13 +23,24 @@ const Poper = styled('div')`
     line-height: 1.8;
     padding: 20px;
     box-sizing:border-box;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 `
 const ButtonEsc = styled('div')`
-  cursor: pointer;
-  display: inline-block;
-  float: right;
+  text-align: right;
+  width: 100%;
   color: gray;
   font-weight: bolder;
+  
+  ${'div'}{
+   cursor: pointer;
+  float: right;
+  margin: 0;
+  
+  }
 `
 
 const rotate = keyframes`
@@ -43,7 +54,7 @@ const rotate = keyframes`
 `;
 
 const LoadingImage = styled('div')`
-  background-image: url("assets/images/loading.png");
+  background-image: url("/assets/images/loading.png");
   width: 200px;
   height: 200px;
   margin: 0 auto; 
@@ -112,7 +123,6 @@ class LoginPopup extends Component{
 
     continueLogin(){
         let token = localStorage.getItem('token');
-
         console.log(token)
         window.location.reload();
     }
@@ -120,15 +130,16 @@ class LoginPopup extends Component{
     popHandler(){
         if(this.state.popState==="loading"){
             return <Poper><LoadingImage></LoadingImage></Poper>;
+            // return <Poper><InnerBeautyLoading/></Poper>
         }else if(this.state.popState==="success"){
             return <Poper>
-                <SuccessImage></SuccessImage>
+                <SuccessImage/>
                 <br/>
                 <BeautyTomatoButton onClick={this.continueLogin}>Next</BeautyTomatoButton>
             </Poper>;
         }else{
             return <Poper>
-                <ButtonEsc onClick={()=>this.props.exitCalled()}>×</ButtonEsc>
+                <ButtonEsc><div onClick={()=>this.props.exitCalled()}>×</div></ButtonEsc>
                 <form action="" onSubmit={(e)=>this.doLogin(e)}>
                     <BeautyGreenTitle>
                         Login Akun
@@ -136,12 +147,12 @@ class LoginPopup extends Component{
                     <br/>
                     <BeautyInputWrapper>
                         Email:<br/>
-                        <BeautyInput type="email" name="email"></BeautyInput>
+                        <BeautyInput type="email" name="email"/>
                     </BeautyInputWrapper>
                     <br/>
                     <BeautyInputWrapper>
                         Password:<br/>
-                        <BeautyInput type="password" name="password"></BeautyInput>
+                        <BeautyInput type="password" name="password"/>
                     </BeautyInputWrapper>
                     <br/>
 

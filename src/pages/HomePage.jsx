@@ -9,6 +9,7 @@ import FavouriteKost from "../containers/HomePage/FavouriteKost";
 import styled from 'styled-components'
 import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
+import KotaBesar from "../containers/HomePage/KotaBesar";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
@@ -24,7 +25,6 @@ class HomePage extends Component {
 
     pencariOnClick(){
         this.setState({pencariToogle : true});
-        // this.props.onUpdateUser("berak");
     }
 
     pencariExitCalled(){
@@ -65,14 +65,19 @@ class HomePage extends Component {
                     Anggap aja ini slider
                     <br/>
                     <br/>
-                    Lokasi favorit kost di ...
+                    {/*Lokasi favorit kost di ...*/}
                     <br/>
-                    <FavouriteKost/>
+                    {/*<FavouriteKost/>*/}
                     <br/><br/>
+                    <KotaBesar/>
                     <AdsPromotion/>
-                    <br/><br/>
+                    <br/>
+
+                    <br/>
                     <AppPromotion />
+
                 </Pads>
+
                 <Footer history={this.props.history}/>
             </div>
         )

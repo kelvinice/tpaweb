@@ -19,7 +19,7 @@ const Centerer = styled('div')`
 `
 
 const FaceBookLogo = styled('div')`
-  background-image: url("assets/images/facebook.png");
+  background-image: url("/assets/images/facebook.png");
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;
@@ -28,7 +28,7 @@ const FaceBookLogo = styled('div')`
 `
 
 const TwitterLogo = styled('div')`
-  background-image: url("assets/images/twitter.png");
+  background-image: url("/assets/images/twitter.png");
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@ const TwitterLogo = styled('div')`
 `
 
 const InstagramLogo = styled('div')`
-  background-image: url("assets/images/instagram.png");
+  background-image: url("/assets/images/instagram.png");
   width: 60px;
   height: 60px;
   background-repeat: no-repeat;

@@ -4,14 +4,21 @@ import UserNavBar from "../containers/UserPage/UserNavBar";
 import {BeautyInputOutlined, BeautyTomatoButton, GreenNavLinkWrapper} from "../components/BeautyComponent";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-
-
+import {connect} from "react-redux";
+import GoodInput from "../components/GoodInput";
+import {ErrorAlert, SuccessAlert} from "../components/Alerts";
+import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
 
 const NavInfo = styled('div')`
   padding: 5px 10px;
   border-bottom: 1px solid darkgrey;
   box-sizing: border-box;
   font-family: "Titillium Web";
+  @media only screen and (max-width: 891px){
+    position: absolute;
+    top: 50px;
+    width: 100%;
+  }
 `
 
 const AllWrapper = styled('div')`
@@ -19,6 +26,12 @@ const AllWrapper = styled('div')`
     height: 100%;
     padding: 50px 100px;
     box-sizing: border-box;
+    @media only screen and (max-width: 891px){
+     padding: 10px 5px;
+     position: absolute;
+    top: 150px;
+    width: 100%;
+    }
 `
 
 const ContextWrapper = styled('div')`
@@ -55,8 +68,13 @@ const BigProfile = styled('div')`
 `
 
 const BodyInner = styled('div')`
+
   width: 80%;
   margin: 0 auto;
+  @media only screen and (max-width: 891px){
+  width: 100%;
+  }
+  
 `
 
 const DefinedTable = styled('table')`
@@ -69,7 +87,10 @@ const DefinedTable = styled('table')`
     ${"td"}:first-child{
       padding: 10px;
       box-sizing: border-box;
-      white-space: nowrap;
+      @media only screen and (min-width: 892px){
+        white-space: nowrap;
+      }
+      
     }
   }
 `
@@ -84,24 +105,101 @@ const Stared = styled('span')`
 const Padder = styled('div')`
   display: flex;
   width: 100%;
+  justify-content: center;
+  margin-top: 20px;
   
+  @media only screen and (max-width: 891px){
+    flex-direction: column;
+  }
   ${"button"}{
     width: 200px;
     margin-right: 30px;
+    
+    @media only screen and (max-width: 891px){
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
 `
 
 
+
 class EditProfilPage extends Component {
+    constructor(props){
+        super(props);
+        this.userVerificator = React.createRef()
+    }
+    state = {
+        popMessage : null,
+    }
+
+    MessageChanger(event,message){
+        if(event != null)
+            event.preventDefault();
+        if(event == null || event.target===event.currentTarget)
+            this.setState({popMessage: message});
+
+    }
+
+    MessageHandler(){
+        if(this.state.popMessage===null){
+            return null;
+        }else if(this.state.popMessage==="success-update"){
+            return <SuccessAlert message="Success Update Profile" linkTo={"/user"} onClick={(event, message) => this.MessageChanger(event, null)}/>
+        }else{
+            return <ErrorAlert message={this.state.popMessage} onClick={(event, message) => this.MessageChanger(event, null)}/>
+        }
+    }
+
+    onFormSubmit(e){
+        e.preventDefault(e);
+
+        let form = e.target;
+
+        let name = form.elements["name"].value;
+        let phone = form.elements["phone"] ? form.elements["phone"].value : null;
+        // console.log(name)
+        const axios = require('axios');
+
+        let token = localStorage.getItem('token');
+
+        let data = {"token":token,"name" : name}
+        if(phone)
+            data["phone"]=phone
+        console.log(data)
+
+        axios.patch('http://localhost:8000/updateprofile',data).then(
+            (response) => {
+                if(response.data.message == "success"){
+                    this.userVerificator.refresh();
+                    this.MessageChanger(null,"success-update");
+                }else{
+                    console.log("ini error:")
+                    this.MessageChanger(null,response.data.message);
+                }
+
+                console.log(response.data.message);
+            }
+        ).catch((error) => {
+            console.log("ini error:")
+            console.log(error.response)
+            if(error.response != null)
+                this.MessageChanger(null,error.response.data.message);
+
+        });
+
+    }
+
     render() {
         return (
             <div>
-                <UserVerificator></UserVerificator>
+                <UserVerificator onRef={ref => (this.userVerificator = ref)} />
+                {this.MessageHandler()}
+
                 <UserNavBar />
 
                 <NavInfo><GreenNavLinkWrapper><Link to="/">Home</Link></GreenNavLinkWrapper> > User</NavInfo>
                 <AllWrapper>
-
                     <ContextWrapper>
                         <HeaderContext>
                             Data Pribadi
@@ -110,40 +208,43 @@ class EditProfilPage extends Component {
                             <BigProfile/>
                             <br/>
                             <BodyInner>
-                                <DefinedTable>
-                                    <tr>
-                                        <td><Stared>Nama Lengkap</Stared></td>
-                                        <td >
-                                            <BeautyInputOutlined type="text" name="name"></BeautyInputOutlined>
-                                        </td>
-                                    </tr>
-                                    {/*<tr>*/}
-                                    {/*    <td><Stared>Jenis Kelamin</Stared></td>*/}
-                                    {/*    <td>*/}
-                                    {/*        <input type="radio" name="gender" value="male"/> Laki-Laki*/}
-                                    {/*        <input type="radio" name="gender" value="female"/> Perempuan*/}
-                                    {/*    </td>*/}
-                                    {/*</tr>*/}
-                                    {/*<tr>*/}
-                                    {/*    <td><Stared>Tanggal Lahir</Stared></td>*/}
-                                    {/*    <td><BeautyInputOutlined type="date" name="date"></BeautyInputOutlined></td>*/}
-                                    {/*</tr>*/}
-                                    <tr>
-                                        <td><Stared>No. Handphone Darurat</Stared></td>
-                                        <td >
-                                            <BeautyInputOutlined type="number" name="phone"></BeautyInputOutlined>
-                                        </td>
-                                    </tr>
-
-
-
-                                </DefinedTable>
-                                <Padder >
-                                    <BeautyTomatoButton>Submit</BeautyTomatoButton>
-
-                                    <BeautyTomatoButton>Cancel</BeautyTomatoButton>
-                                </Padder>
-
+                                <form id={"form-update-profile"} action="" onSubmit={this.props.UserLogin ? (e)=> this.onFormSubmit(e) : null}>
+                                    <DefinedTable>
+                                        <tbody>
+                                            <tr>
+                                                <td><Stared>Nama Lengkap</Stared></td>
+                                                <td >
+                                                    {this.props.UserLogin &&
+                                                        <GoodInput value={this.props.UserLogin.name} type="text" name="name" required></GoodInput>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            {/*<tr>*/}
+                                            {/*    <td><Stared>Jenis Kelamin</Stared></td>*/}
+                                            {/*    <td>*/}
+                                            {/*        <input type="radio" name="gender" value="male"/> Laki-Laki*/}
+                                            {/*        <input type="radio" name="gender" value="female"/> Perempuan*/}
+                                            {/*    </td>*/}
+                                            {/*</tr>*/}
+                                            {/*<tr>*/}
+                                            {/*    <td><Stared>Tanggal Lahir</Stared></td>*/}
+                                            {/*    <td><BeautyInputOutlined type="date" name="date"></BeautyInputOutlined></td>*/}
+                                            {/*</tr>*/}
+                                            <tr>
+                                                <td><Stared>No. Handphone Darurat</Stared></td>
+                                                <td>
+                                                    {this.props.UserLogin &&
+                                                        <GoodInput value={this.props.UserLogin.phone ? this.props.UserLogin.phone : ""} type="number" name="phone"></GoodInput>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </DefinedTable>
+                                    <Padder >
+                                        <Link to={"/user"}><BeautyTomatoButton type="reset">Cancel</BeautyTomatoButton></Link>
+                                        <BeautyTomatoButton type="submit">Submit</BeautyTomatoButton>
+                                    </Padder>
+                                </form>
                             </BodyInner>
 
                            </BodyContext>
@@ -151,9 +252,23 @@ class EditProfilPage extends Component {
                     </ContextWrapper>
 
                 </AllWrapper>
+
             </div>
         );
     }
 }
 
-export default EditProfilPage;
+const MapStateToProps = state => {
+    return {
+        isShowMobileNav : state.isShowMobileNav,
+        UserLogin : state.UserLogin
+    }
+}
+const MapDispatchToProps = dispatch => {
+    return {
+        toggleMobile : ()=>dispatch({type : "toggle-mobile"}),
+        updateUserlogin : (key)=>dispatch({type : "updateUserlogin",value:key})
+    }
+}
+
+export default connect(MapStateToProps,MapDispatchToProps)(EditProfilPage);

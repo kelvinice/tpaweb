@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Redirect}from 'react-router-dom'
+import BeautyLoading from "./BeautyLoading";
 
 class UserVerificator extends Component {
     state = {
         alreadyFetch : false
     }
 
-    componentDidMount() {
+    refresh() {
+        this.setState({alreadyFetch:false});
         let token = localStorage.getItem('token');
         const axios = require('axios');
 
@@ -28,10 +30,32 @@ class UserVerificator extends Component {
         })
     }
 
+    componentWillMount() {
+
+        // if(this.props.UserLogin != null){
+        //     this.setState({alreadyFetch:true});
+        //     return;
+        // }
+        this.refresh();
+    }
+
+    componentDidMount() {
+        if(this.props.onRef)
+        this.props.onRef(this)
+    }
+
+    componentWillUnmount() {
+        if(this.props.onRef)
+        this.props.onRef(undefined)
+    }
+
     render() {
         return (
             <div>
                 {(this.state.alreadyFetch && this.props.UserLogin == null) ? <Redirect to="/"></Redirect> : null}
+                {!this.state.alreadyFetch ?
+                    <BeautyLoading/>
+                : null}
             </div>
         );
     }

@@ -17,10 +17,14 @@ const BigProfile = styled('div')`
 const AllWrapper = styled('div')`
   padding: 30px 70px;
   box-sizing: border-box;
-  width: 50%;
+  width: 40%;
+ 
 `
 const HeaderWrapper = styled('div')`
   display: flex;
+  @media only screen and (max-width: 990px){
+    flex-direction: column;
+  }
 `
 
 const LeftHeader = styled('div')`
@@ -49,19 +53,18 @@ const MenuList = styled('div')`
 
 const Menu = styled('div')`
   padding: 10px;
-box-sizing: border-box;
-
+  box-sizing: border-box;
+    ${"span"}{
+        &:first-child{
+          margin: 5px 20px 5px 0
+        }
+    }
+    color: #7a7a7a;
+  cursor: pointer;
 `
-
-const Emoticon = styled('span')`
-  margin: 5px 10px 5px 0px;
-`
-
 
 class LeftUserProfile extends Component {
     render() {
-
-
 
         return (
             <AllWrapper>
@@ -76,19 +79,19 @@ class LeftUserProfile extends Component {
                 </HeaderWrapper>
                 <MenuList>
                     <Menu>
-                        <Emoticon role="img" aria-label="home">🏠</Emoticon>
+                        <span role="img" aria-label="home">🏠</span>
                         <span>Kos Saya</span>
                     </Menu>
                     <Menu>
-                        <Emoticon role="img" aria-label="Booking">📃</Emoticon>
+                        <span role="img" aria-label="Booking">📃</span>
                         <span>Booking</span>
                     </Menu>
                     <Menu>
-                        <Emoticon role="img" aria-label="Akun">✔</Emoticon>
+                        <span role="img" aria-label="Akun">✔</span>
                         <span>Verifikasi Akun</span>
                     </Menu>
                     <Menu>
-                        <Emoticon role="img" aria-label="Identitas">📄</Emoticon>
+                        <span role="img" aria-label="Identitas">📄</span>
                         <span>Verifikasi Identitas</span>
                     </Menu>
                 </MenuList>

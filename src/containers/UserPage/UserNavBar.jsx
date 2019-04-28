@@ -18,10 +18,10 @@ class UserNavBar extends Component {
 
     render() {
         return (
-            <div >
+            <React.Fragment>
                 <NavBar position={"sticky"}  rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
                 {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
-            </div>
+            </React.Fragment>
         );
     }
 }

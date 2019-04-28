@@ -27,6 +27,8 @@ const BeautyInput = styled('input')`
   &:focus{
     border-bottom: 2px solid #00ac00;
   }
+  
+  
 `
 
 const BeautyInputOutlined = styled('input')`
@@ -41,6 +43,10 @@ const BeautyInputOutlined = styled('input')`
   &:focus{
     border: 1px solid #00ac00;
   }
+  &::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
 `
 
 const BeautyTomatoButton = styled('button')`
@@ -162,8 +168,6 @@ const BeautySelectInput = styled('select')`
     background-color: #e5e5e5;
   }
 `
-
-
 
 
 

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
-import {createStore,combineReducers} from 'redux'
+import {createStore} from 'redux'
 import Reducer from "./components/SuperGlobal";
 
 // const Reducers2 = combineReducers({
