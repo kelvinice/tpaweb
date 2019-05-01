@@ -7,11 +7,11 @@ import UserPage from "./pages/UserPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import EditProfilPage from "./pages/EditProfilPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
+import CariKostPage from "./pages/CariKostPage";
 
 class App extends Component {
     render() {
         return (
-
             <div style={{width:"100vw"}}>
                 <BrowserRouter>
                     <Switch>
@@ -20,7 +20,7 @@ class App extends Component {
                         <Route path="/user/edit-profil" component={EditProfilPage} exact/>
                         <Route path="/user" component={UserPage}  />
                         <Route path="/verifyemail/:id" component={VerifyEmailPage}  />
-
+                        <Route path="/cari" component={CariKostPage}></Route>
                         <Route component={NotFoundPage} />
                     </Switch>
                 </BrowserRouter>

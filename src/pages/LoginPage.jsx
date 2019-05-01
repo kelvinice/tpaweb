@@ -84,7 +84,8 @@ class LoginPage extends Component{
             return <DaftarLeft changePage={(state)=>this.PageChanger(state)} changeMessage={(event,message)=>this
                 .MessageChanger(event,message)} />
         }else{
-            return <LoginPemilik changePage={(state)=>this.PageChanger(state)}/>
+            return <LoginPemilik changePage={(state)=>this.PageChanger(state)} changeMessage={(event,message)=>this
+                .MessageChanger(event,message)}/>
         }
     }
 
@@ -102,6 +103,8 @@ class LoginPage extends Component{
     MessageHandler(){
         if(this.state.popMessage===null){
             return null;
+        }else if(this.state.popMessage==="success-login"){
+            return <SuccessAlert message="Success Login" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else if(this.state.popMessage==="success-register"){
             return <SuccessAlert message="Success Register" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else{

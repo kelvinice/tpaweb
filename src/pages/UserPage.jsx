@@ -142,7 +142,7 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserVerificator></UserVerificator>
+                <UserVerificator/>
                 {this.MessageHandler()}
 
                 <UserNavBar />

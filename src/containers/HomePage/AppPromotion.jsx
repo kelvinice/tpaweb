@@ -65,7 +65,7 @@ class AppPromotion extends Component {
     render() {
         return (
             <BodyWrapper className="hide-on-mobile" id="app-download">
-                <LeftImage></LeftImage>
+                <LeftImage/>
                 <RightWrapper>
                     <BeautyGreenTitle style={{fontSize:"34px",textAlign:"unset"}}>Barbarkos - Aplikasi Pencari Info Kost No 1 Di Indonesia</BeautyGreenTitle>
                     <div style={{fontSize:"24px"}}>Aplikasi tersedia di</div>

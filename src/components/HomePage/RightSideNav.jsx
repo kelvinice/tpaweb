@@ -26,6 +26,11 @@ class RightSideNav extends Component {
         document.getElementById("button-cari").addEventListener('click', this.onClickCari.bind(this));
     }
 
+    componentWillUnmount() {
+        document.getElementById("button-masuk").removeEventListener('click', this.onClickMasuk.bind(this));
+        document.getElementById("button-cari").removeEventListener('click', this.onClickCari.bind(this));
+    }
+
     doLogout(){
         localStorage.removeItem('token');
         this.props.updateUserlogin(null);
@@ -84,7 +89,7 @@ class RightSideNav extends Component {
                             Cari Iklan &#9662;
                         </div>
                         <div id="cari-wrapper" className="child-wrapper">
-                            <div className="mobile-nav-item">Cari Kost</div>
+                            <Link to={"/cari"} style={{color:"black"}}><div className="mobile-nav-item">Cari Kost</div></Link>
                             <div id="pemilik-masuk-btn" className="mobile-nav-item">Cari Apartement</div>
                         </div>
                     </div>

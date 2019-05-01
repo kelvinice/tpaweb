@@ -18,22 +18,49 @@ class LoginPemilik extends Component {
         this.props.changePage("lupa");
     }
 
+    doLogin(e){
+        e.preventDefault();
+        // this.setState({popState:"loading"})
+        let form = e.target;
+        let phone = form.elements["phone"].value;
+        let password = form.elements["password"].value;
+        const axios = require('axios');
+
+        axios.post("http://localhost:8000/loginownerbyphone",{
+            phone : phone,
+            password : password,
+        }).then((response) => {
+            console.log("ini sukses:")
+            console.log(response.data);
+            localStorage.setItem('token', response.data.token);
+
+            this.props.changeMessage(null,"success-login");
+
+        }).catch((error) => {
+            console.log("ini error:")
+            console.log(error.response)
+            if(error.response != null)
+                this.props.changeMessage(null,error.response.data.message);
+        });
+    }
+
     render() {
         return (
             <div style={{width:"100%"}}>
                 <div><b>Login </b></div>
                 <div>Pemilik Kos</div>
                 <br/>
+                <form action="" onSubmit={(e)=>this.doLogin(e)}>
                 <BeautyInputWrapper>
                     <b>No. Handphone</b>
                     <br/>
-                    <BeautyInput></BeautyInput>
+                    <BeautyInput type={"text"} name="phone"></BeautyInput>
                 </BeautyInputWrapper>
                 <br/><br/>
                 <BeautyInputWrapper>
                     <b>Password</b>
                     <br/>
-                    <BeautyInput></BeautyInput>
+                    <BeautyInput type={"password"} name="password"></BeautyInput>
                 </BeautyInputWrapper>
                 <br/>
 
@@ -46,7 +73,7 @@ class LoginPemilik extends Component {
                 </div>
                 <br/><br/>
 
-                <BeautyTomatoButton style={{padding:"25px"}}>LOGIN</BeautyTomatoButton>
+                <BeautyTomatoButton style={{padding:"25px"}} type={"submit"}>LOGIN</BeautyTomatoButton>
                 <br/><br/>
                 <div style={{textAlign:"center"}}>
                     <b>
@@ -59,7 +86,7 @@ class LoginPemilik extends Component {
                     </b>
 
                 </div>
-
+                </form>
 
             </div>
         );

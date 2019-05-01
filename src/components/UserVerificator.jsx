@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {Redirect}from 'react-router-dom'
 import BeautyLoading from "./BeautyLoading";
@@ -31,7 +31,6 @@ class UserVerificator extends Component {
     }
 
     componentWillMount() {
-
         // if(this.props.UserLogin != null){
         //     this.setState({alreadyFetch:true});
         //     return;
@@ -51,12 +50,12 @@ class UserVerificator extends Component {
 
     render() {
         return (
-            <div>
-                {(this.state.alreadyFetch && this.props.UserLogin == null) ? <Redirect to="/"></Redirect> : null}
+            <Fragment>
+                {(this.state.alreadyFetch && this.props.UserLogin == null && this.props.noRedirect == null) ? <Redirect to="/"></Redirect> : null}
                 {!this.state.alreadyFetch ?
                     <BeautyLoading/>
                 : null}
-            </div>
+            </Fragment>
         );
     }
 }

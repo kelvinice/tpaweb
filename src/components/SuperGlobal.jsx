@@ -6,7 +6,6 @@ const Store = {
 const Reducer=(state = Store,action) => {
     switch (action.type) {
         case "updateUserlogin":
-            // console.log(action.value);
             return {
                 ...state,
                 UserLogin : action.value
@@ -17,8 +16,6 @@ const Reducer=(state = Store,action) => {
                 ...state,
                 isShowMobileNav : !state.isShowMobileNav
             }
-
-
         default :
 
             return state;

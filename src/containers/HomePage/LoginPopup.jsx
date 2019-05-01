@@ -129,7 +129,7 @@ class LoginPopup extends Component{
 
     popHandler(){
         if(this.state.popState==="loading"){
-            return <Poper><LoadingImage></LoadingImage></Poper>;
+            return <Poper><LoadingImage/></Poper>;
             // return <Poper><InnerBeautyLoading/></Poper>
         }else if(this.state.popState==="success"){
             return <Poper>
@@ -178,10 +178,10 @@ class LoginPopup extends Component{
         return(
             <WrapperPops className="pop-block">
                 {this.popHandler()}
-               
             </WrapperPops>
         )
     }
 }
 
 export default LoginPopup;
+export {LoadingImage}

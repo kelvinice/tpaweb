@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../../styles/HomePageStyle.css'
 import styled from 'styled-components'
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 const IconBar = styled('span')`
   width: 22px;
@@ -53,25 +54,25 @@ class NavBar extends Component {
             <nav className="nav-before" style={{position:this.props.position}}>
 
                 {this.state.isScrollOver?
-                    <Coverer id="nav-cover" className="nav-after"></Coverer>:
-                    <Coverer id="nav-cover" className="nav-before"></Coverer>
+                    <Coverer id="nav-cover" className="nav-after"/>:
+                    <Coverer id="nav-cover" className="nav-before"/>
                 }
 
                 <div style={{height:"inherit",position:"relative"}}>
-                    <LogoImage></LogoImage>
+                    <Link to={"/"}><LogoImage/></Link>
                 </div>
 
                 {this.props.isShowMobileNav ?
                     <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toggleMobileNav()}>
-                        <IconBar></IconBar>
-                        <IconBar></IconBar>
-                        <IconBar></IconBar>
+                        <IconBar/>
+                        <IconBar/>
+                        <IconBar/>
                     </button>
                     :
                     <button className="mobile-show" id="mobile-button" style={{height: "20px",position:"absolute",right:"25px"}} onClick={() =>this.toggleMobileNav()}>
-                        <IconBar></IconBar>
-                        <IconBar></IconBar>
-                        <IconBar></IconBar>
+                        <IconBar/>
+                        <IconBar/>
+                        <IconBar/>
                     </button>
                 }
                 {this.props.rightSide}
@@ -93,8 +94,7 @@ class NavBar extends Component {
 
     componentDidMount() {
         if(this.props.animatedGreen){
-            window.addEventListener('scroll', this.onScroll.bind(this));
-
+            window.addEventListener('scroll', ()=>this.onScroll());
         }else{
             this.setState({isScrollOver:true});
         }
@@ -102,7 +102,9 @@ class NavBar extends Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.onScroll.bind(this));
+        if(this.props.animatedGreen) {
+            window.removeEventListener('scroll', ()=>this.onScroll());
+        }
     }
 
 }

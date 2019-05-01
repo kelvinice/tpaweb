@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
 import KotaBesar from "../containers/HomePage/KotaBesar";
+import UserVerificator from "../components/UserVerificator";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
@@ -32,37 +33,40 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        let token = localStorage.getItem('token');
-        const axios = require('axios');
-
-        axios.get(`http://localhost:8000/curr?token=${token}`,{
-            headers:{
-                'token':token
-            }
-        }).then((response) => {
-            if(response.data.message==="success"){
-                //console.log(response.data.user);
-                this.props.updateUserlogin(response.data.user)
-            }else{
-                console.log("no login");
-            }
-
-        }).catch((error)=>{
-            console.log(error.response);
-        })
+        // let token = localStorage.getItem('token');
+        // const axios = require('axios');
+        //
+        // axios.get(`http://localhost:8000/curr?token=${token}`,{
+        //     headers:{
+        //         'token':token
+        //     }
+        // }).then((response) => {
+        //     if(response.data.message==="success"){
+        //         //console.log(response.data.user);
+        //         this.props.updateUserlogin(response.data.user)
+        //     }else{
+        //         console.log("no login");
+        //     }
+        //
+        // }).catch((error)=>{
+        //     console.log(error.response);
+        // })
     }
 
 
     render() {
         return (
             <div >
+                <UserVerificator noRedirect={true}/>
                 <NavBar position={"fixed"} animatedGreen={true} rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
 
                 <PromotionHeading/>
                 {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
                 <Pads>
                     Promo <br/>
+
                     Anggap aja ini slider
+
                     <br/>
                     <br/>
                     {/*Lokasi favorit kost di ...*/}
