@@ -6,8 +6,16 @@ import RightMap from "../containers/CariPage/RightMap";
 import LeftKost from "../containers/CariPage/LeftKost";
 
 class CariKostPage extends Component {
-    componentDidMount() {
+    state = {
+        type : 0
+    };
 
+    setFilter(e){
+        e.preventDefault();
+        let form = e.target;
+        let type = form.elements["type"].value;
+        this.setState({type:type});
+        this.refs.leftkosts.refreshFilter();
     }
 
     render() {
@@ -15,11 +23,11 @@ class CariKostPage extends Component {
             <div>
                 <UserNavBar/>
                 <UserVerificator noRedirect={true}/>
-                <CariFilter/>
+                <CariFilter setFilter={(e)=>this.setFilter(e)}/>
                 <div>
                     <RightMap/>
                 </div>
-                <LeftKost/>
+                <LeftKost ref={"leftkosts"} filter = {this.state}/>
 
             </div>
         );

@@ -109,8 +109,6 @@ class NavBar extends Component {
 
 }
 
-// export default withRouter(NavBar);
-
 const MapStateToProps = state => {
     return {
         isShowMobileNav : state.isShowMobileNav

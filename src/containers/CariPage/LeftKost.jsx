@@ -37,16 +37,17 @@ class LeftKost extends Component {
     }
 
     fetchMore(){
-
-        if(this.state.isLast){
-            console.log("last");
-            return;
-        }
+        // if(this.state.isLast){
+        //     console.log("last");
+        //     return;
+        // }
         this.setState({isLoading:true});
         const axios = require('axios');
-        axios.get(this.state.link).then((response)=>{
-            // console.log(response.data.house)
-            if(this.state.allkosts== undefined)
+        axios.get(this.state.link,{ params: {
+                type: this.props.filter.type
+            }}).then((response)=>{
+             // console.log(response)
+            if(this.state.allkosts== undefined || this.state.allkosts==null)
                 this.setState({allkosts:response.data.house.data,link:response.data.house.next_page_url})
             else{
 
@@ -68,6 +69,21 @@ class LeftKost extends Component {
         this.setState({isLoading:true});
     }
 
+    scrollFunction(){
+        if (window.scrollY + window.innerHeight >= document.body.offsetHeight-100) {
+            if(this.state.isLoading==false && this.state.isLast==false){
+                this.fetchMore();
+            }
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener("scroll",()=>this.scrollFunction());
+    }
+    componentWillUnmount() {
+        window.removeEventListener("scroll",()=>this.scrollFunction());
+    }
+
     handleButton(){
         if(this.state.isLast){
             return <ButtonPlain>⛔ No More Data ⛔</ButtonPlain>
@@ -79,9 +95,24 @@ class LeftKost extends Component {
         }
     }
 
+    refreshFilter(){
+        // {console.log(this.props.filter.type)}
+        this.setState({link : "http://localhost:8000/houses",
+            allkosts : undefined,
+            isLast : false,
+            isLoading : false},
+            ()=>this.fetchMore()
+            )
+
+        console.log("refreshed");
+
+
+    }
+
     render() {
         return (
             <AllWrapper>
+
                 {this.state.allkosts &&
                     this.state.allkosts.map(
                         (item,key)=><Kosts key = {item.id} data = {item}/>

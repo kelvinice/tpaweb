@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
+import {BeautyInputWrapper, BeautySelectInput} from "../../components/BeautyComponent";
+
 
 const AllWrapper = styled('div')`
   width: 100%;
@@ -23,6 +25,7 @@ const GoodButton = styled('button')`
   outline: none;
   padding: 5px;
   margin-right: 3px;
+  cursor: pointer;
 `
 
 const LeftCariKategori = styled('div')`
@@ -33,6 +36,8 @@ const LeftCariKategori = styled('div')`
 const RightCariKategori = styled('div')`
   width: 85%;
   margin-left: 5px;
+  display: flex;
+  flex-direction: row;
 `
 
 const Title = styled('div')`
@@ -44,11 +49,12 @@ const Title = styled('div')`
 const Menu = styled('div')`
   display: flex;
   flex-direction: column;
-  
+  justify-content: center;
 `
 
 const MenuContent = styled('div')`
   width: 100%;
+  
 `
 
 class CariFilter extends Component {
@@ -66,7 +72,32 @@ class CariFilter extends Component {
                     </Menu>
 
                 </LeftCariKategori>
-                <RightCariKategori>Tipe Kost</RightCariKategori>
+                <form action="" onSubmit={(e)=>this.props.setFilter(e)}>
+                <RightCariKategori>
+                        <Menu>
+                            <Title>Tipe Kost</Title>
+                            <MenuContent>
+                                <BeautyInputWrapper style={{width:"200px"}}>
+                                    <BeautySelectInput name="type" required>
+                                        <option value="0">Semua</option>
+                                        <option value="1">Campur</option>
+                                        <option value="2">Khusus Putra</option>
+                                        <option value="3">Khusus Putri</option>
+                                        <option value="4">Putra dan Campur</option>
+                                        <option value="5">Putri dan Campur</option>
+                                    </BeautySelectInput>
+                                </BeautyInputWrapper>
+                            </MenuContent>
+                        </Menu>
+
+                        <Menu>
+                            <MenuContent>
+                            <GoodButton type="submit">Set</GoodButton>
+                            </MenuContent>
+                        </Menu>
+
+                </RightCariKategori>
+                </form>
 
             </AllWrapper>
         );
