@@ -65,6 +65,8 @@ class RightSideNav extends Component {
                         </div>
                         <div id="login-wrapper" className="child-wrapper">
                             <Link style={{color:"black"}} to="/user"><div className="mobile-nav-item">Halaman Profil</div></Link>
+                            {console.log(this.props.UserLogin)}
+                            {this.props.UserLogin.type===3? <Link style={{color:"black"}} to="/admin"><div className="mobile-nav-item">Admin Dashboard</div></Link> : null}
                             <div id="pemilik-masuk-btn" className="mobile-nav-item"
                                  style={{color: "black"}} onClick={()=>{this.doLogout()}}>Keluar</div>
                         </div>

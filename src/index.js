@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import Reducer from "./components/SuperGlobal";
+import {BrowserRouter} from "react-router-dom";
 
 // const Reducers2 = combineReducers({
 //     key1:Reducer
@@ -13,7 +14,10 @@ import Reducer from "./components/SuperGlobal";
 
 const GlobalWrapper =(
     <Provider store={createStore(Reducer)}>
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+
     </Provider>
 )
 

@@ -67,7 +67,6 @@ class DaftarLeft extends Component {
                 console.log(response.data.name);
 
                 this.props.changeMessage(null,"success-register");
-
             }
         ).catch((error) => {
             console.log("ini error:")
