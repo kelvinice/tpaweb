@@ -99,6 +99,8 @@ nav img{
     color: white;
     display: flex;
     margin-right: 15px;
+    /*position: relative;*/
+    /*left: -125px;*/
 }
 
 #right-side a{

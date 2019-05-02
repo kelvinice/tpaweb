@@ -24,11 +24,13 @@ class LoginPemilik extends Component {
         let form = e.target;
         let phone = form.elements["phone"].value;
         let password = form.elements["password"].value;
+        let remember = form.elements["remember"].checked;
         const axios = require('axios');
 
         axios.post("http://localhost:8000/loginownerbyphone",{
             phone : phone,
             password : password,
+            remember : remember,
         }).then((response) => {
             console.log("ini sukses:")
             console.log(response.data);
@@ -65,11 +67,13 @@ class LoginPemilik extends Component {
                 <br/>
 
                 <div style={{float:"right"}}>
-                    <NavLinkWrapper>
-                        <a href="." onClick={(e) => this.lupaClick(e)}>
-                            Lupa password?
-                        </a>
-                    </NavLinkWrapper>
+                    {/*<NavLinkWrapper>*/}
+                    {/*    <a href="." onClick={(e) => this.lupaClick(e)}>*/}
+                    {/*        Lupa password?*/}
+                    {/*    </a>*/}
+                    {/*</NavLinkWrapper>*/}
+                    <label htmlFor="remember">Remember Me</label>
+                    <input id="remember" type="checkbox" name={"remember"} value={"Remember Me"} />
                 </div>
                 <br/><br/>
 

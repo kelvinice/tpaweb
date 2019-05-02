@@ -101,11 +101,14 @@ class LoginPopup extends Component{
         let form = e.target;
         let email = form.elements["email"].value;
         let password = form.elements["password"].value;
+        let remember = form.elements["remember"].checked;
+
         const axios = require('axios');
 
         axios.post("http://localhost:8000/loginguestbyemail",{
             email : email,
             password : password,
+            remember : remember,
         }).then((response) => {
             console.log("ini sukses:")
             console.log(response.data);
@@ -156,8 +159,10 @@ class LoginPopup extends Component{
                     </BeautyInputWrapper>
                     <br/>
 
-                    <NavLinkWrapper style={{textAlign:'right'}}>
-                        <NavLink tabIndex="-1" to=".">Lupa Password</NavLink>
+                    <NavLinkWrapper style={{textAlign:'right',cursor:"pointer"}}>
+                        <label htmlFor="remember">Remember Me</label>
+                        <input id="remember" type="checkbox" name={"remember"} value={"Remember Me"} />
+
                     </NavLinkWrapper>
 
                     <BeautyTomatoButton type="submit" >LOGIN</BeautyTomatoButton>
