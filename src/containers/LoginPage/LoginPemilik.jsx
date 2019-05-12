@@ -4,7 +4,6 @@ import {
     BeautyInputWrapper,
     BeautyTomatoButton,
     OrangeNavLinkWrapper,
-    NavLinkWrapper
 } from "../../components/BeautyComponent";
 
 class LoginPemilik extends Component {

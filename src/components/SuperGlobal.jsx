@@ -9,12 +9,13 @@ const Reducer=(state = Store,action) => {
         case "updateUserlogin":
             return {
                 ...state,
-                currentPosition : action.value
+                UserLogin : action.value
             }
         case "updateCurrentPosition":
+            console.log(action.value)
             return {
                 ...state,
-                UserLogin : action.value
+                currentPosition : action.value
             }
         case "toggle-mobile":
             return {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter,Route,Switch,withRouter} from 'react-router-dom'
+import { Route,Switch,withRouter} from 'react-router-dom'
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import UserPage from "./pages/UserPage";
@@ -9,7 +9,6 @@ import EditProfilPage from "./pages/EditProfilPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import CariKostPage from "./pages/CariKostPage";
 import AdminDashboard from "./pages/AdminDashboard";
-import ManageGuest from "./containers/AdminDashboard/ManageGuest";
 
 class App extends Component {
     render() {

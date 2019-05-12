@@ -7,15 +7,19 @@ import LeftKost from "../containers/CariPage/LeftKost";
 
 class CariKostPage extends Component {
     state = {
-        type : 0
+        type : 0,
     };
+
+    refreshFilter(){
+        this.refs.leftkosts.refreshFilter();
+    }
 
     setFilter(e){
         e.preventDefault();
         let form = e.target;
         let type = form.elements["type"].value;
         this.setState({type:type});
-        this.refs.leftkosts.refreshFilter();
+        this.refreshFilter();
     }
 
     render() {
@@ -25,7 +29,7 @@ class CariKostPage extends Component {
                 <UserVerificator noRedirect={true}/>
                 <CariFilter setFilter={(e)=>this.setFilter(e)}/>
                 <div>
-                    <RightMap/>
+                    <RightMap refreshFilter={()=>this.refreshFilter()}/>
                 </div>
                 <LeftKost ref={"leftkosts"} filter = {this.state}/>
 

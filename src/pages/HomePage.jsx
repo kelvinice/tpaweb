@@ -5,7 +5,7 @@ import LoginPopup from '../containers/HomePage/LoginPopup';
 import Footer from "../containers/HomePage/Footer";
 import AppPromotion from "../containers/HomePage/AppPromotion";
 import AdsPromotion from "../containers/HomePage/AdsPromotion";
-import FavouriteKost from "../containers/HomePage/FavouriteKost";
+// import FavouriteKost from "../containers/HomePage/FavouriteKost";
 import styled from 'styled-components'
 import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'

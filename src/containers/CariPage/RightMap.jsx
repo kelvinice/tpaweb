@@ -26,9 +26,7 @@ var marker = {};
 class RightMap extends Component {
     state = {
         zoom: 13,
-
     }
-
 
     componentDidMount() {
         if (navigator.geolocation) {
@@ -40,9 +38,9 @@ class RightMap extends Component {
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                 }).addTo(this.map)
 
-                // marker = L.marker([position.coords.latitude,position.coords.longitude])
-                //     .addTo(this.map)
-                //     .bindPopup('Your Location')
+                marker = L.marker([position.coords.latitude,position.coords.longitude])
+                    .addTo(this.map)
+                    .bindPopup('Your Location')
                 this.map.on('click', (e)=>this.onMapClick(e))
             }.bind(this),()=>{
                 this.map = L.map('map').setView(this.props.currentPosition, this.state.zoom)
@@ -50,9 +48,9 @@ class RightMap extends Component {
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
                 }).addTo(this.map)
 
-                // marker = L.marker(L.latLng(this.props.currentPosition))
-                //     .addTo(this.map)
-                //     .bindPopup('Your Location')
+                marker = L.marker(L.latLng(this.props.currentPosition))
+                    .addTo(this.map)
+                    .bindPopup('Your Location')
                 this.map.on('click', (e)=>this.onMapClick(e))
             })
         }
@@ -63,8 +61,9 @@ class RightMap extends Component {
         marker = L.marker(L.latLng(e.latlng))
             .addTo(this.map)
             .bindPopup('Your Location')
-
-
+        this.props.updateCurrentPosition([e.latlng.lat,e.latlng.lng])
+        this.props.refreshFilter();
+        // console.log(e.latlng)
     }
 
     render() {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components'
 import Kosts from "../../components/CariPage/Kosts";
 import {LoadingImage} from "../HomePage/LoginPopup";
+import {connect} from "react-redux";
 
 const AllWrapper = styled('div')`
   width: 56vw;
@@ -42,11 +43,14 @@ class LeftKost extends Component {
         //     return;
         // }
         this.setState({isLoading:true});
+        // console.log(this.props.currentPosition)
         const axios = require('axios');
         axios.get(this.state.link,{ params: {
-                type: this.props.filter.type
+                type: this.props.filter.type,
+                latitude:this.props.currentPosition[0],
+                longitude:this.props.currentPosition[1],
             }}).then((response)=>{
-             // console.log(response)
+             console.log(response)
             if(this.state.allkosts=== undefined || this.state.allkosts===null)
                 this.setState({allkosts:response.data.properties.data,link:response.data.properties.next_page_url})
             else{
@@ -58,12 +62,14 @@ class LeftKost extends Component {
             }
             this.setState({isLoading:false});
         }).catch((error)=>{
-            console.log(error);
+            console.log(error.response);
             this.setState({isLoading:false});
         });
     }
 
     componentWillMount() {
+        // console.log("a:");
+        // console.log(this.props.currentPosition)
         this.fetchMore()
         this.setState({isLoading:true});
     }
@@ -95,8 +101,7 @@ class LeftKost extends Component {
     }
 
     refreshFilter(){
-        // {console.log(this.props.filter.type)}
-        this.setState({link : "http://localhost:8000/houses",
+        this.setState({link : "http://localhost:8000/properties",
             allkosts : undefined,
             isLast : false,
             isLoading : false},
@@ -104,8 +109,6 @@ class LeftKost extends Component {
             )
 
         console.log("refreshed");
-
-
     }
 
     render() {
@@ -120,11 +123,22 @@ class LeftKost extends Component {
                 <Centerer>
                     {this.handleButton()}
                 </Centerer>
-
-
             </AllWrapper>
         );
     }
 }
 
-export default LeftKost;
+
+
+const MapStateToProps = state => {
+    return {
+        currentPosition : state.currentPosition
+    }
+}
+const MapDispatchToProps = dispatch => {
+    return {
+        updateCurrentPosition : (key)=>dispatch({type : "updateCurrentPosition",value:key})
+    }
+}
+
+export default connect(MapStateToProps,MapDispatchToProps,null, { forwardRef : true })(LeftKost);
