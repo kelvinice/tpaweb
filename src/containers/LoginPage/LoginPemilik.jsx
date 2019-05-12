@@ -56,7 +56,7 @@ class LoginPemilik extends Component {
                 <BeautyInputWrapper>
                     <b>No. Handphone</b>
                     <br/>
-                    <BeautyInput type={"text"} name="phone"></BeautyInput>
+                    <BeautyInput type={"text"} name="phone" autoFocus={true}></BeautyInput>
                 </BeautyInputWrapper>
                 <br/><br/>
                 <BeautyInputWrapper>

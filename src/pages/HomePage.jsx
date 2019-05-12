@@ -51,6 +51,11 @@ class HomePage extends Component {
         // }).catch((error)=>{
         //     console.log(error.response);
         // })
+
+        if(localStorage.getItem('loginpop') == "yes"){
+            this.setState({pencariToogle : true})
+            localStorage.removeItem('loginpop')
+        }
     }
 
 
@@ -61,7 +66,7 @@ class HomePage extends Component {
                 <NavBar position={"fixed"} animatedGreen={true} rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
 
                 <PromotionHeading/>
-                {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
+                {this.state.pencariToogle ? <LoginPopup autoFocus={true} exitCalled={() => this.pencariExitCalled()} /> : null}
                 <Pads>
                     Promo <br/>
 

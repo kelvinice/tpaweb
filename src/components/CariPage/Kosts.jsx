@@ -44,23 +44,23 @@ const MiddleSpan = styled('span')`
 
 class Kosts extends Component {
     genderHandler(){
-        if (this.props.data.gender_type===1){
+        if (this.props.data.house.gender_type===1){
             return <span style={{fontWeight:"bold",color:"purple"}}>Campur</span>
-        }else if(this.props.data.gender_type===2){
+        }else if(this.props.data.house.gender_type===2){
             return <span style={{fontWeight:"bold",color:"blue"}}>Putra</span>
-        }else{
+        }else if(this.props.data.house.gender_type===3){
             return <span style={{fontWeight:"bold",color:"red"}}>Putri</span>
         }
     }
 
     sisaKamarHandler(){
-        if (this.props.data.room_left===0){
+        if (this.props.data.house.room_left===0){
             return <span style={{fontWeight:"bold",color:"gray"}}>Kamar tidak tersedia</span>
         }
-        else if (this.props.data.room_left===1){
+        else if (this.props.data.house.room_left===1){
             return <span style={{fontWeight:"bold",color:"red"}}>Tinggal 1 kamar</span>
         }else{
-            return <span style={{fontWeight:"bold",color:"green"}}>Ada {this.props.data.room_left} kamar</span>
+            return <span style={{fontWeight:"bold",color:"green"}}>Ada {this.props.data.house.room_left} kamar</span>
         }
     }
 
@@ -80,7 +80,7 @@ class Kosts extends Component {
         return (
             <AllWrapper>
                 <Content>
-
+                    {/*{console.log(this.props.data)}*/}
                     <ProfileImage/>
                     <ContentWrapper>
                         <GoodDiv>

@@ -15,7 +15,7 @@ const BeautyGreenTitle = styled('div')`
     color: #27ab27;
 `
 
-const BeautyInput = styled('input')`
+const BeautyInput = styled.input`
   background-color: white;
   padding: 10px;
   border: none;
@@ -27,7 +27,6 @@ const BeautyInput = styled('input')`
   &:focus{
     border-bottom: 2px solid #00ac00;
   }
-  
   
 `
 

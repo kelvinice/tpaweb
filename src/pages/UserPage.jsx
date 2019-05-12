@@ -121,8 +121,6 @@ class UserPage extends Component {
 
     }
 
-
-
     MessageHandler(){
         if(this.state.popMessage===null){
             return null;

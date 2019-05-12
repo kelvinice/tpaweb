@@ -3,6 +3,7 @@ import styled,{ keyframes } from 'styled-components'
 import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/BeautyComponent";
 import {NavLink} from 'react-router-dom'
 import {InnerBeautyLoading} from "../../components/BeautyLoading";
+import GoodInput from "../../components/GoodInput";
 
 const WrapperPops = styled('div')`
     position:fixed;
@@ -89,10 +90,15 @@ const RedWrap = styled('div')`
 `
 
 class LoginPopup extends Component{
+    constructor(props) {
+        super(props);
+    }
+
     state = {
         popState : null,
         loginError : null,
-        redirect : false
+        redirect : false,
+
     };
 
     doLogin(e){
@@ -115,6 +121,7 @@ class LoginPopup extends Component{
             localStorage.setItem('token', response.data.token);
 
             this.setState({popState:"success"})
+
 
         }).catch((error) => {
             console.log("ini error:")
@@ -143,6 +150,7 @@ class LoginPopup extends Component{
         }else{
             return <Poper>
                 <ButtonEsc><div onClick={()=>this.props.exitCalled()}>×</div></ButtonEsc>
+
                 <form action="" onSubmit={(e)=>this.doLogin(e)}>
                     <BeautyGreenTitle>
                         Login Akun
@@ -150,12 +158,13 @@ class LoginPopup extends Component{
                     <br/>
                     <BeautyInputWrapper>
                         Email:<br/>
-                        <BeautyInput type="email" name="email"/>
+                        <BeautyInput ref={this.focusInput} type={"email"} name="email"></BeautyInput>
+
                     </BeautyInputWrapper>
                     <br/>
                     <BeautyInputWrapper>
                         Password:<br/>
-                        <BeautyInput type="password" name="password"/>
+                        <BeautyInput type="password" name="password"   />
                     </BeautyInputWrapper>
                     <br/>
 
@@ -174,6 +183,7 @@ class LoginPopup extends Component{
                     }
 
                 </form>
+
             </Poper>
         }
 
@@ -181,7 +191,7 @@ class LoginPopup extends Component{
 
     render(){
         return(
-            <WrapperPops className="pop-block">
+            <WrapperPops className="pop-block" autoFocus={true}>
                 {this.popHandler()}
             </WrapperPops>
         )

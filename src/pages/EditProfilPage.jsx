@@ -128,6 +128,7 @@ class EditProfilPage extends Component {
     constructor(props){
         super(props);
         this.userVerificator = React.createRef()
+
     }
     state = {
         popMessage : null,
@@ -166,7 +167,7 @@ class EditProfilPage extends Component {
         let data = {"token":token,"name" : name}
         if(phone)
             data["phone"]=phone
-        console.log(data)
+        // console.log(data)
 
         axios.patch('http://localhost:8000/updateprofile',data).then(
             (response) => {
@@ -178,7 +179,7 @@ class EditProfilPage extends Component {
                     this.MessageChanger(null,response.data.message);
                 }
 
-                console.log(response.data.message);
+                // console.log(response.data.message);
             }
         ).catch((error) => {
             console.log("ini error:")
@@ -187,8 +188,8 @@ class EditProfilPage extends Component {
                 this.MessageChanger(null,error.response.data.message);
 
         });
-
     }
+
 
     render() {
         return (
@@ -215,7 +216,7 @@ class EditProfilPage extends Component {
                                                 <td><Stared>Nama Lengkap</Stared></td>
                                                 <td >
                                                     {this.props.UserLogin &&
-                                                        <GoodInput value={this.props.UserLogin.name} type="text" name="name" required></GoodInput>
+                                                        <GoodInput autoFocus={true} value={this.props.UserLogin.name} type="text" name="name" required></GoodInput>
                                                     }
                                                 </td>
                                             </tr>

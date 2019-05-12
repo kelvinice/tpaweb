@@ -65,7 +65,7 @@ class DaftarLeft extends Component {
             (response) => {
                 console.log("ini sukses:")
                 console.log(response.data.name);
-
+                localStorage.setItem('loginpop',"yes")
                 this.props.changeMessage(null,"success-register");
             }
         ).catch((error) => {
@@ -98,7 +98,7 @@ class DaftarLeft extends Component {
                 <form id="form-daftar" onSubmit={(e)=>this.daftarSubmit(e)}>
                 <BeautyInputWrapper>
                     Role
-                    <BeautySelectInput onChange={(e)=>this.roleChanges(e)} name="role" required >
+                    <BeautySelectInput autoFocus={true} onChange={(e)=>this.roleChanges(e)} name="role" required >
                         <option value="1">GUEST</option>
                         <option value="2">OWNER</option>
                     </BeautySelectInput>

@@ -30,7 +30,7 @@ const ButtonPlain = styled('button')`
 
 class LeftKost extends Component {
     state = {
-        link : "http://localhost:8000/houses",
+        link : "http://localhost:8000/properties",
         allkosts : null,
         isLast : false,
         isLoading : false
@@ -47,14 +47,13 @@ class LeftKost extends Component {
                 type: this.props.filter.type
             }}).then((response)=>{
              // console.log(response)
-            if(this.state.allkosts== undefined || this.state.allkosts==null)
-                this.setState({allkosts:response.data.house.data,link:response.data.house.next_page_url})
+            if(this.state.allkosts=== undefined || this.state.allkosts===null)
+                this.setState({allkosts:response.data.properties.data,link:response.data.properties.next_page_url})
             else{
-
-                this.setState({allkosts:this.state.allkosts.concat(response.data.house.data),link:response.data.house.next_page_url})
+                this.setState({allkosts:this.state.allkosts.concat(response.data.properties.data),link:response.data.properties.next_page_url})
             }
 
-            if(response.data.house.current_page==response.data.house.last_page){
+            if(response.data.properties.current_page===response.data.properties.last_page){
                 this.setState({isLast:true})
             }
             this.setState({isLoading:false});

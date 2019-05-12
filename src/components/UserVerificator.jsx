@@ -21,7 +21,7 @@ class UserVerificator extends Component {
             if(response.data.message==="success"){
                 this.props.updateUserlogin(response.data.user)
             }else{
-                console.log("no login");
+                // console.log("no login");
             }
             this.setState({alreadyFetch:true});
         }).catch((error)=>{
