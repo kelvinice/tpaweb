@@ -2,27 +2,55 @@ import React, {Component} from 'react';
 import UserVerificator from "../components/UserVerificator";
 import UserNavBar from "../containers/UserPage/UserNavBar";
 import NotFoundPage from "./NotFoundPage";
-import {BrowserRouter,Switch,Route} from "react-router-dom";
+import {Switch,Route} from "react-router-dom";
 import ManageGuest from "../containers/AdminDashboard/ManageGuest";
 import AdminPanel from "../containers/AdminDashboard/AdminPanel";
+import styled from 'styled-components'
+
+const AllWrapper = styled('div')`
+  height: 100%;
+  width: 100%;
+`
+
+const InnerFloater = styled('div')`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`
+
+const BodyFloater = styled('div')`
+  display: flex;
+  height: 100%;
+`
+
 
 class AdminDashboard extends Component {
     render() {
         return (
-            <div>
+            <AllWrapper>
+
                 <UserVerificator/>
-                <UserNavBar />
+                <InnerFloater>
+                    <UserNavBar />
+                    <BodyFloater>
+                        <AdminPanel/>
 
-                <AdminPanel/>
+                        <Switch>
+                            <Route path={`${this.props.match.url}/`} component={null} exact />
+                            <Route path={`${this.props.match.url}/manage-guest`} component={ManageGuest} exact />
+                            <Route component={NotFoundPage}></Route>
+                        </Switch>
+
+                    </BodyFloater>
+
+                </InnerFloater>
 
 
-                <Switch>
-                    <Route path={`${this.props.match.url}/`} component={null} exact />
-                    <Route path={`${this.props.match.url}/manage-guest`} component={ManageGuest} exact />
-                    <Route component={NotFoundPage}></Route>
-                </Switch>
 
-            </div>
+
+
+            </AllWrapper>
         );
     }
 }

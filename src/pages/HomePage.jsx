@@ -14,7 +14,7 @@ import UserVerificator from "../components/UserVerificator";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
-      padding: 0px;
+      padding: 0;
     }
     padding: 50px;
 `
@@ -33,26 +33,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
-        // let token = localStorage.getItem('token');
-        // const axios = require('axios');
-        //
-        // axios.get(`http://localhost:8000/curr?token=${token}`,{
-        //     headers:{
-        //         'token':token
-        //     }
-        // }).then((response) => {
-        //     if(response.data.message==="success"){
-        //         //console.log(response.data.user);
-        //         this.props.updateUserlogin(response.data.user)
-        //     }else{
-        //         console.log("no login");
-        //     }
-        //
-        // }).catch((error)=>{
-        //     console.log(error.response);
-        // })
-
-        if(localStorage.getItem('loginpop') == "yes"){
+        if(localStorage.getItem('loginpop') === "yes"){
             this.setState({pencariToogle : true})
             localStorage.removeItem('loginpop')
         }

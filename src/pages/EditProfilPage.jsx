@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import UserVerificator from "../components/UserVerificator";
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import {BeautyInputOutlined, BeautyTomatoButton, GreenNavLinkWrapper} from "../components/BeautyComponent";
+import { BeautyTomatoButton, GreenNavLinkWrapper} from "../components/BeautyComponent";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {connect} from "react-redux";
 import GoodInput from "../components/GoodInput";
 import {ErrorAlert, SuccessAlert} from "../components/Alerts";
-import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
 
 const NavInfo = styled('div')`
   padding: 5px 10px;
@@ -15,8 +14,6 @@ const NavInfo = styled('div')`
   box-sizing: border-box;
   font-family: "Titillium Web";
   @media only screen and (max-width: 891px){
-    position: absolute;
-    top: 50px;
     width: 100%;
   }
 `
@@ -27,10 +24,8 @@ const AllWrapper = styled('div')`
     padding: 50px 100px;
     box-sizing: border-box;
     @media only screen and (max-width: 891px){
-     padding: 10px 5px;
-     position: absolute;
-    top: 150px;
-    width: 100%;
+        padding: 10px 5px;
+        width: 100%;
     }
 `
 
@@ -40,7 +35,9 @@ const ContextWrapper = styled('div')`
   background-color: #ffffff;
   border-radius: 5px;
   border: 1px solid darkgrey ;
-  
+  @media only screen and (max-width: 891px){
+    width: 100%;
+  }
 `
 
 const HeaderContext = styled('div')`
@@ -68,19 +65,22 @@ const BigProfile = styled('div')`
 `
 
 const BodyInner = styled('div')`
-
   width: 80%;
   margin: 0 auto;
   @media only screen and (max-width: 891px){
   width: 100%;
   }
-  
 `
 
 const DefinedTable = styled('table')`
   width: 100%;
   ${"tr"}{
     width: 100%;
+    @media only screen and (max-width: 891px){
+        display: flex;
+        flex-direction: column;
+    }
+   
     ${"td"}:last-child{
       width: 100%;
     }
@@ -90,7 +90,6 @@ const DefinedTable = styled('table')`
       @media only screen and (min-width: 892px){
         white-space: nowrap;
       }
-      
     }
   }
 `
@@ -122,8 +121,6 @@ const Padder = styled('div')`
   }
 `
 
-
-
 class EditProfilPage extends Component {
     constructor(props){
         super(props);
@@ -137,7 +134,7 @@ class EditProfilPage extends Component {
     MessageChanger(event,message){
         if(event != null)
             event.preventDefault();
-        if(event == null || event.target===event.currentTarget)
+        if(event === null || event.target===event.currentTarget)
             this.setState({popMessage: message});
 
     }
@@ -171,7 +168,7 @@ class EditProfilPage extends Component {
 
         axios.patch('http://localhost:8000/updateprofile',data).then(
             (response) => {
-                if(response.data.message == "success"){
+                if(response.data.message === "success"){
                     this.userVerificator.refresh();
                     this.MessageChanger(null,"success-update");
                 }else{
@@ -189,7 +186,6 @@ class EditProfilPage extends Component {
 
         });
     }
-
 
     render() {
         return (
@@ -239,6 +235,8 @@ class EditProfilPage extends Component {
                                                     }
                                                 </td>
                                             </tr>
+
+
                                         </tbody>
                                     </DefinedTable>
                                     <Padder >

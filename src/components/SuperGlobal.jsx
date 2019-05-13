@@ -1,6 +1,6 @@
 const Store = {
     UserLogin : null,
-    isShowMobileNav : true,
+    isShowMobileNav : false,
     currentPosition : [-6.20,106.78],
 }
 

@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import styled from "styled-components";
 import LoginPemilik from "../containers/LoginPage/LoginPemilik";
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import {GreenNavLinkWrapper} from "../components/BeautyComponent";
 import DaftarLeft from "../containers/LoginPage/DaftarLeft";
 import {SuccessAlert,ErrorAlert} from "../components/Alerts";
@@ -112,9 +112,18 @@ class LoginPage extends Component{
         }
     }
 
+    AuthHandler(){
+        if(localStorage.getItem("token") != null){
+            return <Redirect to={"/"}></Redirect>
+        }else{
+            return null;
+        }
+    }
+
     render() {
         return(
             <LoginPageContainer>
+                {this.AuthHandler()}
                 {this.MessageHandler()}
                 <LeftWrapper>
                     <GreenNavLinkWrapper><Link to="/"><b>&#8592;Kembali ke Beranda</b></Link></GreenNavLinkWrapper>

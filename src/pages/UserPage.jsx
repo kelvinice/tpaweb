@@ -16,7 +16,6 @@ const WrapperPops = styled('div')`
     z-index:10;
     width: 100%;
     background-color: rgba(0,0,0,0.6) !important;
-    top: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -49,8 +48,8 @@ const UserProfile = styled('div')`
     width: 100%;
     display: flex;
      @media only screen and (max-width: 990px){
-    flex-direction: column;
-  }
+      flex-direction: column;
+    }
 `
 
 const RightUserProfile = styled('div')`
@@ -64,10 +63,8 @@ const AllWrapper = styled('div')`
     padding: 20px 20px;
     box-sizing: border-box;
     @media only screen and (max-width: 891px){
-     padding: 10px 5px;
-     position: absolute;
-    top: 150px;
-    width: 100%;
+        padding: 10px 5px;
+        width: 100%;
     }
 `
 
@@ -118,7 +115,6 @@ class UserPage extends Component {
         if(event == null || event.target===event.currentTarget){
             this.setState({popMessage: message});
         }
-
     }
 
     MessageHandler(){

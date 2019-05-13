@@ -41,7 +41,7 @@ const DescriptionHead = styled('div')`
 class NotFoundPage extends Component {
     render() {
         return (
-            <div style={{height:"100%"}}>
+            <div style={{height:"100%",width:"100%"}}>
                 <Header>
                     <SadGif/>
                     <StatusHead>404</StatusHead>

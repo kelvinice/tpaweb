@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import styled,{ keyframes } from 'styled-components'
 import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/BeautyComponent";
-import {NavLink} from 'react-router-dom'
-import {InnerBeautyLoading} from "../../components/BeautyLoading";
-import GoodInput from "../../components/GoodInput";
 
 const WrapperPops = styled('div')`
     position:fixed;
@@ -13,7 +10,10 @@ const WrapperPops = styled('div')`
     background-color: rgba(0,0,0,0.6) !important;
     top: 0;
     height: 100%;
-    padding-top: 3%;
+    
+    @media only screen and (min-width: 660px){
+      padding-top: 3%;
+    }
 `
 
 const Poper = styled('div')`
@@ -28,19 +28,21 @@ const Poper = styled('div')`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    @media only screen and (max-width: 661px){
+      width: 100%;
+      height: 100%;
+    }
 `
+
 const ButtonEsc = styled('div')`
   text-align: right;
   width: 100%;
   color: gray;
   font-weight: bolder;
-  
   ${'div'}{
    cursor: pointer;
   float: right;
   margin: 0;
-  
   }
 `
 
@@ -48,7 +50,6 @@ const rotate = keyframes`
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -90,15 +91,10 @@ const RedWrap = styled('div')`
 `
 
 class LoginPopup extends Component{
-    constructor(props) {
-        super(props);
-    }
-
     state = {
         popState : null,
         loginError : null,
         redirect : false,
-
     };
 
     doLogin(e){

@@ -3,19 +3,24 @@ import styled from 'styled-components'
 import {Link,withRouter} from "react-router-dom";
 
 const AllWrapper = styled('div')`
-  width: 100%;
+  position: sticky;
+  width: 200px;
+  height: 100%;
   background-color: #00d4d3;
   display: flex;
+  flex-direction: column;
+  
   ${'a'}{
+    height: 100%;
     color: white;
     text-decoration: none;
     width: 100%;
-    padding: 10px 20px;
+    padding: 0 20px;
     box-sizing: border-box;
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     &:hover{
         background-color: #1d93d1;
         color: aqua;
@@ -24,14 +29,16 @@ const AllWrapper = styled('div')`
 `
 
 const Menu = styled('div')`
- 
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     height: 100%;
 `
 
 class AdminPanel extends Component {
     render() {
         return (
             <AllWrapper>
-
                 <Link><Menu>Manage Post</Menu></Link>
                 <Link><Menu>Manage Facility</Menu></Link>
                 <Link to="/admin/manage-guest"><Menu>Manage Guest</Menu></Link>

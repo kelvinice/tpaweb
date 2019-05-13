@@ -68,15 +68,13 @@ class LeftKost extends Component {
     }
 
     componentWillMount() {
-        // console.log("a:");
-        // console.log(this.props.currentPosition)
         this.fetchMore()
         this.setState({isLoading:true});
     }
 
     scrollFunction(){
         if (window.scrollY + window.innerHeight >= document.body.offsetHeight-100) {
-            if(this.state.isLoading==false && this.state.isLast==false){
+            if(this.state.isLoading===false && this.state.isLast===false){
                 this.fetchMore();
             }
         }
@@ -91,12 +89,11 @@ class LeftKost extends Component {
 
     handleButton(){
         if(this.state.isLast){
-            return <ButtonPlain>⛔ No More Data ⛔</ButtonPlain>
+            return <ButtonPlain><span role={"img"} aria-label={"stop"}>⛔</span> No More Data <span role={"img"} aria-label={"stop"}>⛔</span></ButtonPlain>
         }else if(this.state.isLoading){
             return <LoadingImage/>
         }else{
-            return <ButtonPlain onClick={()=>this.fetchMore()}>➕ Lihat lebih banyak lagi</ButtonPlain>
-
+            return <ButtonPlain onClick={()=>this.fetchMore()}><span role={"img"} aria-label={"plus"}>➕</span> Lihat lebih banyak lagi</ButtonPlain>
         }
     }
 
@@ -107,14 +104,11 @@ class LeftKost extends Component {
             isLoading : false},
             ()=>this.fetchMore()
             )
-
-        console.log("refreshed");
     }
 
     render() {
         return (
             <AllWrapper>
-
                 {this.state.allkosts &&
                     this.state.allkosts.map(
                         (item,key)=><Kosts key = {item.id} data = {item}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import moment from 'moment-with-locales-es6'
+// import moment from 'moment-with-locales-es6'
 
 const AllWrapper = styled('div')`
   width: 50%;
@@ -65,6 +65,7 @@ class Kosts extends Component {
     }
 
     updateHandler(){
+        let moment = require('moment/min/moment-with-locales.min');
         moment.locale('id');
         let datediff = "";
         if(this.props.data.updated_at){
