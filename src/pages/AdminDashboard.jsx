@@ -30,7 +30,7 @@ class AdminDashboard extends Component {
         return (
             <AllWrapper>
 
-                <UserVerificator/>
+                <UserVerificator role={3}/>
                 <InnerFloater>
                     <UserNavBar />
                     <BodyFloater>

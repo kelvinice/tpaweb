@@ -18,17 +18,25 @@ const AllWrapper = styled('div')`
   padding: 30px 70px;
   box-sizing: border-box;
   width: 40%;
- 
+  @media only screen and (max-width: 990px){
+    text-align: center;
+    padding: 0 0;
+    width: 100%;
+  }
 `
 const HeaderWrapper = styled('div')`
   display: flex;
   @media only screen and (max-width: 990px){
     flex-direction: column;
+    justify-content: center;
   }
 `
 
 const LeftHeader = styled('div')`
-  width: 40%;
+  width: 50%;
+  @media only screen and (max-width: 990px){
+    width: 100%;
+  }
 `
 
 const RightHeader = styled('div')`
@@ -37,6 +45,7 @@ const RightHeader = styled('div')`
   justify-content: space-around;
   padding: 20px;
   box-sizing: border-box;
+  
 `
 
 const TitleName = styled('span')`
@@ -74,7 +83,9 @@ class LeftUserProfile extends Component {
                     </LeftHeader>
                     <RightHeader>
                         <TitleName>{this.props.UserLogin ? this.props.UserLogin.name : "Name"}</TitleName>
-                        <Link to="/user/edit-profil"><OutlineButton> Edit Profil </OutlineButton></Link>
+                        <Link to="/user/edit-profil"><OutlineButton style={{width:"100%"}}>Edit Profile</OutlineButton></Link>
+                        <Link to="/user/edit-foto"><OutlineButton style={{width:"100%"}}>Edit Photo</OutlineButton></Link>
+                        <Link to="/user/edit-password"><OutlineButton style={{width:"100%"}}>Edit Password</OutlineButton></Link>
                     </RightHeader>
                 </HeaderWrapper>
                 <MenuList>

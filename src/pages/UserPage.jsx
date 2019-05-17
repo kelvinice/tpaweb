@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import {BrowserRouter,Route,Link,Switch} from 'react-router-dom'
+import {Route,Link,Switch} from 'react-router-dom'
 import UserVerificator from "../components/UserVerificator";
 import styled from 'styled-components'
 import {GreenNavLinkWrapper} from "../components/BeautyComponent";
@@ -152,13 +152,11 @@ class UserPage extends Component {
                                 </HeaderContext>
                                 <BodyContext>
                                     <BodyInner>
-                                        <BrowserRouter>
-                                            <Switch>
-                                                <Route path={`${this.props.match.url}/`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
-                                                <Route path={`${this.props.match.url}/verifikasi-akun`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
-                                                <Route component={NotFoundPage}></Route>
-                                            </Switch>
-                                        </BrowserRouter>
+                                        <Switch>
+                                            <Route path={`${this.props.match.url}/`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
+                                            <Route path={`${this.props.match.url}/verifikasi-akun`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
+                                            <Route component={NotFoundPage}></Route>
+                                        </Switch>
                                     </BodyInner>
 
                                 </BodyContext>
@@ -178,4 +176,4 @@ class UserPage extends Component {
 
 
 
-export default UserPage;
+export default (UserPage);

@@ -48,10 +48,20 @@ class UserVerificator extends Component {
         this.props.onRef(undefined)
     }
 
+    handleRedirect(){
+        if(this.state.alreadyFetch && this.props.noRedirect == null && (this.props.UserLogin == null ||
+            (this.props.role && this.props.UserLogin.role != this.props.role))){
+            return <Redirect to="/"></Redirect>
+        }else{
+            return null;
+        }
+    }
+
+
     render() {
         return (
             <Fragment>
-                {(this.state.alreadyFetch && this.props.UserLogin == null && this.props.noRedirect == null) ? <Redirect to="/"></Redirect> : null}
+                {this.handleRedirect()}
                 {!this.state.alreadyFetch ?
                     <BeautyLoading/>
                 : null}

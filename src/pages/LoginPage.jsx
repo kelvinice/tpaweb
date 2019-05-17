@@ -74,7 +74,8 @@ class LoginPage extends Component{
     state = {
         leftState : null,
         popMessage : null,
-        testState : this.props.location
+        testState : this.props.location,
+
     }
 
     PageHandler(state){
@@ -105,8 +106,10 @@ class LoginPage extends Component{
             return null;
         }else if(this.state.popMessage==="success-login"){
             return <SuccessAlert message="Success Login" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
-        }else if(this.state.popMessage==="success-register"){
+        }else if(this.state.popMessage==="success-register-guest"){
             return <SuccessAlert message="Success Register" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
+        }else if(this.state.popMessage==="success-register-owner"){
+            return <SuccessAlert message="Success Register"  onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else{
             return <ErrorAlert message={this.state.popMessage} onClick={(event, message) => this.MessageChanger(event, null)}/>
         }

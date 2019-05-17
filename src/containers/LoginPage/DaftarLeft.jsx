@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 import {BeautySelectInput, BeautyTomatoButton, OrangeNavLinkWrapper,BeautyInput,BeautyInputWrapper} from "../../components/BeautyComponent";
+import styled from 'styled-components'
+
+const BoldRed = styled('span')`
+    color: red;
+    font-weight: bolder;
+`
 
 class DaftarLeft extends Component {
     state = {
-        isOwner : false
+        isOwner : false,
+        errors : null,
     }
     loginClick(e){
         e.preventDefault();
@@ -32,27 +39,23 @@ class DaftarLeft extends Component {
                 password:password,
                 role:role,
                 phone:phone
-
             }).then(
                 (response) => {
                     console.log("ini sukses:")
                     console.log(response.data.name);
-
-                    this.props.changeMessage(null,"success-register");
-
+                    this.props.changeMessage(null,"success-register-owner");
+                    this.props.changePage(null);
                 }
             ).catch((error) => {
                 console.log("ini error:")
                 console.log(error.response)
-                if(error.response != null)
+                if(error.response != null){
                     this.props.changeMessage(null,error.response.data.message);
-
+                    this.setState({errors:error.response.data.errors});
+                }
             });
-
-
             return false;
         }
-
 
         axios.post('http://localhost:8000/registerguest',{
             name:name,
@@ -66,14 +69,15 @@ class DaftarLeft extends Component {
                 console.log("ini sukses:")
                 console.log(response.data.name);
                 localStorage.setItem('loginpop',"yes")
-                this.props.changeMessage(null,"success-register");
+                this.props.changeMessage(null,"success-register-guest");
             }
         ).catch((error) => {
             console.log("ini error:")
             console.log(error.response)
-            if(error.response != null)
+            if(error.response != null){
                 this.props.changeMessage(null,error.response.data.message);
-
+                this.setState({errors:error.response.data.errors});
+            }
         });
 
         return false;
@@ -87,6 +91,14 @@ class DaftarLeft extends Component {
             this.setState({isOwner:false});
         }
 
+    }
+
+    handlingError(error){
+        if(this.state.errors && this.state.errors[error]){
+            return <BoldRed>{this.state.errors[error][0]}</BoldRed>;
+        }else{
+            return null;
+        }
     }
 
     render() {
@@ -103,17 +115,20 @@ class DaftarLeft extends Component {
                         <option value="2">OWNER</option>
                     </BeautySelectInput>
                 </BeautyInputWrapper>
+                    {this.handlingError("role")}
                     <br/>
                 <BeautyInputWrapper>
                     Full Name
                     <BeautyInput type="text" name="name" required></BeautyInput>
                 </BeautyInputWrapper>
+                    {this.handlingError("name")}
                 <br/>
 
                 <BeautyInputWrapper>
                     Email
                     <BeautyInput type="email" name="email" required></BeautyInput>
                 </BeautyInputWrapper>
+                    {this.handlingError("email")}
                 <br/>
                 {
                    this.state.isOwner ?
@@ -123,18 +138,19 @@ class DaftarLeft extends Component {
                            <br/>
                        </BeautyInputWrapper>
                         : null
-
                 }
-
+                    {this.handlingError("phone")}
                 <BeautyInputWrapper>
                     Password
                     <BeautyInput type="password" name="password" required></BeautyInput>
                 </BeautyInputWrapper>
+                    {this.handlingError("password")}
                 <br/>
                 <BeautyInputWrapper>
                     Confirmation Password
                     <BeautyInput type="password" name="password_confirmation" required></BeautyInput>
                 </BeautyInputWrapper>
+                    {this.handlingError("password_confirmation")}
                 <br/><br/>
 
                 <BeautyTomatoButton type="submit" style={{padding:"25px"}} >Daftar Sekarang</BeautyTomatoButton>

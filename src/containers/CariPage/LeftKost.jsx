@@ -74,7 +74,7 @@ class LeftKost extends Component {
 
     scrollFunction(){
         if (window.scrollY + window.innerHeight >= document.body.offsetHeight-100) {
-            if(this.state.isLoading===false && this.state.isLast===false){
+            if(this.state.isLoading===false && this.state.link===false){
                 this.fetchMore();
             }
         }

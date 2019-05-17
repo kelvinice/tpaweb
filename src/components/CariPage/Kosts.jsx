@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 // import moment from 'moment-with-locales-es6'
+import moment from 'moment'
+import 'moment/min/locales'
 
 const AllWrapper = styled('div')`
   width: 50%;
@@ -56,8 +58,7 @@ class Kosts extends Component {
     sisaKamarHandler(){
         if (this.props.data.house.room_left===0){
             return <span style={{fontWeight:"bold",color:"gray"}}>Kamar tidak tersedia</span>
-        }
-        else if (this.props.data.house.room_left===1){
+        }else if (this.props.data.house.room_left===1){
             return <span style={{fontWeight:"bold",color:"red"}}>Tinggal 1 kamar</span>
         }else{
             return <span style={{fontWeight:"bold",color:"green"}}>Ada {this.props.data.house.room_left} kamar</span>
@@ -65,7 +66,6 @@ class Kosts extends Component {
     }
 
     updateHandler(){
-        let moment = require('moment/min/moment-with-locales.min');
         moment.locale('id');
         let datediff = "";
         if(this.props.data.updated_at){
@@ -73,7 +73,6 @@ class Kosts extends Component {
         }else if(this.props.data.created_at){
             datediff ="Update "+moment(this.props.data.created_at,"YYYY-MM-DD hh:mm:ss").fromNow()
         }
-
         return <span style={{fontSize:"13px"}}>{datediff}</span>;
     }
 

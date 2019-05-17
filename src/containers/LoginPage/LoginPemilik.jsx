@@ -66,11 +66,6 @@ class LoginPemilik extends Component {
                 <br/>
 
                 <div style={{float:"right"}}>
-                    {/*<NavLinkWrapper>*/}
-                    {/*    <a href="." onClick={(e) => this.lupaClick(e)}>*/}
-                    {/*        Lupa password?*/}
-                    {/*    </a>*/}
-                    {/*</NavLinkWrapper>*/}
                     <label htmlFor="remember">Remember Me</label>
                     <input id="remember" type="checkbox" name={"remember"} value={"Remember Me"} />
                 </div>
