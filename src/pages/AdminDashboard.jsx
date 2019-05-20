@@ -6,6 +6,7 @@ import {Switch,Route} from "react-router-dom";
 import ManageGuest from "../containers/AdminDashboard/ManageGuest";
 import AdminPanel from "../containers/AdminDashboard/AdminPanel";
 import styled from 'styled-components'
+import AdminDashboardInformation from "../containers/AdminDashboard/AdminDashboardInformation";
 
 const AllWrapper = styled('div')`
   height: 100%;
@@ -13,7 +14,7 @@ const AllWrapper = styled('div')`
 `
 
 const InnerFloater = styled('div')`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -24,31 +25,24 @@ const BodyFloater = styled('div')`
   height: 100%;
 `
 
-
 class AdminDashboard extends Component {
     render() {
         return (
             <AllWrapper>
-
-                <UserVerificator role={3}/>
+                <UserVerificator roleOnly={3}/>
                 <InnerFloater>
                     <UserNavBar />
                     <BodyFloater>
                         <AdminPanel/>
-
                         <Switch>
-                            <Route path={`${this.props.match.url}/`} component={null} exact />
+                            <Route path={`${this.props.match.url}/`} component={AdminDashboardInformation} exact />
                             <Route path={`${this.props.match.url}/manage-guest`} component={ManageGuest} exact />
-                            <Route component={NotFoundPage}></Route>
+                            <Route component={NotFoundPage}/>
                         </Switch>
 
                     </BodyFloater>
 
                 </InnerFloater>
-
-
-
-
 
             </AllWrapper>
         );

@@ -60,16 +60,17 @@ class SuccessAlert extends Component {
     }
 
     redirect(){
-        if(!this.props.linkTo ){
+        if(!this.props.linkTo){
             this.props.onClick();
             return null;
         }
-        this.setState({redirect:true});
+        this.setState({redirect:true},()=>{
+            this.props.onClick();
+        });
 
     }
     rendRedirect(){
         if (this.state.redirect) {
-
             return <Redirect to={this.props.linkTo} />
         }else{
             return null;

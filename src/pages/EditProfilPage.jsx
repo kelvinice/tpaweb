@@ -153,18 +153,20 @@ class EditProfilPage extends Component {
         e.preventDefault(e);
 
         let form = e.target;
-
         let name = form.elements["name"].value;
-        let phone = form.elements["phone"] ? form.elements["phone"].value : null;
+        // let phone = form.elements["phone"] ? form.elements["phone"].value : null;
+        let phone = form.elements["phone"].value;
+        let password = form.elements["password"].value;
         // console.log(name)
         const axios = require('axios');
 
         let token = localStorage.getItem('token');
 
-        let data = {"token":token,"name" : name}
-        if(phone)
-            data["phone"]=phone
-        // console.log(data)
+        let data = {"token":token,"name" : name,"password":password,"phone":phone}
+        console.log(data)
+        // if(phone)
+        //     data["phone"]=phone
+        // // console.log(data)
 
         axios.patch('http://localhost:8000/updateprofile',data).then(
             (response) => {
@@ -176,7 +178,6 @@ class EditProfilPage extends Component {
                     this.MessageChanger(null,response.data.message);
                 }
 
-                // console.log(response.data.message);
             }
         ).catch((error) => {
             console.log("ini error:")
@@ -235,6 +236,16 @@ class EditProfilPage extends Component {
                                                     }
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td><Stared>Password</Stared></td>
+                                                <td>
+                                                    {this.props.UserLogin &&
+                                                    <GoodInput value="" type="password" name="password"></GoodInput>
+                                                    }
+                                                </td>
+                                            </tr>
+
+
 
 
                                         </tbody>

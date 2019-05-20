@@ -80,12 +80,8 @@ class RightUserVerifikasi extends Component {
         let token = localStorage.getItem('token');
         const axios = require('axios');
 
-        axios.post(`http://localhost:8000/sendmail?token=${token}`,{
-            headers:{
-                'token':token
-            },
+        axios.post(`http://localhost:8000/sendmail`,{
             'token':token
-
 
         }).then((response) => {
             console.log(response.data)
@@ -108,7 +104,6 @@ class RightUserVerifikasi extends Component {
                             {this.props.UserLogin != null && this.props.UserLogin.email_verified_at!=null ? <DoneStatusSpan>Verified at {this.props.UserLogin.email_verified_at}</DoneStatusSpan> :
                                 <StatusSpan>Belum Verifikasi</StatusSpan>
                             }
-
                         </DescDiv>
                     </LeftMenu>
                     {(this.props.UserLogin == null || this.props.UserLogin.email_verified_at == null) &&

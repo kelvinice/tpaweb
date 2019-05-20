@@ -41,8 +41,8 @@ class DaftarLeft extends Component {
                 phone:phone
             }).then(
                 (response) => {
-                    console.log("ini sukses:")
-                    console.log(response.data.name);
+                    // console.log("ini sukses:")
+                    // console.log(response.data.name);
                     this.props.changeMessage(null,"success-register-owner");
                     this.props.changePage(null);
                 }
@@ -67,7 +67,7 @@ class DaftarLeft extends Component {
         }).then(
             (response) => {
                 console.log("ini sukses:")
-                console.log(response.data.name);
+                console.log(response.data);
                 localStorage.setItem('loginpop',"yes")
                 this.props.changeMessage(null,"success-register-guest");
             }

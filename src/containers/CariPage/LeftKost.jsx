@@ -33,32 +33,23 @@ class LeftKost extends Component {
     state = {
         link : "http://localhost:8000/properties",
         allkosts : null,
-        isLast : false,
         isLoading : false
     }
 
     fetchMore(){
-        // if(this.state.isLast){
-        //     console.log("last");
-        //     return;
-        // }
         this.setState({isLoading:true});
-        // console.log(this.props.currentPosition)
+
         const axios = require('axios');
         axios.get(this.state.link,{ params: {
                 type: this.props.filter.type,
                 latitude:this.props.currentPosition[0],
                 longitude:this.props.currentPosition[1],
             }}).then((response)=>{
-             console.log(response)
+             // console.log(response)
             if(this.state.allkosts=== undefined || this.state.allkosts===null)
                 this.setState({allkosts:response.data.properties.data,link:response.data.properties.next_page_url})
             else{
                 this.setState({allkosts:this.state.allkosts.concat(response.data.properties.data),link:response.data.properties.next_page_url})
-            }
-
-            if(response.data.properties.current_page===response.data.properties.last_page){
-                this.setState({isLast:true})
             }
             this.setState({isLoading:false});
         }).catch((error)=>{
@@ -74,7 +65,7 @@ class LeftKost extends Component {
 
     scrollFunction(){
         if (window.scrollY + window.innerHeight >= document.body.offsetHeight-100) {
-            if(this.state.isLoading===false && this.state.link===false){
+            if(this.state.isLoading===false && this.state.link!= null){
                 this.fetchMore();
             }
         }

@@ -9,6 +9,7 @@ import LeftUserProfile from "../containers/UserPage/LeftUserProfile";
 import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
 import {ErrorAlert, SuccessAlert} from "../components/Alerts";
 import {InnerBeautyLoading} from "../components/BeautyLoading";
+import RightUserEditFoto from "../containers/UserPage/RightUserEditFoto";
 
 const WrapperPops = styled('div')`
     position:fixed;
@@ -100,6 +101,12 @@ const BodyInner = styled('div')`
 `
 
 class UserPage extends Component {
+    constructor(props){
+        super(props);
+        this.userVerificator = React.createRef()
+
+    }
+
     state = {
         headerTitle : "Data Pribadi",
         popMessage : null
@@ -123,20 +130,26 @@ class UserPage extends Component {
         }else if(this.state.popMessage==="loading") {
             return <WrapperPops>
                 <Poper>
-                    <InnerBeautyLoading></InnerBeautyLoading>
+                    <InnerBeautyLoading/>
                 </Poper>
             </WrapperPops>
         }else if(this.state.popMessage==="success"){
             return <SuccessAlert message="Email Verifikasi Berhasil dikirimkan" onClick={(event, message) => this.MessageChanger(event, null)}/>
+        }else if(this.state.popMessage==="success-change-picture"){
+            return <SuccessAlert linkTo="/user" message="Foto Profil berhasil diganti" onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else{
             return <ErrorAlert message={this.state.popMessage} onClick={(event, message) => this.MessageChanger(event, null)}/>
         }
     }
 
+    noLoadingRefresh(){
+        this.userVerificator.noLoadingRefresh();
+    }
+
     render() {
         return (
             <div>
-                <UserVerificator/>
+                <UserVerificator onRef={ref => (this.userVerificator = ref)} />
                 {this.MessageHandler()}
 
                 <UserNavBar />
@@ -155,6 +168,7 @@ class UserPage extends Component {
                                         <Switch>
                                             <Route path={`${this.props.match.url}/`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
                                             <Route path={`${this.props.match.url}/verifikasi-akun`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
+                                            <Route path={`${this.props.match.url}/edit-foto`} render={(props)=> <RightUserEditFoto {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} refresh={()=>this.noLoadingRefresh()} />} exact />
                                             <Route component={NotFoundPage}></Route>
                                         </Switch>
                                     </BodyInner>

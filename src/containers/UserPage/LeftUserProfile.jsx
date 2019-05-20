@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 const BigProfile = styled('div')`
-  background-image: url("/assets/images/default-user-image.png");
+  
+  // background-image: url('${props => (props.UserLogin) ? props.UserLogin.picture_id : "red"}');
   background-position: center;
   background-size: cover;
   border-radius: 50%;
@@ -58,6 +59,10 @@ const MenuList = styled('div')`
   display: flex;
   flex-direction: column;
   width: 100%;
+  ${"a"}{
+      text-decoration: none;
+      color: black;
+  }
 `
 
 const Menu = styled('div')`
@@ -73,19 +78,24 @@ const Menu = styled('div')`
 `
 
 class LeftUserProfile extends Component {
-    render() {
+    handleProfilePicture(){
+        if(this.props.UserLogin && this.props.UserLogin.picture_id != null)
+            return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.UserLogin.picture_id+")"}}/>;
+        else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
+    }
 
+    render() {
         return (
             <AllWrapper>
                 <HeaderWrapper>
                     <LeftHeader>
-                        <BigProfile/>
+                        {this.handleProfilePicture()}
                     </LeftHeader>
                     <RightHeader>
+
                         <TitleName>{this.props.UserLogin ? this.props.UserLogin.name : "Name"}</TitleName>
                         <Link to="/user/edit-profil"><OutlineButton style={{width:"100%"}}>Edit Profile</OutlineButton></Link>
                         <Link to="/user/edit-foto"><OutlineButton style={{width:"100%"}}>Edit Photo</OutlineButton></Link>
-                        <Link to="/user/edit-password"><OutlineButton style={{width:"100%"}}>Edit Password</OutlineButton></Link>
                     </RightHeader>
                 </HeaderWrapper>
                 <MenuList>
@@ -97,10 +107,12 @@ class LeftUserProfile extends Component {
                         <span role="img" aria-label="Booking">📃</span>
                         <span>Booking</span>
                     </Menu>
+                    <Link to={"/user/verifikasi-akun"}>
                     <Menu>
                         <span role="img" aria-label="Akun">✔</span>
                         <span>Verifikasi Akun</span>
                     </Menu>
+                    </Link>
                     <Menu>
                         <span role="img" aria-label="Identitas">📄</span>
                         <span>Verifikasi Identitas</span>

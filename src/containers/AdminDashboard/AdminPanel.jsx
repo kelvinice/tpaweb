@@ -1,6 +1,26 @@
 import React, {Component} from 'react';
 import styled,{keyframes} from 'styled-components'
 import {Link,withRouter} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMailBulk, faMale, faMedal, faPaperclip, faTools, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faShoppingCart} from "@fortawesome/free-solid-svg-icons/faShoppingCart";
+import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
+
+const shine = keyframes`
+    from {
+        opacity: 0;
+        left: 0;
+        background-color: white;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 0;
+        left: 100%;
+        background-color: transparent;
+    }
+`
 
 const rgb = keyframes`
 0%{border-bottom: 3px solid #a0c3ff;border-top: 3px solid #a0c3ff;}
@@ -12,11 +32,17 @@ const rgb = keyframes`
 `
 const AllWrapper = styled('div')`
   position: sticky;
+  top: 50px;
   width: 200px;
   height: 100%;
+  min-height: 92vh;
   background-color: #69a1d4;
   display: flex;
   flex-direction: column;
+  @media (max-width: 900px){
+    width: 80px;
+    min-width: 80px;
+  }
   
   ${'a'}{
     height: 80px;
@@ -29,12 +55,23 @@ const AllWrapper = styled('div')`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &:hover{
+    &:hover,&:focus-within,&:active{
         background-color: #335eb3;
         color: #a0c3ff;
-        ${'div'}{
-          animation: ${rgb} 1500ms linear infinite;
+        ${"div"}{
+            &:after{
+              content: '';
+              position: absolute;
+              width: 100%;
+              
+              animation: ${shine} 1s linear;
+              height: 80px;
+            }
         }
+        
+        // ${'div'}{
+        //   animation: ${rgb} 1500ms linear infinite;
+        // }
     }
   }
 `
@@ -51,13 +88,14 @@ class AdminPanel extends Component {
     render() {
         return (
             <AllWrapper>
-                <Link><Menu>Manage Post</Menu></Link>
-                <Link><Menu>Manage Facility</Menu></Link>
-                <Link to="/admin/manage-guest"><Menu>Manage Guest</Menu></Link>
-                <Link><Menu>Manage Owner</Menu></Link>
-                <Link><Menu>Manage Premium Product</Menu></Link>
-                <Link><Menu>Manage Transaction</Menu></Link>
-                <Link><Menu>Manage Reports</Menu></Link>
+                <Link to={"/admin"}><Menu><span><span className={"hide-on-mobile"}>Dashboard </span><FontAwesomeIcon icon={faCompass}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Post </span><FontAwesomeIcon icon={faMailBulk}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Facility </span><FontAwesomeIcon icon={faTools}/></span></Menu></Link>
+                <Link to="/admin/manage-guest"><Menu><span><span className={"hide-on-mobile"}>Manage Guest </span><FontAwesomeIcon icon={faUser}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Owner </span><FontAwesomeIcon icon={faMale}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Premium Product </span><FontAwesomeIcon icon={faMedal}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Transaction </span><FontAwesomeIcon icon={faShoppingCart}/></span></Menu></Link>
+                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Reports </span><FontAwesomeIcon icon={faPaperclip}/></span></Menu></Link>
             </AllWrapper>
         );
     }
