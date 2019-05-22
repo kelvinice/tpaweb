@@ -26,7 +26,7 @@ const SuperWhite = styled('div')`
 `
 
 const InnerSuperWhite = styled('div')`
-    background-color: white;
+    //background-color: white;
     z-index: 50;
     display: flex;
     justify-content: center;

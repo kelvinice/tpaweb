@@ -8,7 +8,8 @@ import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
 const AllWrapper = styled('div')`
 width: 100%;
 height: 80px;
-background-color: #4d65fb;
+//background-color: #4d65fb;
+
 margin-bottom: 5px;
 cursor: pointer;
 display: flex;
@@ -114,17 +115,25 @@ class Guests extends Component {
         else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
     }
 
+    handleColor(){
+        if(this.props.data.status == 1){
+            return {backgroundColor : "#4d65fb"};
+        }else{
+            return {backgroundColor : "#eb3935"};
+        }
+    }
+
     render() {
         return (
-            <AllWrapper>
+            <AllWrapper style={this.handleColor()}>
                 <AttributeContainer>
                     {this.handleProfilePicture()}
                     <TextWrapper>{this.props.data.name}</TextWrapper>
                 </AttributeContainer>
                 <ButtonWrapper>
                     <ButtonReset><FontAwesomeIcon icon={faRedo}/></ButtonReset>
-                    <ButtonBan><FontAwesomeIcon icon={faBan}/></ButtonBan>
-                    <ButtonDelete><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
+                    <ButtonBan onClick={(target)=>this.props.setTarget({user:this.props.data,type:"banned"})}><FontAwesomeIcon icon={faBan}/></ButtonBan>
+                    <ButtonDelete onClick={(target)=>this.props.setTarget({user:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
                 </ButtonWrapper>
 
             </AllWrapper>
