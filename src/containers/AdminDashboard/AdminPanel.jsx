@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled,{keyframes} from 'styled-components'
-import {Link,withRouter} from "react-router-dom";
+import {NavLink,withRouter} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMailBulk, faMale, faMedal, faPaperclip, faTools, faUser} from "@fortawesome/free-solid-svg-icons";
 import {faShoppingCart} from "@fortawesome/free-solid-svg-icons/faShoppingCart";
@@ -42,6 +42,21 @@ const AllWrapper = styled('div')`
   @media (max-width: 900px){
     width: 80px;
     min-width: 80px;
+  }
+  
+  ${'.active'}{
+    background-color: #335eb3;
+    color: #a0c3ff;
+    ${"div"}{
+        &:after{
+          content: '';
+          position: absolute;
+          width: 100%;
+          
+          animation: ${shine} 1s linear;
+          height: 80px;
+        }
+    }
   }
   
   ${'a'}{
@@ -88,14 +103,14 @@ class AdminPanel extends Component {
     render() {
         return (
             <AllWrapper>
-                <Link to={"/admin"}><Menu><span><span className={"hide-on-mobile"}>Dashboard </span><FontAwesomeIcon icon={faCompass}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Post </span><FontAwesomeIcon icon={faMailBulk}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Facility </span><FontAwesomeIcon icon={faTools}/></span></Menu></Link>
-                <Link to="/admin/manage-guest"><Menu><span><span className={"hide-on-mobile"}>Manage Guest </span><FontAwesomeIcon icon={faUser}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Owner </span><FontAwesomeIcon icon={faMale}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Premium Product </span><FontAwesomeIcon icon={faMedal}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Transaction </span><FontAwesomeIcon icon={faShoppingCart}/></span></Menu></Link>
-                <Link><Menu><span><span className={"hide-on-mobile"}>Manage Reports </span><FontAwesomeIcon icon={faPaperclip}/></span></Menu></Link>
+                <NavLink to={"/admin/dashboard"}><Menu><span><span className={"hide-on-mobile"}>Dashboard </span><FontAwesomeIcon icon={faCompass}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-post"}><Menu><span><span className={"hide-on-mobile"}>Manage Post </span><FontAwesomeIcon icon={faMailBulk}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-facility"}><Menu><span><span className={"hide-on-mobile"}>Manage Facility </span><FontAwesomeIcon icon={faTools}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-guest"}><Menu><span><span className={"hide-on-mobile"}>Manage Guest </span><FontAwesomeIcon icon={faUser}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-owner"}><Menu><span><span className={"hide-on-mobile"}>Manage Owner </span><FontAwesomeIcon icon={faMale}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-premium"}><Menu><span><span className={"hide-on-mobile"}>Manage Premium Product </span><FontAwesomeIcon icon={faMedal}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-transaction"}><Menu><span><span className={"hide-on-mobile"}>Manage Transaction </span><FontAwesomeIcon icon={faShoppingCart}/></span></Menu></NavLink>
+                <NavLink to={"/admin/manage-report"}><Menu><span><span className={"hide-on-mobile"}>Manage Reports </span><FontAwesomeIcon icon={faPaperclip}/></span></Menu></NavLink>
             </AllWrapper>
         );
     }

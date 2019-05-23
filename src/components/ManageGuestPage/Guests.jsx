@@ -131,7 +131,7 @@ class Guests extends Component {
                     <TextWrapper>{this.props.data.name}</TextWrapper>
                 </AttributeContainer>
                 <ButtonWrapper>
-                    <ButtonReset><FontAwesomeIcon icon={faRedo}/></ButtonReset>
+                    <ButtonReset onClick={(target)=>this.props.setTarget({user:this.props.data,type:"reset"})}><FontAwesomeIcon icon={faRedo}/></ButtonReset>
                     <ButtonBan onClick={(target)=>this.props.setTarget({user:this.props.data,type:"banned"})}><FontAwesomeIcon icon={faBan}/></ButtonBan>
                     <ButtonDelete onClick={(target)=>this.props.setTarget({user:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
                 </ButtonWrapper>

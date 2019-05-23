@@ -36,14 +36,12 @@ class AdminDashboard extends Component {
                         <AdminPanel/>
                         <Switch>
                             <Route path={`${this.props.match.url}/`} component={AdminDashboardInformation} exact />
+                            <Route path={`${this.props.match.url}/dashboard`} component={AdminDashboardInformation} exact />
                             <Route path={`${this.props.match.url}/manage-guest`} component={ManageGuest} exact />
                             <Route component={NotFoundPage}/>
                         </Switch>
-
                     </BodyFloater>
-
                 </InnerFloater>
-
             </AllWrapper>
         );
     }

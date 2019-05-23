@@ -46,7 +46,9 @@ const MiddleSpan = styled('span')`
 
 class Kosts extends Component {
     genderHandler(){
-        if (this.props.data.house.gender_type===1){
+        if(this.props.data.house == null){
+            return <span style={{fontWeight:"bold",color:"green"}}>Apartement</span>
+        }else if (this.props.data.house.gender_type===1){
             return <span style={{fontWeight:"bold",color:"purple"}}>Campur</span>
         }else if(this.props.data.house.gender_type===2){
             return <span style={{fontWeight:"bold",color:"blue"}}>Putra</span>
@@ -56,7 +58,9 @@ class Kosts extends Component {
     }
 
     sisaKamarHandler(){
-        if (this.props.data.house.room_left===0){
+        if(this.props.data.house == null){
+            return <span style={{fontWeight:"bold",color:"green"}}>Ada {this.props.data.apartement.unit} Unit</span>
+        }else if (this.props.data.house.room_left===0){
             return <span style={{fontWeight:"bold",color:"gray"}}>Kamar tidak tersedia</span>
         }else if (this.props.data.house.room_left===1){
             return <span style={{fontWeight:"bold",color:"red"}}>Tinggal 1 kamar</span>

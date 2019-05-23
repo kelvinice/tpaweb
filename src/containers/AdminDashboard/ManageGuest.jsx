@@ -75,7 +75,6 @@ class ManageGuest extends Component {
 
     fetchMore(){
         if(this.state.link==null)return;
-        console.log("fetch")
 
         this.setState({
             isLoading : true
@@ -88,7 +87,7 @@ class ManageGuest extends Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response=>{
-            console.log(response.data);
+            // console.log(response.data);
             if(this.state.guests=== undefined || this.state.guests===null)
                 this.setState({
                     guests:response.data.guest.data,
@@ -103,10 +102,8 @@ class ManageGuest extends Component {
                 });
             }
         }).catch((error) => {
-            console.log("ini error:")
-            console.log(error.response)
-            if(error.response != null)
-                this.MessageChanger(null,error.response.data.message);
+            console.log("ini error:");
+            console.log(error.response);
         });
     }
 
@@ -175,6 +172,28 @@ class ManageGuest extends Component {
         })
     }
 
+    resetUser(){
+        const id = this.state.target.user.id;
+        this.setState({target:"loading"});
+        const axios = require('axios');
+        let token = localStorage.getItem('token');
+
+        let data = {"token":token,"id" : id}
+        axios.patch("http://localhost:8000/reset-user",data).then(response=>{
+            console.log(response);
+            if(response.data.message==="success"){
+                this.setState({
+                    target:null,
+                });
+            }
+        }).catch(error => {
+            console.log(error.response);
+            this.setState({
+                target:null,
+            });
+        })
+    }
+
     handlePop(){
         if(this.state.target==null)return null;
         else if(this.state.target==="loading"){
@@ -205,10 +224,18 @@ class ManageGuest extends Component {
                         </MidButtonWrapper>
                     </PopMessager>
                 </PopHolder>
+            }else if(this.state.target.type==="reset"){
+                return <PopHolder>
+                    <PopMessager>
+                        <BigGreyText>Are you sure want to reset password for {this.state.target.user.name}?</BigGreyText>
+                        <MidButtonWrapper>
+                            <BeautyTomatoButton onClick={(target)=>this.setTarget(null)}>Cancel</BeautyTomatoButton>
+                            <BeautyTomatoButton onClick={()=>this.resetUser()}>Confirm</BeautyTomatoButton>
+                        </MidButtonWrapper>
+                    </PopMessager>
+                </PopHolder>
             }
-
         }
-
     }
 
     render() {

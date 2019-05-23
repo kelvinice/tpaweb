@@ -49,9 +49,18 @@ class NavBar extends Component {
         this.props.toggleMobile();
     }
 
+    handleNavMobile(){
+        if(this.props.isShowMobileNav){
+            return "nav-before ultra-height-mobile"
+        }else{
+            return "nav-before mini-height-mobile"
+        }
+    }
+
     render() {
         return (
-            <nav className="nav-before" style={{position:this.props.position}}>
+
+            <nav className={this.handleNavMobile()}  style={{position:this.props.position}} >
 
                 {this.state.isScrollOver?
                     <Coverer id="nav-cover" className="nav-after"/>:
@@ -75,7 +84,8 @@ class NavBar extends Component {
                         <IconBar/>
                     </button>
                 }
-                {this.props.rightSide}
+                {this.props.rightSide }
+
             </nav>
         )
     }
