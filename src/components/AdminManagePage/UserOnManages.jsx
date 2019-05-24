@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRedo, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
@@ -108,7 +107,7 @@ const TextWrapper = styled('div')`
 `
 
 
-class Guests extends Component {
+class UserOnManages extends Component {
     handleProfilePicture(){
         if(this.props.data.picture_id != null)
             return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
@@ -141,4 +140,4 @@ class Guests extends Component {
     }
 }
 
-export default Guests;
+export default UserOnManages;

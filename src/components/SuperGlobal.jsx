@@ -12,7 +12,6 @@ const Reducer=(state = Store,action) => {
                 UserLogin : action.value
             }
         case "updateCurrentPosition":
-            console.log(action.value)
             return {
                 ...state,
                 currentPosition : action.value

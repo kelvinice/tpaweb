@@ -12,14 +12,14 @@ const AllWrapper = styled('div')`
   }
 `
 
-class AdminDashboardInformation extends Component {
+class ManageTransaction extends Component {
     render() {
         return (
             <AllWrapper>
-                Total User :
+                ManageTransaction
             </AllWrapper>
         );
     }
 }
 
-export default AdminDashboardInformation;
+export default ManageTransaction;

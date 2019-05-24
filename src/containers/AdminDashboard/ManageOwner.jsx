@@ -26,7 +26,8 @@ padding: 10px;
 display: flex;
 align-items: center;
 @media (max-width: 900px){
-  padding: 0; 
+  padding: 0;
+  
 }
 `
 
@@ -66,13 +67,12 @@ ${"button"}{
 }
 `
 
-
-class ManageGuest extends Component {
+class ManageOwner extends Component {
     state = {
-        guests : null,
+        owners : null,
         popState : null,
         target : null,
-        link : "http://localhost:8000/getAllGuest",
+        link : "http://localhost:8000/getAllOwner",
         isLoading : false
     }
 
@@ -90,17 +90,17 @@ class ManageGuest extends Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response=>{
-            // console.log(response.data);
-            if(this.state.guests=== undefined || this.state.guests===null)
+            console.log(response.data);
+            if(this.state.owners=== undefined || this.state.owners===null)
                 this.setState({
-                    guests:response.data.guest.data,
-                    link:response.data.guest.next_page_url,
+                    owners:response.data.owner.data,
+                    link:response.data.owner.next_page_url,
                     isLoading : false
                 });
             else{
                 this.setState({
-                    guests:this.state.guests.concat(response.data.guest.data),
-                    link:response.data.guest.next_page_url,
+                    owners:this.state.owners.concat(response.data.owner.data),
+                    link:response.data.owner.next_page_url,
                     isLoading : false
                 });
             }
@@ -143,8 +143,8 @@ class ManageGuest extends Component {
             console.log(response);
             if(response.data.message==="success"){
                 this.setState({
-                    link : "http://localhost:8000/getAllGuest",
-                    guests:null,
+                    link : "http://localhost:8000/getAllOwner",
+                    owners:null,
                     target:null,
 
                 },()=>this.fetchMore());
@@ -165,8 +165,8 @@ class ManageGuest extends Component {
             console.log(response);
             if(response.data.message==="success"){
                 this.setState({
-                    link:"http://localhost:8000/getAllGuest",
-                    guests:null,
+                    link:"http://localhost:8000/getAllOwner",
+                    owners:null,
                     target:null,
                 },()=>this.fetchMore());
             }
@@ -245,17 +245,17 @@ class ManageGuest extends Component {
         return (
             <AllWrapper>
                 {this.handlePop()}
-                {this.state.guests &&
-                    this.state.guests.map(
-                        (item,key)=><UserOnManages key = {item.id} data = {item} setTarget={(target)=>this.setTarget(target)}/>
-                    )
+                {this.state.owners &&
+                this.state.owners.map(
+                    (item,key)=><UserOnManages key = {item.id} data = {item} setTarget={(target)=>this.setTarget(target)}/>
+                )
                 }
                 {this.state.isLoading &&
-                    <InnerBeautyLoading style={{backgroundColor:"blue"}}/>
+                <InnerBeautyLoading style={{backgroundColor:"blue"}}/>
                 }
             </AllWrapper>
         );
     }
 }
 
-export default ManageGuest;
+export default ManageOwner;

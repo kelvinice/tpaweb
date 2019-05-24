@@ -246,8 +246,6 @@ class EditProfilPage extends Component {
                                             </tr>
 
 
-
-
                                         </tbody>
                                     </DefinedTable>
                                     <Padder >

@@ -15,6 +15,10 @@ const AllWrapper = styled('div')`
   box-sizing: border-box;
   z-index: 1;
   border-bottom: 1px solid rgba(177,177,177,0.86);
+  @media (max-width: 600px){
+    flex-flow: column;
+  }
+  
 `
 
 const GoodButton = styled('button')`
@@ -31,6 +35,10 @@ const GoodButton = styled('button')`
 const LeftCariKategori = styled('div')`
   width: 15%;
   border-right: 1px solid gray;
+   @media (max-width: 600px){
+    width: 100%;
+    border-right: none;
+  }
 `
 
 const RightCariKategori = styled('div')`
@@ -50,10 +58,14 @@ const Menu = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 `
 
 const MenuContent = styled('div')`
   width: 100%;
+  @media (max-width: 600px){
+    flex-flow: row;
+  }
   
 `
 

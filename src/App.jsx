@@ -8,24 +8,9 @@ import NotFoundPage from "./pages/NotFoundPage";
 import EditProfilPage from "./pages/EditProfilPage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import CariKostPage from "./pages/CariKostPage";
-import AdminDashboard from "./pages/AdminDashboard";
-import OwnerDashboard from "./pages/OwnerDashboard";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faMailBulk,
-    faMale,
-    faTools,
-    faUser,
-    faMedal,
-    faStickyNote,
-    faShoppingCart,
-    faCompass,
-    faTrashAlt, faBan, faRedo
-} from '@fortawesome/free-solid-svg-icons'
+import AdminDashboardPage from "./pages/AdminDashboardPage";
+import OwnerDashboardPage from "./pages/OwnerDashboardPage";
 
-library.add(faMailBulk);library.add(faMale);library.add(faTools);library.add(faUser);library.add(faUser);library.add(faMedal);library.add(faStickyNote);library.add(faShoppingCart);library.add(faShoppingCart);
-library.add(faBan);library.add(faTrashAlt);library.add(faRedo);
 
 class App extends Component {
     render() {
@@ -38,8 +23,8 @@ class App extends Component {
                     <Route path="/user" component={UserPage}  />
                     <Route path="/verifyemail/:id" component={VerifyEmailPage}  />
                     <Route path="/cari" component={CariKostPage}></Route>
-                    <Route path="/admin" component={AdminDashboard}></Route>
-                    <Route path="/owner" component={OwnerDashboard}></Route>
+                    <Route path="/admin" component={AdminDashboardPage}></Route>
+                    <Route path="/owner" component={OwnerDashboardPage}></Route>
                     <Route component={NotFoundPage} />
                 </Switch>
             </div>

@@ -84,7 +84,7 @@ class NavBar extends Component {
                         <IconBar/>
                     </button>
                 }
-                {this.props.rightSide }
+                {this.props.rightSide}
 
             </nav>
         )

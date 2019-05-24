@@ -11,15 +11,14 @@ const AllWrapper = styled('div')`
     box-sizing: border-box;
   }
 `
-
-class AdminDashboardInformation extends Component {
+class ManageFacility extends Component {
     render() {
         return (
             <AllWrapper>
-                Total User :
+                ManageFacility
             </AllWrapper>
         );
     }
 }
 
-export default AdminDashboardInformation;
+export default ManageFacility;

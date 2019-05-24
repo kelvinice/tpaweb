@@ -12,14 +12,15 @@ const AllWrapper = styled('div')`
   }
 `
 
-class AdminDashboardInformation extends Component {
+
+class ManagePremium extends Component {
     render() {
         return (
             <AllWrapper>
-                Total User :
+                ManagePremium
             </AllWrapper>
         );
     }
 }
 
-export default AdminDashboardInformation;
+export default ManagePremium;

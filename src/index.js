@@ -8,19 +8,21 @@ import {createStore} from 'redux'
 import Reducer from "./components/SuperGlobal";
 import {BrowserRouter} from "react-router-dom";
 
+
 // const Reducers2 = combineReducers({
 //     key1:Reducer
 // })
+const store = createStore(Reducer);
 
 const GlobalWrapper =(
-    <Provider store={createStore(Reducer)}>
+    <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
 
     </Provider>
 )
-
+window.store = store;
 
 ReactDOM.render(GlobalWrapper , document.getElementById('root'));
 

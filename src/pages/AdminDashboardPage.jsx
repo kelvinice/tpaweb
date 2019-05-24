@@ -7,6 +7,12 @@ import ManageGuest from "../containers/AdminDashboard/ManageGuest";
 import AdminPanel from "../containers/AdminDashboard/AdminPanel";
 import styled from 'styled-components'
 import AdminDashboardInformation from "../containers/AdminDashboard/AdminDashboardInformation";
+import ManageOwner from "../containers/AdminDashboard/ManageOwner";
+import ManagePost from "../containers/AdminDashboard/ManagePost";
+import ManagePremium from "../containers/AdminDashboard/ManagePremium";
+import ManageFacility from "../containers/AdminDashboard/ManageFacility";
+import ManageTransaction from "../containers/AdminDashboard/ManageTransaction";
+import ManageReport from "../containers/AdminDashboard/ManageReport";
 
 const AllWrapper = styled('div')`
   height: 100%;
@@ -25,7 +31,7 @@ const BodyFloater = styled('div')`
   height: 100%;
 `
 
-class AdminDashboard extends Component {
+class AdminDashboardPage extends Component {
     render() {
         return (
             <AllWrapper>
@@ -38,6 +44,12 @@ class AdminDashboard extends Component {
                             <Route path={`${this.props.match.url}/`} component={AdminDashboardInformation} exact />
                             <Route path={`${this.props.match.url}/dashboard`} component={AdminDashboardInformation} exact />
                             <Route path={`${this.props.match.url}/manage-guest`} component={ManageGuest} exact />
+                            <Route path={`${this.props.match.url}/manage-owner`} component={ManageOwner} exact />
+                            <Route path={`${this.props.match.url}/manage-post`} component={ManagePost} exact />
+                            <Route path={`${this.props.match.url}/manage-facility`} component={ManageFacility} exact />
+                            <Route path={`${this.props.match.url}/manage-premium`} component={ManagePremium} exact />
+                            <Route path={`${this.props.match.url}/manage-transaction`} component={ManageTransaction} exact />
+                            <Route path={`${this.props.match.url}/manage-report`} component={ManageReport} exact />
                             <Route component={NotFoundPage}/>
                         </Switch>
                     </BodyFloater>
@@ -47,4 +59,4 @@ class AdminDashboard extends Component {
     }
 }
 
-export default AdminDashboard;
+export default AdminDashboardPage;
