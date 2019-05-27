@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
 import KotaBesar from "../containers/HomePage/KotaBesar";
-import UserVerificator from "../components/UserVerificator";
+import UserVerificator from "../components/General/UserVerificator";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {

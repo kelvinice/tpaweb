@@ -7,7 +7,7 @@ import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
 const AllWrapper = styled('div')`
 width: 100%;
 height: 80px;
-//background-color: #4d65fb;
+//
 
 margin-bottom: 5px;
 cursor: pointer;
@@ -25,6 +25,10 @@ ${'div'}{
   height: 160px;
   flex-direction: column;
   padding-right: 0;
+}
+
+&:hover{
+  background-color: #4d65fb;
 }
 
 `

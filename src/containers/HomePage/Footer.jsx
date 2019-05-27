@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {Link} from 'react-router-dom'
-import {GreenNavLinkWrapper} from "../../components/BeautyComponent";
+import {GreenNavLinkWrapper} from "../../components/General/BeautyComponent";
 
 const LogoImages = styled('div')`
   background-image: url("assets/images/logo_barbarkos_green.png");

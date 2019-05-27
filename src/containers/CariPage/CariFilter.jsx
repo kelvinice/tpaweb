@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import {BeautyInputWrapper, BeautySelectInput} from "../../components/BeautyComponent";
+import {BeautyInputWrapper, BeautySelectInput} from "../../components/General/BeautyComponent";
 
 
 const AllWrapper = styled('div')`

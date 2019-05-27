@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import {BeautyGreenTitle,BeautyInputWrapper,OutlineButton} from '../../components/BeautyComponent';
+import {BeautyGreenTitle,BeautyInputWrapper,OutlineButton} from '../../components/General/BeautyComponent';
 
 const BodyWrapper = styled('div')`
   display: flex;

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/BeautyComponent";
+import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import styled from 'styled-components'
 import {connect} from "react-redux";
 

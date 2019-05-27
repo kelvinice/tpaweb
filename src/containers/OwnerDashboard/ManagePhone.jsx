@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
-import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/BeautyComponent";
+import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import {connect} from "react-redux";
-import GoodInput from "../../components/GoodInput";
-
-
+import GoodInput from "../../components/General/GoodInput";
+import {faPhone} from "@fortawesome/free-solid-svg-icons/faPhone";
+import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
 const AllWrapper = styled('div')`
   background-color: #ffbabc;
@@ -15,15 +17,6 @@ const AllWrapper = styled('div')`
   @media (min-width: 900px){
     box-sizing: border-box;
   }
-`
-
-const ImagePhone = styled('div')`
-  background-image: url("/assets/images/ic_phone_o.svg");
-  width: 2.25em;
-  height: 1.75em;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 `
 
 const Menu = styled('div')`
@@ -51,6 +44,9 @@ const ButtonVerifikasi = styled('button')`
 
 const LeftMenu = styled('div')`
   display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+
 `
 
 const StatusSpan = styled('span')`
@@ -78,9 +74,96 @@ const BottomMenu = styled('div')`
   }
 `
 
+const InputWrapper = styled('div')`
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 900px){
+    padding: 3px;
+    flex-direction: column;
+  }
+  
+`
+
+const CustomBlockInput = styled('input')`
+  width: 100%;
+  height: 100%;
+  background-color: #fffbe0;
+  justify-content: center;
+  outline: none;
+`
+
+const SuperBlackFont = styled('div')`
+  font-weight: bold;
+  color: black;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  margin-right: 5px;
+`
+
+const PopHolder = styled('div')`
+width: 100%;
+height: 100%;
+position: fixed;
+background-color: rgba(178,178,178,0.68);
+z-index: 1;
+padding: 10px;
+display: flex;
+align-items: center;
+@media (max-width: 900px){
+  padding: 0; 
+}
+`
+
+const PopMessager = styled('div')`
+  width: 500px;
+  border-radius: 5px;
+  background-color: white;
+
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  @media (max-width: 900px){
+    width: 70%;
+    //height: 100%;
+  }
+  @media (max-width: 900px){
+    margin: 0 0;
+  }
+`
+
+const BigGreyText = styled('div')`
+  color: #404040;
+  font-size: 20px;
+  font-weight: bold;
+`
+
+const MidButtonWrapper = styled('div')`
+width: 100%;
+padding: 20px;
+box-sizing: border-box;
+display: flex;
+justify-content: space-around;
+font-weight: bold;
+${"button"}{
+  margin: 0 5px;
+}
+`
+
 class ManagePhone extends Component {
+    state = {
+        message : null
+    }
+
     submitUpdatePhone(event){
         event.preventDefault();
+        this.setState({message:"loading"});
         let form = event.target;
         let phone = form.elements["phone"].value;
         const axios = require('axios');
@@ -92,36 +175,166 @@ class ManagePhone extends Component {
         axios.patch('http://localhost:8000/updatephone',data).then(
             (response) => {
                 if(response.data.message === "success"){
-                    // this.userVerificator.refresh();
                     console.log(response.data.message)
+                    this.setState({message:"update-phone"});
                 }else{
                     console.log("ini error:")
+                    this.setState({message:response.data.message});
                 }
             }
         ).catch((error) => {
             console.log("ini error:")
             console.log(error.response)
+            this.setState({message:error.response.data.message});
             // if(error.response != null)
             //     this.MessageChanger(null,error.response.data.message);
 
         });
+    }
+
+    onClickSend(){
+        this.setState({message:"loading"});
+
+        const axios = require('axios');
+
+        let token = localStorage.getItem('token');
+
+        let data = {"token":token}
+
+        axios.post('http://localhost:8000/sendphonecode',data).then(
+            (response) => {
+                if(response.data.message === "success"){
+                    console.log(response.data.message)
+                    this.setState({message:"send"});
+                }else{
+                    console.log("ini error:")
+                    this.setState({message:response.data.message});
+                }
+            }
+        ).catch((error) => {
+            console.log("ini error:")
+            console.log(error.response)
+            this.setState({message:error.response.data.message});
+        });
+    }
+
+    onClickVerify(event){
+        event.preventDefault();
+        this.setState({message:"loading"});
+        let form = event.target;
+        let code = form.elements["code"].value;
+        const axios = require('axios');
+
+        let token = localStorage.getItem('token');
+
+        let data = {"token":token,"code":code}
+
+        axios.patch('http://localhost:8000/verifyphonecode',data).then(
+            (response) => {
+                if(response.data.message === "success"){
+                    console.log(response.data.message)
+                    this.setState({message:"verify-phone"});
+                }else{
+                    console.log("ini error:")
+                    this.setState({message:response.data.message});
+                }
+            }
+        ).catch((error) => {
+            console.log("ini error:")
+            console.log(error.response)
+            this.setState({message:error.response.data.message});
+            // if(error.response != null)
+            //     this.MessageChanger(null,error.response.data.message);
+
+        });
+    }
+
+    handlePop(){
+        if(this.state.message==null)return null;
+        else if(this.state.message==="loading") {
+            return <PopHolder>
+                <PopMessager>
+                    <InnerBeautyLoading/>
+                </PopMessager>
+            </PopHolder>
+        }
+        else if(this.state.message==="send"){
+            return <PopHolder>
+                <PopMessager>
+                    <BigGreyText>Verification Code has been send to your email {this.props.UserLogin.email}</BigGreyText>
+                    <MidButtonWrapper>
+                        <BeautyTomatoButton onClick={()=>this.setState({message:null})}>Okay</BeautyTomatoButton>
+                    </MidButtonWrapper>
+                </PopMessager>
+            </PopHolder>
+        }
+        else if(this.state.message==="update-phone"){
+            return <PopHolder>
+                <PopMessager>
+                    <BigGreyText>Phone Number has been updated</BigGreyText>
+                    <MidButtonWrapper>
+                        <BeautyTomatoButton onClick={()=>this.setState({message:null},window.location.reload())}>Okay</BeautyTomatoButton>
+                    </MidButtonWrapper>
+                </PopMessager>
+            </PopHolder>
+        } else if(this.state.message==="verify-phone"){
+            return <PopHolder>
+                <PopMessager>
+                    <BigGreyText>Phone Number Success Verified</BigGreyText>
+                    <MidButtonWrapper>
+                        <BeautyTomatoButton onClick={()=>this.setState({message:null},window.location.reload())}>Okay</BeautyTomatoButton>
+                    </MidButtonWrapper>
+                </PopMessager>
+            </PopHolder>
+        }else {
+            return <PopHolder>
+                <PopMessager>
+                    <BigGreyText>Error : {this.state.message}</BigGreyText>
+                    <MidButtonWrapper>
+                        <BeautyTomatoButton onClick={()=>this.setState({message:null})}>Okay</BeautyTomatoButton>
+                    </MidButtonWrapper>
+                </PopMessager>
+            </PopHolder>
+        }
 
     }
 
     render() {
         return (
             <AllWrapper>
+                {this.handlePop()}
                 <Menu>
                     <LeftMenu>
-                        <ImagePhone/>
+                        <div>
+                            <FontAwesomeIcon icon={faPhone} style={{color:"white"}}/>
+                        </div>
                         <DescDiv>
                             <div>Phone</div>
-                            <StatusSpan>Belum Verifikasi</StatusSpan>
+                            {this.props.UserLogin != null && this.props.UserLogin.phone_verified_at!=null ? <DoneStatusSpan>Verified at {this.props.UserLogin.phone_verified_at}</DoneStatusSpan> :
+                                <StatusSpan>Belum Verifikasi</StatusSpan>
+                            }
                         </DescDiv>
-                        <GoodInput type={"text"}></GoodInput>
                     </LeftMenu>
-                    <ButtonVerifikasi>Verify</ButtonVerifikasi>
+                    {(this.props.UserLogin == null || this.props.UserLogin.phone_verified_at == null) &&
+                    <ButtonVerifikasi onClick={()=>this.onClickSend()}>Resend Verification Code</ButtonVerifikasi>
+                    }
+
                 </Menu>
+                {(this.props.UserLogin == null || this.props.UserLogin.phone_verified_at == null) &&
+                <form action="" onSubmit={(event)=>this.onClickVerify(event)}>
+                    <Menu>
+                        <InputWrapper>
+                            <SuperBlackFont>
+                                Verification Code
+                            </SuperBlackFont>
+                            <CustomBlockInput name={"code"}/>
+                        </InputWrapper>
+
+                        <ButtonVerifikasi>Verify</ButtonVerifikasi>
+                    </Menu>
+                </form>
+                }
+
                 <form action="" onSubmit={event => this.submitUpdatePhone(event)}>
                 <BottomMenu>
                     Update Phone Number

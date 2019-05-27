@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
-import {OutlineButton} from "../../components/BeautyComponent";
+import {OutlineButton} from "../../components/General/BeautyComponent";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 

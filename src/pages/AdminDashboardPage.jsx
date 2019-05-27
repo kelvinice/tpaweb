@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserVerificator from "../components/UserVerificator";
+import UserVerificator from "../components/General/UserVerificator";
 import UserNavBar from "../containers/UserPage/UserNavBar";
 import NotFoundPage from "./NotFoundPage";
 import {Switch,Route} from "react-router-dom";

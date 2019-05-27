@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import UserVerificator from "../components/UserVerificator";
+import UserVerificator from "../components/General/UserVerificator";
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import { BeautyTomatoButton, GreenNavLinkWrapper} from "../components/BeautyComponent";
+import { BeautyTomatoButton, GreenNavLinkWrapper} from "../components/General/BeautyComponent";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {connect} from "react-redux";
-import GoodInput from "../components/GoodInput";
-import {ErrorAlert, SuccessAlert} from "../components/Alerts";
+import GoodInput from "../components/General/GoodInput";
+import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
 
 const NavInfo = styled('div')`
   padding: 5px 10px;

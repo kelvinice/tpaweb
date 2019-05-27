@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
-import {OrangeOutlineButton} from '../../components/BeautyComponent'
+import {OrangeOutlineButton} from '../../components/General/BeautyComponent'
 
 const Centerer = styled('div')`
     text-align: center;

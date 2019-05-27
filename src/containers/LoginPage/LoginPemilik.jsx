@@ -4,7 +4,7 @@ import {
     BeautyInputWrapper,
     BeautyTomatoButton,
     OrangeNavLinkWrapper,
-} from "../../components/BeautyComponent";
+} from "../../components/General/BeautyComponent";
 
 class LoginPemilik extends Component {
     daftarClick(e){

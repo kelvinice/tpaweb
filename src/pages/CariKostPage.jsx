@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import UserVerificator from "../components/UserVerificator";
+import UserVerificator from "../components/General/UserVerificator";
 import CariFilter from "../containers/CariPage/CariFilter";
 import RightMap from "../containers/CariPage/RightMap";
 import LeftKost from "../containers/CariPage/LeftKost";

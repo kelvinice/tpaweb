@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled,{ keyframes } from 'styled-components'
-import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/BeautyComponent";
+import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/General/BeautyComponent";
 
 const WrapperPops = styled('div')`
     position:fixed;

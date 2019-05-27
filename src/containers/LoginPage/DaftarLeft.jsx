@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BeautySelectInput, BeautyTomatoButton, OrangeNavLinkWrapper,BeautyInput,BeautyInputWrapper} from "../../components/BeautyComponent";
+import {BeautySelectInput, BeautyTomatoButton, OrangeNavLinkWrapper,BeautyInput,BeautyInputWrapper} from "../../components/General/BeautyComponent";
 import styled from 'styled-components'
 
 const BoldRed = styled('span')`

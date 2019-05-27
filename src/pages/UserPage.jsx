@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import UserNavBar from "../containers/UserPage/UserNavBar";
 import {Route,Link,Switch} from 'react-router-dom'
-import UserVerificator from "../components/UserVerificator";
+import UserVerificator from "../components/General/UserVerificator";
 import styled from 'styled-components'
-import {GreenNavLinkWrapper} from "../components/BeautyComponent";
+import {GreenNavLinkWrapper} from "../components/General/BeautyComponent";
 import NotFoundPage from "./NotFoundPage";
 import LeftUserProfile from "../containers/UserPage/LeftUserProfile";
 import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
-import {ErrorAlert, SuccessAlert} from "../components/Alerts";
-import {InnerBeautyLoading} from "../components/BeautyLoading";
+import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
+import {InnerBeautyLoading} from "../components/General/BeautyLoading";
 import RightUserEditFoto from "../containers/UserPage/RightUserEditFoto";
 
 const WrapperPops = styled('div')`

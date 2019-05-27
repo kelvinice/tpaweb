@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 import UserOnManages from "../../components/AdminManagePage/UserOnManages";
-import {BeautyTomatoButton} from "../../components/BeautyComponent";
-import {InnerBeautyLoading} from "../../components/BeautyLoading";
+import {BeautyTomatoButton} from "../../components/General/BeautyComponent";
+import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
 const AllWrapper = styled('div')`
   background-color: #86befb;

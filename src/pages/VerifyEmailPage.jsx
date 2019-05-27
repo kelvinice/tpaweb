@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {InnerBeautyLoading} from "../components/BeautyLoading";
-import {ErrorAlert, SuccessAlert} from "../components/Alerts";
+import {InnerBeautyLoading} from "../components/General/BeautyLoading";
+import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
 
 class VerifyEmailPage extends Component {
     state={

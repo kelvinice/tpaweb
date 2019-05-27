@@ -2,9 +2,9 @@ import React,{Component} from 'react'
 import styled from "styled-components";
 import LoginPemilik from "../containers/LoginPage/LoginPemilik";
 import {Link,Redirect} from 'react-router-dom'
-import {GreenNavLinkWrapper} from "../components/BeautyComponent";
+import {GreenNavLinkWrapper} from "../components/General/BeautyComponent";
 import DaftarLeft from "../containers/LoginPage/DaftarLeft";
-import {SuccessAlert,ErrorAlert} from "../components/Alerts";
+import {SuccessAlert,ErrorAlert} from "../components/General/Alerts";
 
 const LoginPageContainer = styled('div')`
   display: flex;
@@ -105,7 +105,7 @@ class LoginPage extends Component{
         if(this.state.popMessage===null){
             return null;
         }else if(this.state.popMessage==="success-login"){
-            return <SuccessAlert message="Success Login" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
+            return <SuccessAlert message="Success Login" linkTo="/owner/" onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else if(this.state.popMessage==="success-register-guest"){
             return <SuccessAlert message="Success Register" linkTo="/" onClick={(event, message) => this.MessageChanger(event, null)}/>
         }else if(this.state.popMessage==="success-register-owner"){
@@ -117,7 +117,7 @@ class LoginPage extends Component{
 
     AuthHandler(){
         if(localStorage.getItem("token") != null){
-            return <Redirect to={"/"}></Redirect>
+            return <Redirect to={"/owner"}></Redirect>
         }else{
             return null;
         }
@@ -134,7 +134,6 @@ class LoginPage extends Component{
                     <Logo/>
                     <br/>
                     {this.PageHandler(this.state.leftState)}
-
                 </LeftWrapper>
                 <RightContainer>
                     <Illustration/>
