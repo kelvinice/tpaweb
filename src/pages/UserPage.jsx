@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import {Route,Link,Switch} from 'react-router-dom'
+import {Route,Link,Switch,withRouter} from 'react-router-dom'
 import UserVerificator from "../components/General/UserVerificator";
 import styled from 'styled-components'
 import {GreenNavLinkWrapper} from "../components/General/BeautyComponent";
@@ -10,6 +10,7 @@ import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
 import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
 import {InnerBeautyLoading} from "../components/General/BeautyLoading";
 import RightUserEditFoto from "../containers/UserPage/RightUserEditFoto";
+import BreadCrumbs from "../components/General/BreadCrumbs";
 
 const WrapperPops = styled('div')`
     position:fixed;
@@ -38,12 +39,7 @@ const Poper = styled('div')`
     
 `
 
-const NavInfo = styled('div')`
-  padding: 5px 10px;
-  border-bottom: 1px solid darkgrey;
-  box-sizing: border-box;
-  font-family: "Titillium Web";
-`
+
 
 const UserProfile = styled('div')`
     width: 100%;
@@ -100,11 +96,12 @@ const BodyInner = styled('div')`
   }
 `
 
+
+
 class UserPage extends Component {
     constructor(props){
         super(props);
         this.userVerificator = React.createRef()
-
     }
 
     state = {
@@ -149,12 +146,12 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserVerificator onRef={ref => (this.userVerificator = ref)} />
+                <UserVerificator onRef={ref => (this.userVerificator = ref)}/>
                 {this.MessageHandler()}
 
-                <UserNavBar />
+                <UserNavBar/>
+                <BreadCrumbs/>
 
-                <NavInfo><GreenNavLinkWrapper><Link to="/">Home</Link></GreenNavLinkWrapper> > User</NavInfo>
                 <UserProfile>
                     <LeftUserProfile/>
                     <RightUserProfile>
@@ -166,9 +163,22 @@ class UserPage extends Component {
                                 <BodyContext>
                                     <BodyInner>
                                         <Switch>
-                                            <Route path={`${this.props.match.url}/`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
-                                            <Route path={`${this.props.match.url}/verifikasi-akun`} render={(props)=> <RightUserVerifikasi {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} />} exact />
-                                            <Route path={`${this.props.match.url}/edit-foto`} render={(props)=> <RightUserEditFoto {...props} MessageChanger={(event,message)=> this.MessageChanger(null,message)} setTitle={(title)=>this.setTitle(title)} refresh={()=>this.noLoadingRefresh()} />} exact />
+                                            <Route path={`${this.props.match.url}/`}
+                                                   render={(props) => <RightUserVerifikasi {...props}
+                                                                                           MessageChanger={(event, message) => this.MessageChanger(null, message)}
+                                                                                           setTitle={(title) => this.setTitle(title)}/>}
+                                                   exact/>
+                                            <Route path={`${this.props.match.url}/verifikasi-akun`}
+                                                   render={(props) => <RightUserVerifikasi {...props}
+                                                                                           MessageChanger={(event, message) => this.MessageChanger(null, message)}
+                                                                                           setTitle={(title) => this.setTitle(title)}/>}
+                                                   exact/>
+                                            <Route path={`${this.props.match.url}/edit-foto`}
+                                                   render={(props) => <RightUserEditFoto {...props}
+                                                                                         MessageChanger={(event, message) => this.MessageChanger(null, message)}
+                                                                                         setTitle={(title) => this.setTitle(title)}
+                                                                                         refresh={() => this.noLoadingRefresh()}/>}
+                                                   exact/>
                                             <Route component={NotFoundPage}></Route>
                                         </Switch>
                                     </BodyInner>
@@ -190,4 +200,4 @@ class UserPage extends Component {
 
 
 
-export default (UserPage);
+export default UserPage;

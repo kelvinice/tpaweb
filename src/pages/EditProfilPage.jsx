@@ -7,6 +7,7 @@ import styled from "styled-components";
 import {connect} from "react-redux";
 import GoodInput from "../components/General/GoodInput";
 import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
+import BreadCrumbs from "../components/General/BreadCrumbs";
 
 const NavInfo = styled('div')`
   padding: 5px 10px;
@@ -196,7 +197,7 @@ class EditProfilPage extends Component {
 
                 <UserNavBar />
 
-                <NavInfo><GreenNavLinkWrapper><Link to="/">Home</Link></GreenNavLinkWrapper> > User</NavInfo>
+                <BreadCrumbs/>
                 <AllWrapper>
                     <ContextWrapper>
                         <HeaderContext>

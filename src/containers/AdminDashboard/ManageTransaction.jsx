@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import styled from "styled-components";
 
 const AllWrapper = styled('div')`
@@ -15,9 +15,9 @@ const AllWrapper = styled('div')`
 class ManageTransaction extends Component {
     render() {
         return (
-            <AllWrapper>
+            <Fragment>
                 ManageTransaction
-            </AllWrapper>
+            </Fragment>
         );
     }
 }

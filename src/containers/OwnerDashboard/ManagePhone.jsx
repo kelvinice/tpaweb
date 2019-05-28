@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import styled from "styled-components";
 import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import {connect} from "react-redux";
@@ -8,16 +8,16 @@ import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
-const AllWrapper = styled('div')`
-  background-color: #ffbabc;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  padding: 5px;
-  @media (min-width: 900px){
-    box-sizing: border-box;
-  }
-`
+// const AllWrapper = styled('div')`
+//   background-color: #ffbabc;
+//   width: 100%;
+//   min-height: 100vh;
+//   height: 100%;
+//   padding: 5px;
+//   @media (min-width: 900px){
+//     box-sizing: border-box;
+//   }
+// `
 
 const Menu = styled('div')`
   display: flex;
@@ -301,7 +301,7 @@ class ManagePhone extends Component {
 
     render() {
         return (
-            <AllWrapper>
+            <Fragment>
                 {this.handlePop()}
                 <Menu>
                     <LeftMenu>
@@ -346,7 +346,7 @@ class ManagePhone extends Component {
                 </form>
 
 
-            </AllWrapper>
+            </Fragment>
 
         );
     }

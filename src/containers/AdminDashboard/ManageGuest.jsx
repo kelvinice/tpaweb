@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import styled from 'styled-components'
 import UserOnManages from "../../components/AdminManagePage/UserOnManages";
 import {BeautyTomatoButton} from "../../components/General/BeautyComponent";
@@ -243,7 +243,7 @@ class ManageGuest extends Component {
 
     render() {
         return (
-            <AllWrapper>
+            <Fragment>
                 {this.handlePop()}
                 {this.state.guests &&
                     this.state.guests.map(
@@ -253,7 +253,7 @@ class ManageGuest extends Component {
                 {this.state.isLoading &&
                     <InnerBeautyLoading style={{backgroundColor:"blue"}}/>
                 }
-            </AllWrapper>
+            </Fragment>
         );
     }
 }
