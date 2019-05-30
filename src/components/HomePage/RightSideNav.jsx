@@ -64,10 +64,11 @@ class RightSideNav extends Component {
                             <SmallProfile/>  {this.props.UserLogin.name} &#9662;
                         </div>
                         <div id="login-wrapper" className="child-wrapper">
-                            <Link style={{color:"black"}} to="/user"><div className="mobile-nav-item">Halaman Profil</div></Link>
+                            {this.props.UserLogin.type===1 && <Link style={{color:"black"}} to="/user"><div className="mobile-nav-item">Halaman Profil</div></Link>}
+                            {this.props.UserLogin.type===2 && <Link style={{color:"black"}} to="/user/edit-profil"><div className="mobile-nav-item">Edit Profil</div></Link>}
 
-                            {this.props.UserLogin.type===3? <Link style={{color:"black"}} to="/admin"><div className="mobile-nav-item">Admin Dashboard</div></Link> : null}
-                            {this.props.UserLogin.type===2? <Link style={{color:"black"}} to="/owner"><div className="mobile-nav-item">Owner Dashboard</div></Link> : null}
+                            {this.props.UserLogin.type===3 && <Link style={{color:"black"}} to="/admin"><div className="mobile-nav-item">Admin Dashboard</div></Link>}
+                            {this.props.UserLogin.type===2 && <Link style={{color:"black"}} to="/owner"><div className="mobile-nav-item">Owner Dashboard</div></Link>}
                             <div id="pemilik-masuk-btn" className="mobile-nav-item"
                                  style={{color: "black"}} onClick={()=>{this.doLogout()}}>Keluar</div>
                         </div>

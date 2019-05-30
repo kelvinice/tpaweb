@@ -8,23 +8,13 @@ import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
-// const AllWrapper = styled('div')`
-//   background-color: #ffbabc;
-//   width: 100%;
-//   min-height: 100vh;
-//   height: 100%;
-//   padding: 5px;
-//   @media (min-width: 900px){
-//     box-sizing: border-box;
-//   }
-// `
 
 const Menu = styled('div')`
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
   background-color: #f28556;
-  width: 95%;
+  width: 100%;
   height: 80px;
 `
 
@@ -62,7 +52,7 @@ const DescDiv = styled('div')`
 `
 
 const BottomMenu = styled('div')`
-  width: 95%;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
   font-weight: bold;

@@ -45,7 +45,7 @@ class LeftKost extends Component {
                 latitude:this.props.currentPosition[0],
                 longitude:this.props.currentPosition[1],
             }}).then((response)=>{
-             // console.log(response)
+             console.log(response)
             if(this.state.allkosts=== undefined || this.state.allkosts===null)
                 this.setState({allkosts:response.data.properties.data,link:response.data.properties.next_page_url})
             else{

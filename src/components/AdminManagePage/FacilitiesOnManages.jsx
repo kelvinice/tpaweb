@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import styled from 'styled-components'
+import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faRedo, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import {faHome, faRedo, faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
+import {faBed} from "@fortawesome/free-solid-svg-icons/faBed";
+
 
 const AllWrapper = styled('div')`
 width: 100%;
 height: 80px;
-
+background-color: #fb84d7;
 margin-bottom: 5px;
 cursor: pointer;
 display: flex;
@@ -55,7 +57,7 @@ const ButtonDelete = styled('div')`
 `
 
 const ButtonBan = styled('div')`
-  background-color: #eb0003;
+  background-color: #eb5322;
   color: white;
   height: 100%;
   width: 80px;
@@ -70,7 +72,7 @@ const ButtonBan = styled('div')`
 `
 
 const ButtonReset = styled('div')`
-  background-color: #fbb001;
+  background-color: #614ffb;
   color: white;
   height: 100%;
   width: 80px;
@@ -110,32 +112,32 @@ const TextWrapper = styled('div')`
 `
 
 
-class UserOnManages extends Component {
+class FacilitiesOnManages extends Component {
     handleProfilePicture(){
         if(this.props.data.picture_id != null)
             return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
         else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
     }
 
-    handleColor(){
-        if(this.props.data.status == 1){
-            return {backgroundColor : "#4d65fb"};
+    handleType(){
+        if(this.props.data.group===1){
+            return <FontAwesomeIcon icon={faHome}/>;
         }else{
-            return {backgroundColor : "#eb3935"};
+            return <FontAwesomeIcon icon={faBed}/>;
         }
     }
 
     render() {
         return (
-            <AllWrapper style={this.handleColor()}>
+            <AllWrapper>
                 <AttributeContainer>
                     {this.handleProfilePicture()}
                     <TextWrapper>{this.props.data.name}</TextWrapper>
                 </AttributeContainer>
                 <ButtonWrapper>
-                    <ButtonReset onClick={(target)=>this.props.setTarget({user:this.props.data,type:"reset"})}><FontAwesomeIcon icon={faRedo}/></ButtonReset>
-                    <ButtonBan onClick={(target)=>this.props.setTarget({user:this.props.data,type:"banned"})}><FontAwesomeIcon icon={faBan}/></ButtonBan>
-                    <ButtonDelete onClick={(target)=>this.props.setTarget({user:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
+                    <ButtonReset>{this.handleType()}</ButtonReset>
+                    <ButtonBan onClick={(target)=>this.props.setTarget({facility:this.props.data,type:"update"})}><FontAwesomeIcon icon={faRedoAlt}/></ButtonBan>
+                    <ButtonDelete onClick={(target)=>this.props.setTarget({facility:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
                 </ButtonWrapper>
 
             </AllWrapper>
@@ -143,4 +145,4 @@ class UserOnManages extends Component {
     }
 }
 
-export default UserOnManages;
+export default FacilitiesOnManages;

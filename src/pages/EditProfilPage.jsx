@@ -1,23 +1,13 @@
 import React, {Component} from 'react';
 import UserVerificator from "../components/General/UserVerificator";
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import { BeautyTomatoButton, GreenNavLinkWrapper} from "../components/General/BeautyComponent";
+import { BeautyTomatoButton} from "../components/General/BeautyComponent";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {connect} from "react-redux";
 import GoodInput from "../components/General/GoodInput";
 import {ErrorAlert, SuccessAlert} from "../components/General/Alerts";
 import BreadCrumbs from "../components/General/BreadCrumbs";
-
-const NavInfo = styled('div')`
-  padding: 5px 10px;
-  border-bottom: 1px solid darkgrey;
-  box-sizing: border-box;
-  font-family: "Titillium Web";
-  @media only screen and (max-width: 891px){
-    width: 100%;
-  }
-`
 
 const AllWrapper = styled('div')`
     width: 100%;
@@ -192,7 +182,7 @@ class EditProfilPage extends Component {
     render() {
         return (
             <div>
-                <UserVerificator onRef={ref => (this.userVerificator = ref)} />
+                <UserVerificator onRef={ref => (this.userVerificator = ref)} roleExcept={3}/>
                 {this.MessageHandler()}
 
                 <UserNavBar />

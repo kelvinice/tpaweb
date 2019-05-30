@@ -27,10 +27,27 @@ const BeautyInput = styled.input`
   &:focus{
     border-bottom: 2px solid #00ac00;
   }
-  
 `
 
 const BeautyInputOutlined = styled('input')`
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 100%;  
+  box-sizing: border-box;
+  outline: none;
+  color: black;
+  background-color: white;
+  &:focus{
+    border: 1px solid #00ac00;
+  }
+  &::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+`
+
+const BeautyTextAreaOutlined = styled('textarea')`
   padding: 12px;
   border-radius: 5px;
   border: 1px solid gray;
@@ -53,6 +70,8 @@ const BeautyTomatoButton = styled('button')`
   overflow: hidden;
   transform: translate3d(0, 0, 0);
   outline: none;
+  font-size: 18px;
+  box-sizing: border-box;
   &:hover{
     background-color: #ff6e30;
   }
@@ -132,7 +151,6 @@ const OutlineButton = styled('button')`
   background-color: white;
   border-radius: 3px;
   color: #31bc31;
-  //outline: none;
   &:hover,&:active{
     color: white;
     background-color: #31bc31;
@@ -168,6 +186,73 @@ const BeautySelectInput = styled('select')`
   }
 `
 
+const BeautySelectInputOutlined = styled('select')`
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  width: 100%;  
+  box-sizing: border-box;
+  outline: none;
+  color: black;
+  background-color: white;
+  &:focus{
+    border: 1px solid #00ac00;
+  }
+  &::-webkit-inner-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+`
 
+const CustomButtonWrapper = styled('div')`
+    width: 100%;
+  margin: 5px;
+  box-sizing: border-box;
+  ${'a'}{
+    width: 100%;
+  }
+  ${'button'}{
+   
+    background-color: #65ca00;
+    border: none;
+    width: 100%;
+    height: 80px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    &:hover{
+      color: #c2ee1a;
+      background-color: #499200;
+      cursor: pointer;
+    }
+    position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  outline: none;
+  box-sizing: border-box;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #ffbc9d 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+  &:active:after {
+    transform: scale(0,0);
+    opacity: .2;
+    transition: 0s;
+  }
+    
+  }
+`
 
-export {BeautyInputOutlined,BeautySelectInput,OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}
+export {CustomButtonWrapper,BeautySelectInputOutlined,BeautyTextAreaOutlined,BeautyInputOutlined,BeautySelectInput,OrangeNavLinkWrapper,OrangeOutlineButton,OutlineButton,BeautyGreenTitle,BeautyInput,BeautyInputWrapper,BeautyTomatoButton,NavLinkWrapper,GreenNavLinkWrapper}

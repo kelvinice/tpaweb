@@ -146,7 +146,7 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserVerificator onRef={ref => (this.userVerificator = ref)}/>
+                <UserVerificator onRef={ref => (this.userVerificator = ref)} roleOnly={1}/>
                 {this.MessageHandler()}
 
                 <UserNavBar/>
@@ -179,7 +179,7 @@ class UserPage extends Component {
                                                                                          setTitle={(title) => this.setTitle(title)}
                                                                                          refresh={() => this.noLoadingRefresh()}/>}
                                                    exact/>
-                                            <Route component={NotFoundPage}></Route>
+                                            <Route component={NotFoundPage}/>
                                         </Switch>
                                     </BodyInner>
 
@@ -188,7 +188,6 @@ class UserPage extends Component {
                             </ContextWrapper>
 
                         </AllWrapper>
-
 
                     </RightUserProfile>
                 </UserProfile>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import {connect} from "react-redux";
+import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -13,13 +14,14 @@ L.Icon.Default.mergeOptions({
 });
 
 const AllWrapper = styled('div')`
-  width: 40vw;
-  height: 90vh;
-  right: 0;
-  background-color: red;
-  position: fixed;
-  @media (max-width: 990px){
-    display: none;
+  ${'#map'}{
+      width: 40vw;
+      height: 90vh;
+      right: 0;
+      position: fixed;
+      @media (max-width: 990px){
+        display: none;
+      }
   }
 `
 var marker = {};
@@ -30,37 +32,14 @@ class RightMap extends Component {
 
     componentDidMount() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
+            navigator.geolocation.getCurrentPosition( (position) =>{
                 this.props.updateCurrentPosition([position.coords.latitude,position.coords.longitude])
-
-                this.map = L.map('map').setView([position.coords.latitude,position.coords.longitude], this.state.zoom)
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-                }).addTo(this.map)
-
-                marker = L.marker([position.coords.latitude,position.coords.longitude])
-                    .addTo(this.map)
-                    .bindPopup('Your Location')
-                this.map.on('click', (e)=>this.onMapClick(e))
-            }.bind(this),()=>{
-                this.map = L.map('map').setView(this.props.currentPosition, this.state.zoom)
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-                }).addTo(this.map)
-
-                marker = L.marker(L.latLng(this.props.currentPosition))
-                    .addTo(this.map)
-                    .bindPopup('Your Location')
-                this.map.on('click', (e)=>this.onMapClick(e))
             })
         }
     }
 
     onMapClick(e){
-        if(marker)this.map.removeLayer(marker);
-        marker = L.marker(L.latLng(e.latlng))
-            .addTo(this.map)
-            .bindPopup('Your Location')
+
         this.props.updateCurrentPosition([e.latlng.lat,e.latlng.lng])
         this.props.refreshFilter();
         // console.log(e.latlng)
@@ -68,7 +47,19 @@ class RightMap extends Component {
 
     render() {
         return (
-            <AllWrapper id={"map"} />
+            <AllWrapper>
+            <Map id={"map"} center={this.props.currentPosition} zoom={13} onClick={(e)=>this.onMapClick(e)}>
+                <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                />
+                <Marker position={this.props.currentPosition}>
+                    <Popup>
+                        Your Location
+                    </Popup>
+                </Marker>
+            </Map>
+            </AllWrapper>
         );
     }
 }

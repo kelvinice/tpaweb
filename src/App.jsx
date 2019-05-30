@@ -15,7 +15,7 @@ import OwnerDashboardPage from "./pages/OwnerDashboardPage";
 class App extends Component {
     render() {
         return (
-            <div style={{width:"100vw"}}>
+            <div >
                 <Switch>
                     <Route path="/" component={HomePage} exact />
                     <Route path="/login" component={LoginPage} exact />

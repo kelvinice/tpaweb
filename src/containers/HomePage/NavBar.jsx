@@ -21,7 +21,7 @@ const LogoImage = styled('div')`
   position: relative;
   background-size: cover;
   background-position: center;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 900px) {
     height: 50px;
     width: 50px;
     background-size: cover;
@@ -30,7 +30,7 @@ const LogoImage = styled('div')`
 `
 
 const Coverer = styled('div')`
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 900px) {
        height: 50px;
     }
      width: 100%;

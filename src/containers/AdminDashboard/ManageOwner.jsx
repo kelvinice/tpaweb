@@ -4,18 +4,6 @@ import UserOnManages from "../../components/AdminManagePage/UserOnManages";
 import {BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
-const AllWrapper = styled('div')`
-  background-color: #86befb;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-  padding: 5px;
-  @media (min-width: 900px){
-    
-    box-sizing: border-box;
-  }
-`
-
 const PopHolder = styled('div')`
 width: 100%;
 height: 100%;
@@ -27,7 +15,6 @@ display: flex;
 align-items: center;
 @media (max-width: 900px){
   padding: 0;
-  
 }
 `
 
@@ -140,7 +127,7 @@ class ManageOwner extends Component {
 
         let data = {"token":token,"id" : id}
         axios.patch("http://localhost:8000/banned-user",data).then(response=>{
-            console.log(response);
+            // console.log(response);
             if(response.data.message==="success"){
                 this.setState({
                     link : "http://localhost:8000/getAllOwner",

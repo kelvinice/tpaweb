@@ -150,7 +150,7 @@ input{
     visibility: hidden;
 
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
     .child-wrapper{
         border: 1px solid darkgrey;
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -194,7 +194,7 @@ input{
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .mini-height-mobile{
         height: 100px;
     }
