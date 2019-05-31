@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {Link} from "react-router-dom";
 import {CustomButtonWrapper} from "../../components/General/BeautyComponent";
 
+
 const HeaderWrapper = styled('div')`
   width: 100%;
   display: flex;
@@ -21,6 +22,7 @@ class ManageHouse extends Component {
                     </CustomButtonWrapper>
 
                 </HeaderWrapper>
+
 
 
             </Fragment>

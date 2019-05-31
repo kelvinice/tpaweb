@@ -61,7 +61,7 @@ class RightSideNav extends Component {
                 <div className="wrapper">
                     <div id="button-masuk">
                         <div id="masuk-title" style={{width:"100%",boxSizing:"border-box"}}>
-                            <SmallProfile/>  {this.props.UserLogin.name} &#9662;
+                            <SmallProfile/>  <span style={{textOverflow:"ellipsis",overflow:"hidden",maxWidth:"80px"}}>{this.props.UserLogin.name}</span> &#9662;
                         </div>
                         <div id="login-wrapper" className="child-wrapper">
                             {this.props.UserLogin.type===1 && <Link style={{color:"black"}} to="/user"><div className="mobile-nav-item">Halaman Profil</div></Link>}

@@ -38,7 +38,7 @@ const HeaderWrapper = styled('div')`
 
 class AddHouse extends Component {
     state = {
-        page:2,
+        page:0,
         map:{
             zoom: 13
         },

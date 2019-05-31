@@ -150,7 +150,11 @@ input{
     visibility: hidden;
 
 }
+
 @media only screen and (min-width: 900px) {
+    #masuk-title{
+        display:flex;
+    }
     .child-wrapper{
         border: 1px solid darkgrey;
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
@@ -170,7 +174,7 @@ input{
 #masuk-title{
     box-sizing: border-box;
     padding:0 0 !important;
-    display: block;
+    /*display: block;*/
 }
 
 .child-wrapper div{
