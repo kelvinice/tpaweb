@@ -10,6 +10,7 @@ class UserVerificator extends Component {
 
     noLoadingRefresh(){
         let token = localStorage.getItem('token');
+
         const axios = require('axios/index');
 
         axios.get(`http://localhost:8000/curr?token=${token}`,{
@@ -32,6 +33,10 @@ class UserVerificator extends Component {
     refresh() {
         this.setState({alreadyFetch:false});
         let token = localStorage.getItem('token');
+        if(token==null){
+            this.setState({alreadyFetch:true});
+            return;
+        }
         const axios = require('axios/index');
 
         axios.get(`http://localhost:8000/curr?token=${token}`,{

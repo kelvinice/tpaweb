@@ -98,7 +98,7 @@ const BoldRed = styled('span')`
 
 class ManageFacility extends Component {
     state = {
-        facilities : null,
+        facilities : [],
         popState : null,
         target : null,
         link : "http://localhost:8000/getAllFacilities",
@@ -177,7 +177,7 @@ class ManageFacility extends Component {
             if(response.data.message==="success"){
                 this.setState({
                     link:"http://localhost:8000/getAllFacilities",
-                    facilities:null,
+                    facilities:[],
                     target:null,
                 },()=>this.fetchMore());
             }

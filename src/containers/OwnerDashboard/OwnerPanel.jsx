@@ -31,7 +31,7 @@ const shine = keyframes`
 
 const AllWrapper = styled('div')`
   position: sticky;
-  top: 50px;
+  top: 53px;
   width: 200px;
   height: 100%;
   min-height: 92vh;

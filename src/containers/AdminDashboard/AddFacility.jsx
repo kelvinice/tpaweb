@@ -99,7 +99,6 @@ class AddFacility extends Component {
                 'content-type': 'multipart/form-data',
                 Authorization: `Bearer ${token}`
             }
-
         }
 
         axios.post("http://localhost:8000/insert-facility", formData,config).then(

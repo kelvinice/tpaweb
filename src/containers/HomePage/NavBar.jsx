@@ -3,6 +3,8 @@ import '../../styles/HomePageStyle.css'
 import styled from 'styled-components'
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import PromotionLocationSearchBox from "../../components/HomePage/PromotionLocationSearchBox";
+import SearchBox from "../../components/General/SearchBox";
 
 const IconBar = styled('span')`
   width: 22px;
@@ -39,6 +41,13 @@ const Coverer = styled('div')`
     position: absolute;
 `
 
+const NavWrapper =styled('div')`
+  @media (max-width: 900px){
+  display: flex;
+  }
+`
+
+
 class NavBar extends Component {
     state = {
         isShowMobileNav:true,
@@ -70,21 +79,26 @@ class NavBar extends Component {
                 <div style={{height:"inherit",position:"relative"}}>
                     <Link to={"/"}><LogoImage/></Link>
                 </div>
+                <SearchBox/>
+                <NavWrapper>
 
                 {this.props.isShowMobileNav ?
-                    <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toggleMobileNav()}>
-                        <IconBar/>
-                        <IconBar/>
-                        <IconBar/>
-                    </button>
-                    :
-                    <button className="mobile-show" id="mobile-button" style={{height: "20px",position:"absolute",right:"25px"}} onClick={() =>this.toggleMobileNav()}>
-                        <IconBar/>
-                        <IconBar/>
-                        <IconBar/>
-                    </button>
-                }
-                {this.props.rightSide}
+                        <button className="mobile-show" id="mobile-button" style={{height: "20px"}} onClick={() => this.toggleMobileNav()}>
+                            <IconBar/>
+                            <IconBar/>
+                            <IconBar/>
+                        </button>
+                        :
+                        <button className="mobile-show" id="mobile-button" style={{height: "20px",position:"absolute",right:"0px"}} onClick={() =>this.toggleMobileNav()}>
+                            <IconBar/>
+                            <IconBar/>
+                            <IconBar/>
+                        </button>
+                    }
+                    {this.props.rightSide}
+                </NavWrapper>
+
+
 
             </nav>
         )

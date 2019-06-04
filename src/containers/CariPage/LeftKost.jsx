@@ -32,7 +32,7 @@ const ButtonPlain = styled('button')`
 class LeftKost extends Component {
     state = {
         link : "http://localhost:8000/properties",
-        allkosts : null,
+        allkosts : [],
         isLoading : false
     }
 
@@ -46,11 +46,7 @@ class LeftKost extends Component {
                 longitude:this.props.currentPosition[1],
             }}).then((response)=>{
              console.log(response)
-            if(this.state.allkosts=== undefined || this.state.allkosts===null)
-                this.setState({allkosts:response.data.properties.data,link:response.data.properties.next_page_url})
-            else{
-                this.setState({allkosts:this.state.allkosts.concat(response.data.properties.data),link:response.data.properties.next_page_url})
-            }
+            this.setState({allkosts:this.state.allkosts.concat(response.data.properties.data),link:response.data.properties.next_page_url})
             this.setState({isLoading:false});
         }).catch((error)=>{
             console.log(error.response);
@@ -90,7 +86,7 @@ class LeftKost extends Component {
 
     refreshFilter(){
         this.setState({link : "http://localhost:8000/properties",
-            allkosts : undefined,
+            allkosts : [],
             isLast : false,
             isLoading : false},
             ()=>this.fetchMore()
@@ -100,8 +96,7 @@ class LeftKost extends Component {
     render() {
         return (
             <AllWrapper>
-                {this.state.allkosts &&
-                    this.state.allkosts.map(
+                {this.state.allkosts.map(
                         (item,key)=><Kosts key = {item.id} data = {item}/>
                     )
                 }

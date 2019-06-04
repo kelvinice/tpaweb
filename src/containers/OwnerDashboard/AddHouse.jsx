@@ -10,6 +10,9 @@ import {
     BeautySelectInputOutlined, BeautySelectInput, CustomButtonWrapper
 } from "../../components/General/BeautyComponent";
 import {Link} from "react-router-dom";
+import {BACKENDLINK} from "../../Define";
+import Kosts from "../../components/CariPage/Kosts";
+import FacilityCard from "../../components/OwnerManagePage/FacilityCard";
 
 const AllWrapper =styled('div')`
   width: 100%;
@@ -35,13 +38,22 @@ const HeaderWrapper = styled('div')`
   display: flex;
 `
 
+const CardWrapper =styled('div')`
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+`
 
 class AddHouse extends Component {
     state = {
-        page:0,
+        page:3,
         map:{
             zoom: 13
         },
+        dataPublicFacilities:[],
+        dataRoomFacilities:[],
+        publicFacilities:[],
+        roomFacilities:[],
         mapAddress:"",
         address:"",
         city:"",
@@ -63,6 +75,14 @@ class AddHouse extends Component {
                 this.props.updateCurrentPosition([position.coords.latitude,position.coords.longitude])
             })
         }
+        const axios = require('axios');
+        axios.get(`${BACKENDLINK}room-facilities`).then(response=>{
+            this.setState({dataRoomFacilities:response.data.facilities})
+        })
+        axios.get(`${BACKENDLINK}public-facilities`).then(response=>{
+            this.setState({dataPublicFacilities:response.data.facilities})
+        })
+
     }
 
     onMapClick(e){
@@ -74,48 +94,68 @@ class AddHouse extends Component {
             })
     }
 
-
+    inputFileChanged(e){
+        this.setState({[e.target.name]:e.target.files[0]});
+    }
 
     inputChanged(e){
-        // eslint-disable-next-line default-case
-        console.log(e.target)
-        switch (e.target.name) {
-            case "name":
-                this.setState({name:e.target.value});
-                break;
-            case "address":
-                this.setState({address:e.target.value});
-                break;
-            case "city":
-                this.setState({city:e.target.value});
-                break;
-            case "description":
-                this.setState({description:e.target.value});
-                break;
-            case "additionalInformation":
-                this.setState({additionalInformation:e.target.value});
-                break;
-            case "roomLeft":
-                this.setState({roomLeft:e.target.value});
-                break;
-            case "genderType":
-                this.setState({genderType:e.target.value});
-                break;
-            case "parkingFacilities":
-                this.setState({parkingFacilities:e.target.value});
-                break;
-            case "pictures":
-                this.setState({pictures:e.target.files[0]});
-                break;
-            case "bannerPicture":
-                this.setState({bannerPicture:e.target.files[0]});
-                break;
-            case "picture360":
-                this.setState({picture360:e.target.files[0]});
-                break;
-            case "video":
-                this.setState({video:e.target.files[0]});
-                break;
+        this.setState({[e.target.name]:e.target.value});
+    }
+
+    formSubmit(){
+        let token = localStorage.getItem('token');
+        const axios = require('axios');
+        let formData = new FormData();
+        console.log(this.state.publicFacilities)
+        formData.append('publicFacilities',JSON.stringify(this.state.publicFacilities));
+        formData.append('roomFacilities',JSON.stringify(this.state.roomFacilities));
+        formData.append('latitude',this.props.currentPosition[0]);
+        formData.append('longitude',this.props.currentPosition[1]);
+        formData.append('name',this.state.name);
+        formData.append('address',this.state.address);
+        formData.append('city',this.state.city);
+        formData.append('description',this.state.description);
+        formData.append('additionalInformation',this.state.additionalInformation);
+        formData.append('roomLeft',this.state.roomLeft);
+        formData.append('genderType',this.state.genderType);
+        formData.append('parkingFacilities',this.state.parkingFacilities);
+        formData.append('pictures',this.state.pictures);
+        formData.append('bannerPicture',this.state.bannerPicture);
+        formData.append('picture360',this.state.picture360);
+        formData.append('video',this.state.video);
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+                Authorization: `Bearer ${token}`
+            }
+        }
+        axios.post(`${BACKENDLINK}insertHouse`, formData,config).then(response=>{
+            console.log(response)
+        }).catch(error => {
+            console.log(error.response)
+        })
+    }
+
+    clickFacility(target){
+        if(target.group===1){
+            let idx = this.state.publicFacilities.indexOf(target.id)
+            if(idx===-1)
+                this.setState({publicFacilities:this.state.publicFacilities.concat(target.id)})
+            else{
+                let f = this.state.publicFacilities;
+                f.splice(idx,1);
+                this.setState({publicFacilities:f})
+            }
+        }else{
+            let idx = this.state.roomFacilities.indexOf(target.id)
+            if(idx===-1)
+                this.setState({roomFacilities:this.state.roomFacilities.concat(target.id)})
+            else{
+                let f = this.state.roomFacilities;
+                f.splice(idx,1);
+                this.setState({roomFacilities:f})
+            }
         }
     }
 
@@ -171,23 +211,23 @@ class AddHouse extends Component {
 
                 <BeautyInputWrapper>
                     Banner Picture
-                    <BeautyInputOutlined type={"file"} name={"bannerPicture"} onChange={(e)=>this.inputChanged(e)}/>
+                    <BeautyInputOutlined type={"file"} name={"bannerPicture"} onChange={(e)=>this.inputFileChanged(e)}/>
                     {/*style={{color:"transparent"}}*/}
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
                     Pictures
-                    <BeautyInputOutlined type={"file"} name={"pictures"} onChange={(e)=>this.inputChanged(e)}/>
+                    <BeautyInputOutlined type={"file"} name={"pictures"} onChange={(e)=>this.inputFileChanged(e)}/>
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
                     Picture 360
-                    <BeautyInputOutlined type={"file"} name={"picture360"} onChange={(e)=>this.inputChanged(e)}/>
+                    <BeautyInputOutlined type={"file"} name={"picture360"} onChange={(e)=>this.inputFileChanged(e)}/>
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
                     Video
-                    <BeautyInputOutlined type={"file"} name={"video"} onChange={(e)=>this.inputChanged(e)}/>
+                    <BeautyInputOutlined type={"file"} name={"video"} onChange={(e)=>this.inputFileChanged(e)}/>
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
@@ -199,19 +239,25 @@ class AddHouse extends Component {
                         <option value="3">Tidak ada</option>
                     </BeautySelectInputOutlined>
                 </BeautyInputWrapper>
-
-
             </Fragment>
         }else if(this.state.page===3){
             return <Fragment>
                 <BeautyInputWrapper>
                     Room Facilities
-                    <BeautyInputOutlined />
-                </BeautyInputWrapper>
+                    <CardWrapper>
+                        {this.state.dataRoomFacilities.map(
+                            (item,key)=><FacilityCard key = {item.id} data = {item} onClick={(item)=>this.clickFacility(item)} isActive={this.state.roomFacilities.indexOf(item.id)}/>
+                        )}
+                    </CardWrapper>
 
+                </BeautyInputWrapper>
                 <BeautyInputWrapper>
                     Public Facilities
-                    <BeautyInputOutlined />
+                    <CardWrapper>
+                        {this.state.dataPublicFacilities.map(
+                            (item,key)=><FacilityCard key = {item.id} data = {item} onClick={(item)=>this.clickFacility(item)} isActive={this.state.publicFacilities.indexOf(item.id)}/>
+                        )}
+                    </CardWrapper>
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
@@ -230,9 +276,7 @@ class AddHouse extends Component {
                         <option value="5">Putri dan Campur</option>
                     </BeautySelectInputOutlined>
                 </BeautyInputWrapper>
-
                 <br/>
-
             </Fragment>
         }else{
             return null;
@@ -263,7 +307,7 @@ class AddHouse extends Component {
                         )
                     }}>Next Page</button>
                 </CustomButtonWrapper> :
-                    <BeautyTomatoButton>Submit</BeautyTomatoButton>
+                    <BeautyTomatoButton onClick={()=>this.formSubmit()}>Submit</BeautyTomatoButton>
                 }
             </HeaderWrapper>
         </Fragment>

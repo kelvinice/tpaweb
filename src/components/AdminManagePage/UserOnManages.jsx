@@ -113,12 +113,12 @@ const TextWrapper = styled('div')`
 class UserOnManages extends Component {
     handleProfilePicture(){
         if(this.props.data.picture_id != null)
-            return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
+            return  <BigProfile style={{backgroundImage:"url(http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
         else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
     }
 
     handleColor(){
-        if(this.props.data.status == 1){
+        if(this.props.data.status === 1){
             return {backgroundColor : "#4d65fb"};
         }else{
             return {backgroundColor : "#eb3935"};
