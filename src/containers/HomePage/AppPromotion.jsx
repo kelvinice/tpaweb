@@ -24,7 +24,7 @@ const RightWrapper = styled('div')`
 `
 
 const GoogleLogo = styled('div')`
-  background-image: url("assets/images/download_gplay.png");
+  background-image: url("/assets/images/download_gplay.png");
   width: 140px;
   height: 48px;
   background-repeat: no-repeat;
@@ -34,7 +34,7 @@ const GoogleLogo = styled('div')`
 `
 
 const AppleLogo = styled('div')`
-  background-image: url("assets/images/download_ios.png");
+  background-image: url("/assets/images/download_ios.png");
   width: 140px;
   height: 48px;
   background-repeat: no-repeat;

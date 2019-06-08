@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import styled,{ keyframes } from 'styled-components'
 import {BeautyGreenTitle, BeautyInput, BeautyInputWrapper, BeautyTomatoButton,NavLinkWrapper} from "../../components/General/BeautyComponent";
+import {SuccessImage} from "../../components/General/CustomComponent";
 
 const WrapperPops = styled('div')`
     position:fixed;
     text-align: center;
-    z-index:2;
+    z-index:5;
     width: 100%;
     background-color: rgba(0,0,0,0.6) !important;
     top: 0;
@@ -67,17 +68,6 @@ const LoadingImage = styled('div')`
   background-color: transparent;
 `
 
-const SuccessImage = styled('div')`
-  background-image: url("assets/images/true.png");
-  width: 200px;
-  height: 200px;
-  margin: 0 auto; 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: transparent;
-`
-
 const RedWrap = styled('div')`
     padding:3px;
     color:white;
@@ -89,6 +79,7 @@ const RedWrap = styled('div')`
     width: 100%;
     box-sizing: border-box;
 `
+
 
 class LoginPopup extends Component{
     state = {
@@ -129,9 +120,17 @@ class LoginPopup extends Component{
 
     continueLogin(){
         let token = localStorage.getItem('token');
-        console.log(token)
+        // console.log(token)
         window.location.reload();
     }
+
+    componentDidMount() {
+        setTimeout(()=>{
+            this.emailInput.focus();
+        },100);
+
+    }
+
 
     popHandler(){
         if(this.state.popState==="loading"){
@@ -146,7 +145,7 @@ class LoginPopup extends Component{
         }else{
             return <Poper>
                 <ButtonEsc><div onClick={()=>this.props.exitCalled()}>×</div></ButtonEsc>
-
+                {this.emailInput && this.emailInput.focus()}
                 <form action="" onSubmit={(e)=>this.doLogin(e)}>
                     <BeautyGreenTitle>
                         Login Akun
@@ -154,8 +153,7 @@ class LoginPopup extends Component{
                     <br/>
                     <BeautyInputWrapper>
                         Email:<br/>
-                        <BeautyInput ref={this.focusInput} type={"email"} name="email"></BeautyInput>
-
+                        <BeautyInput ref={(input) => { this.emailInput = input; }} type={"email"} name="email" id={"emailLoginPop"}/>
                     </BeautyInputWrapper>
                     <br/>
                     <BeautyInputWrapper>
@@ -166,7 +164,7 @@ class LoginPopup extends Component{
 
                     <NavLinkWrapper style={{textAlign:'right',cursor:"pointer"}}>
                         <label htmlFor="remember">Remember Me</label>
-                        <input id="remember" type="checkbox" name={"remember"} value={"Remember Me"} />
+                        <input id="remember" type="checkbox" style={{cursor:"pointer"}} name={"remember"} value={"Remember Me"} />
 
                     </NavLinkWrapper>
 
@@ -187,7 +185,7 @@ class LoginPopup extends Component{
 
     render(){
         return(
-            <WrapperPops className="pop-block" autoFocus={true}>
+            <WrapperPops className="pop-block" >
                 {this.popHandler()}
             </WrapperPops>
         )

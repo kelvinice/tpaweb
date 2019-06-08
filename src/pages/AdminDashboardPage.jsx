@@ -15,6 +15,7 @@ import ManageTransaction from "../containers/AdminDashboard/ManageTransaction";
 import ManageReport from "../containers/AdminDashboard/ManageReport";
 import BreadCrumbs from "../components/General/BreadCrumbs";
 import AddFacility from "../containers/AdminDashboard/AddFacility";
+import AddPremiumProduct from "../containers/AdminDashboard/AddPremiumProduct";
 
 const AllWrapper = styled('div')`
   height: 100%;
@@ -66,6 +67,7 @@ class AdminDashboardPage extends Component {
                                 <Route path={`${this.props.match.url}/manage-transaction`} component={ManageTransaction} exact />
                                 <Route path={`${this.props.match.url}/manage-report`} component={ManageReport} exact />
                                 <Route path={`${this.props.match.url}/add-facility`} component={AddFacility} exact />
+                                <Route path={`${this.props.match.url}/add-premium-product`} component={AddPremiumProduct} exact />
                                 <Route component={NotFoundPage}/>
                             </Switch>
                         </InnerAllWrapper>

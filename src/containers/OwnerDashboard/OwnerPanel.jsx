@@ -101,7 +101,7 @@ class OwnerPanel extends Component {
                 <NavLink to={"/owner/manage-house"}><Menu><span><span className={"hide-on-mobile"}>Manage Rent House </span><FontAwesomeIcon icon={faHome}/></span></Menu></NavLink>
                 <NavLink to={"/owner/manage-apartement"}><Menu><span><span className={"hide-on-mobile"}>Manage Apartement </span><FontAwesomeIcon icon={faBuilding}/></span></Menu></NavLink>
                 <NavLink to={"/owner/chat"}><Menu><span><span className={"hide-on-mobile"}>Chat </span><FontAwesomeIcon icon={faMailBulk}/></span></Menu></NavLink>
-                <NavLink to={"/owner/checkout"}><Menu><span><span className={"hide-on-mobile"}>Checkout Page </span><FontAwesomeIcon icon={faShoppingCart}/></span></Menu></NavLink>
+                {/*<NavLink to={"/owner/checkout"}><Menu><span><span className={"hide-on-mobile"}>Checkout Page </span><FontAwesomeIcon icon={faShoppingCart}/></span></Menu></NavLink>*/}
                 <NavLink to={"/owner/history-premium"}><Menu><span><span className={"hide-on-mobile"}>History Premium </span><FontAwesomeIcon icon={faHistory}/></span></Menu></NavLink>
                 <NavLink to={"/owner/phone"}><Menu><span><span className={"hide-on-mobile"}>Manage Phone </span><FontAwesomeIcon icon={faPhone}/></span></Menu></NavLink>
             </AllWrapper>

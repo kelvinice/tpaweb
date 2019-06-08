@@ -7,11 +7,9 @@ import {
     BeautyInputWrapper,
     BeautyTextAreaOutlined,
     BeautyTomatoButton,
-    BeautySelectInputOutlined, BeautySelectInput, CustomButtonWrapper
+    BeautySelectInputOutlined, CustomButtonWrapper
 } from "../../components/General/BeautyComponent";
-import {Link} from "react-router-dom";
 import {BACKENDLINK} from "../../Define";
-import Kosts from "../../components/CariPage/Kosts";
 import FacilityCard from "../../components/OwnerManagePage/FacilityCard";
 
 const AllWrapper =styled('div')`
@@ -46,7 +44,8 @@ flex-wrap: wrap;
 
 class AddHouse extends Component {
     state = {
-        page:3,
+        page:0,
+        city_list:[],
         map:{
             zoom: 13
         },
@@ -56,7 +55,7 @@ class AddHouse extends Component {
         roomFacilities:[],
         mapAddress:"",
         address:"",
-        city:"",
+        city:2,
         description:"",
         additionalInformation:"",
         roomLeft:1,
@@ -67,12 +66,30 @@ class AddHouse extends Component {
         bannerPicture:null,
         picture360:null,
         video:null,
+        price:0,
+        area:0
     }
 
+    fetchCity(){
+        const axios = require('axios');
+        axios.get(`${BACKENDLINK}cities`).then(response=>{
+            this.setState({city_list:response.data.cities});
+        });
+
+
+    }
+
+
     componentDidMount() {
+        this.fetchCity();
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition( (position) =>{
                 this.props.updateCurrentPosition([position.coords.latitude,position.coords.longitude])
+                const axios = require('axios');
+                axios.get(`https://us1.locationiq.com/v1/reverse.php?key=899758dd3d8f41&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`)
+                    .then(response =>{
+                        this.setState({mapAddress:response.data.display_name})
+                    })
             })
         }
         const axios = require('axios');
@@ -82,6 +99,7 @@ class AddHouse extends Component {
         axios.get(`${BACKENDLINK}public-facilities`).then(response=>{
             this.setState({dataPublicFacilities:response.data.facilities})
         })
+
 
     }
 
@@ -113,7 +131,7 @@ class AddHouse extends Component {
         formData.append('longitude',this.props.currentPosition[1]);
         formData.append('name',this.state.name);
         formData.append('address',this.state.address);
-        formData.append('city',this.state.city);
+        formData.append('city_id',this.state.city);
         formData.append('description',this.state.description);
         formData.append('additionalInformation',this.state.additionalInformation);
         formData.append('roomLeft',this.state.roomLeft);
@@ -123,6 +141,8 @@ class AddHouse extends Component {
         formData.append('bannerPicture',this.state.bannerPicture);
         formData.append('picture360',this.state.picture360);
         formData.append('video',this.state.video);
+        formData.append('price',this.state.price);
+        formData.append('area',this.state.area);
 
         const config = {
             headers: {
@@ -185,7 +205,14 @@ class AddHouse extends Component {
 
                 <BeautyInputWrapper>
                     City
-                    <BeautyInputOutlined name={"city"} value={this.state.city} onChange={(e)=>this.inputChanged(e)}/>
+                    <BeautySelectInputOutlined name={"city"} value={this.state.city} onChange={(e)=>this.inputChanged(e)}>
+                        {this.state.city_list.map(
+                            (data,key)=> <option key={data.id} value={data.id}>{data.name}</option>
+                        )}
+
+
+                    </BeautySelectInputOutlined>
+                    {/*<BeautyInputOutlined name={"city"} value={this.state.city} onChange={(e)=>this.inputChanged(e)}/>*/}
                 </BeautyInputWrapper>
             </Fragment>
         }else if(this.state.page===1){
@@ -275,6 +302,16 @@ class AddHouse extends Component {
                         <option value="4">Putra dan Campur</option>
                         <option value="5">Putri dan Campur</option>
                     </BeautySelectInputOutlined>
+                </BeautyInputWrapper>
+
+                <BeautyInputWrapper>
+                    Price
+                    <BeautyInputOutlined name={"price"} value={this.state.price} type={"number"} onChange={(e)=>this.inputChanged(e)}/>
+                </BeautyInputWrapper>
+
+                <BeautyInputWrapper>
+                    Area
+                    <BeautyInputOutlined name={"area"} value={this.state.area} type={"number"} onChange={(e)=>this.inputChanged(e)}/>
                 </BeautyInputWrapper>
                 <br/>
             </Fragment>

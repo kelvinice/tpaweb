@@ -52,7 +52,7 @@ class Footer extends Component {
             <Centerer>
                 {/*TODO*/}
                 <LogoImages></LogoImages>
-                <div>Dapatkan "info kost murah" hanya di MamiKos App. </div>
+                <div>Dapatkan "info kost murah" hanya di Barbarkos App. </div>
                 <div>Mau "Sewa Kost Murah"?</div>
                 <div  style={{fontWeight:"bolder",fontSize:"13px"}}>Download BarbarKos App Sekarang</div>
 

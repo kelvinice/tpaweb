@@ -30,6 +30,11 @@ const ButtonPlain = styled('button')`
 `
 
 class LeftKost extends Component {
+    constructor(props){
+        super(props);
+        this.scrollFunction = this.scrollFunction.bind(this); //bind function once
+    }
+
     state = {
         link : "http://localhost:8000/properties",
         allkosts : [],
@@ -38,6 +43,7 @@ class LeftKost extends Component {
 
     fetchMore(){
         this.setState({isLoading:true});
+        // console.log(this.props.currentPosition[0])
 
         const axios = require('axios');
         axios.get(this.state.link,{ params: {
@@ -45,18 +51,13 @@ class LeftKost extends Component {
                 latitude:this.props.currentPosition[0],
                 longitude:this.props.currentPosition[1],
             }}).then((response)=>{
-             console.log(response)
+             // console.log(response)
             this.setState({allkosts:this.state.allkosts.concat(response.data.properties.data),link:response.data.properties.next_page_url})
             this.setState({isLoading:false});
         }).catch((error)=>{
             console.log(error.response);
             this.setState({isLoading:false});
         });
-    }
-
-    componentWillMount() {
-        this.fetchMore()
-        this.setState({isLoading:true});
     }
 
     scrollFunction(){
@@ -68,10 +69,12 @@ class LeftKost extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener("scroll",()=>this.scrollFunction());
+        window.addEventListener("scroll",this.scrollFunction);
+        this.setState({isLoading:true});
+        this.fetchMore()
     }
     componentWillUnmount() {
-        window.removeEventListener("scroll",()=>this.scrollFunction());
+        window.removeEventListener("scroll",this.scrollFunction);
     }
 
     handleButton(){
@@ -87,8 +90,7 @@ class LeftKost extends Component {
     refreshFilter(){
         this.setState({link : "http://localhost:8000/properties",
             allkosts : [],
-            isLast : false,
-            isLoading : false},
+            isLoading : true},
             ()=>this.fetchMore()
             )
     }
@@ -121,4 +123,4 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps,null, { forwardRef : true })(LeftKost);
+export default connect(MapStateToProps,MapDispatchToProps,null,{forwardRef : true })(LeftKost);

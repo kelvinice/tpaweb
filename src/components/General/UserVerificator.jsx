@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 import {Redirect}from 'react-router-dom'
 import BeautyLoading from "./BeautyLoading";
+import {BACKENDLINK} from "../../Define";
 
 class UserVerificator extends Component {
     state = {
@@ -13,7 +14,7 @@ class UserVerificator extends Component {
 
         const axios = require('axios/index');
 
-        axios.get(`http://localhost:8000/curr?token=${token}`,{
+        axios.get(`${BACKENDLINK}/curr?token=${token}`,{
             headers:{
                 'token':token
             }
@@ -39,12 +40,13 @@ class UserVerificator extends Component {
         }
         const axios = require('axios/index');
 
-        axios.get(`http://localhost:8000/curr?token=${token}`,{
+        axios.get(`${BACKENDLINK}/curr?token=${token}`,{
             headers:{
                 'token':token
             }
         }).then((response) => {
             if(response.data.message==="success"){
+                // console.log(response.data);
                 this.props.updateUserlogin(response.data.user)
             }else{
                 // console.log("no login");

@@ -85,7 +85,7 @@ nav{
     left: 0;
     top: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 5;
 
 }
 nav div{
@@ -100,6 +100,7 @@ nav img{
     color: white;
     display: flex;
     margin-right: 15px;
+    width: auto;
     /*position: relative;*/
     /*left: -125px;*/
 }
@@ -200,7 +201,7 @@ input{
 
 @media only screen and (max-width: 900px) {
     .mini-height-mobile{
-        height: 100px;
+        height: 50px;
     }
 
     .ultra-height-mobile{

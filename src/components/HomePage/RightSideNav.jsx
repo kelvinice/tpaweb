@@ -1,8 +1,9 @@
 import React,{Component} from 'react'
-import {Link} from "react-router-dom";
+import {Link,withRouter} from "react-router-dom";
 import styled from "styled-components";
 import * as PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {BACKENDLINK} from "../../Define";
 
 const SmallProfile = styled('div')`
   background-image: url("/assets/images/ic_akun_user.png");
@@ -18,12 +19,15 @@ class RightSideNav extends Component {
     state = {
         isSetMasuk: false,
         isSetCari : false,
+        isHome : false,
         user : null
     }
 
     componentDidMount() {
         document.getElementById("button-masuk").addEventListener('click', this.onClickMasuk.bind(this));
         document.getElementById("button-cari").addEventListener('click', this.onClickCari.bind(this));
+
+        if(this.props.location.pathname==="/")this.setState({isHome:true});
     }
 
     componentWillUnmount() {
@@ -32,6 +36,20 @@ class RightSideNav extends Component {
     }
 
     doLogout(){
+        const token = localStorage.getItem('token');
+        const axios = require('axios');
+
+        axios.post(`${BACKENDLINK}logout`,{
+
+        },{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response=>{
+
+        }).catch(error => {
+            console.log(error.response)
+        });
         localStorage.removeItem('token');
         this.props.updateUserlogin(null);
     }
@@ -80,12 +98,13 @@ class RightSideNav extends Component {
 
     render() {
         return <div id="right-side" className={this.props.isShowMobileNav ? "mobile-show" : "mobile-hide"}>
-
-            <a href="#app-download">
-                <div className="wrapper hide-on-mobile">
-                    <div>Download App</div>
-                </div>
-            </a>
+            {this.state.isHome &&
+                <a href="#app-download">
+                    <div className="wrapper hide-on-mobile">
+                        <div>Download App</div>
+                    </div>
+                </a>
+            }
             <span>
                 <div className="wrapper">
                     <div id="button-cari">
@@ -99,9 +118,9 @@ class RightSideNav extends Component {
                     </div>
                 </div>
             </span>
-            <Link to="#">
+            <Link to="/premium">
                 <div className="wrapper">
-                    <div className=" mobile-nav-item">Promosikan Iklan Anda</div>
+                    <div className=" mobile-nav-item">Premium Barbarkos</div>
                 </div>
             </Link>
             {this.navHandler()}
@@ -157,5 +176,5 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps)(RightSideNav);
+export default withRouter(connect(MapStateToProps,MapDispatchToProps)(RightSideNav));
 

@@ -6,7 +6,7 @@ const PromotionStyles = styled.div`
     position: relative;
     top: 0;
     color: white;
-    background-image: url('assets/images/promotion.jpg');
+    background-image: url('/assets/images/promotion.jpg');
     height: 65vh;
     width: 100%;
     background-position: center;

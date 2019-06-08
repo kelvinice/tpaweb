@@ -23,7 +23,7 @@ const LogoImage = styled('div')`
   position: relative;
   background-size: cover;
   background-position: center;
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 1150px) {
     height: 50px;
     width: 50px;
     background-size: cover;
@@ -49,6 +49,11 @@ const NavWrapper =styled('div')`
 
 
 class NavBar extends Component {
+    constructor(props){
+        super(props);
+        this.onScroll = this.onScroll.bind(this); //bind function once
+    }
+
     state = {
         isShowMobileNav:true,
         isScrollOver:false
@@ -97,9 +102,6 @@ class NavBar extends Component {
                     }
                     {this.props.rightSide}
                 </NavWrapper>
-
-
-
             </nav>
         )
     }
@@ -118,7 +120,7 @@ class NavBar extends Component {
 
     componentDidMount() {
         if(this.props.animatedGreen){
-            window.addEventListener('scroll', ()=>this.onScroll());
+            window.addEventListener('scroll', this.onScroll);
         }else{
             this.setState({isScrollOver:true});
         }
@@ -127,7 +129,7 @@ class NavBar extends Component {
 
     componentWillUnmount() {
         if(this.props.animatedGreen) {
-            window.removeEventListener('scroll', ()=>this.onScroll());
+            window.removeEventListener('scroll', this.onScroll);
         }
     }
 

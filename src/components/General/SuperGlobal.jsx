@@ -1,7 +1,7 @@
 const Store = {
     UserLogin : null,
     isShowMobileNav : false,
-    currentPosition : [-6.20,106.78],
+    currentPosition : [0,0],
 }
 
 const Reducer=(state = Store,action) => {

@@ -4,6 +4,7 @@ import UserVerificator from "../components/General/UserVerificator";
 import CariFilter from "../containers/CariPage/CariFilter";
 import RightMap from "../containers/CariPage/RightMap";
 import LeftKost from "../containers/CariPage/LeftKost";
+import BreadCrumbs from "../components/General/BreadCrumbs";
 
 class CariKostPage extends Component {
     state = {
@@ -26,6 +27,7 @@ class CariKostPage extends Component {
         return (
             <div>
                 <UserNavBar/>
+                <BreadCrumbs/>
                 <UserVerificator noRedirect={true}/>
                 <CariFilter setFilter={(e)=>this.setFilter(e)}/>
                 <div>

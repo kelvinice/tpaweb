@@ -12,7 +12,6 @@ import ManageHouse from "../containers/OwnerDashboard/ManageHouse";
 import AddHouse from "../containers/OwnerDashboard/AddHouse";
 import ManageApartement from "../containers/OwnerDashboard/ManageApartement";
 import OwnerChat from "../containers/OwnerDashboard/OwnerChat";
-import CheckOut from "../containers/OwnerDashboard/CheckOut";
 import HistoryPremium from "../containers/OwnerDashboard/HistoryPremium";
 
 const AllWrapper = styled('div')`
@@ -59,11 +58,11 @@ class OwnerDashboardPage extends Component {
                             <Switch>
                                 <Route path={`${this.props.match.url}/`} component={OwnerDashboardInformation} exact />
                                 <Route path={`${this.props.match.url}/dashboard`} component={OwnerDashboardInformation} exact />
+                                <Route path={`${this.props.match.url}/manage-house/add-house`} component={AddHouse} exact />
                                 <Route path={`${this.props.match.url}/manage-house`} component={ManageHouse} exact />
                                 <Route path={`${this.props.match.url}/manage-apartement`} component={ManageApartement} exact />
-                                <Route path={`${this.props.match.url}/add-house`} component={AddHouse} exact />
                                 <Route path={`${this.props.match.url}/chat`} component={OwnerChat} exact />
-                                <Route path={`${this.props.match.url}/checkout`} component={CheckOut} exact />
+                                {/*<Route path={`${this.props.match.url}/checkout`} component={CheckOutPage} exact />*/}
                                 <Route path={`${this.props.match.url}/history-premium`} component={HistoryPremium} exact />
                                 <Route path={`${this.props.match.url}/phone`} component={ManagePhone} exact />
                                 <Route component={NotFoundPage}/>

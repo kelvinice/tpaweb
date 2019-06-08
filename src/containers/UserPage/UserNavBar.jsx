@@ -24,7 +24,7 @@ class UserNavBar extends Component {
     render() {
         return (
             <React.Fragment>
-                <NavBar position={"fixed"}  rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
+                <NavBar position={"fixed"} rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
                 <Padder/>
                 {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
             </React.Fragment>

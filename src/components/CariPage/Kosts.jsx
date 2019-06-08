@@ -3,13 +3,25 @@ import styled from 'styled-components'
 // import moment from 'moment-with-locales-es6'
 import moment from 'moment'
 import 'moment/min/locales'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMedal} from "@fortawesome/free-solid-svg-icons";
+import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
+import {withRouter} from 'react-router-dom'
 
 const AllWrapper = styled('div')`
   width: 50%;
   box-sizing: border-box;
   padding: 15px;
+  border-radius: 5px;
   @media (max-width: 990px){
     width: 100%;
+  }
+  cursor: pointer;
+   &:hover,&:focus{
+    outline: 0;
+    @media (min-width: 992px){
+        box-shadow: 0 14px 28px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.22);
+      }
   }
 `
 
@@ -43,6 +55,7 @@ const MiddleSpan = styled('span')`
   font-size: 15px;
   padding: 0 1px;
 `
+
 
 class Kosts extends Component {
     genderHandler(){
@@ -80,9 +93,13 @@ class Kosts extends Component {
         return <span style={{fontSize:"13px"}}>{datediff}</span>;
     }
 
+    handleClick(){
+        this.props.history.push(`/detail/${this.props.data.slug}`)
+    }
+
     render() {
         return (
-            <AllWrapper>
+            <AllWrapper onClick={()=>this.handleClick()}>
                 <Content>
                     {/*{console.log(this.props.data)}*/}
                     <ProfileImage/>
@@ -101,6 +118,15 @@ class Kosts extends Component {
                         <GoodDiv>
                             {this.updateHandler()}
                         </GoodDiv>
+                        <GoodDiv>
+                            {this.props.data.owner.active &&
+                                <FontAwesomeIcon icon={faMedal}/>
+                            }
+                            {
+                                this.props.data.owner.phone_verified_at &&
+                                    <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>
+                            }
+                        </GoodDiv>
 
                     </ContentWrapper>
 
@@ -112,4 +138,4 @@ class Kosts extends Component {
     }
 }
 
-export default Kosts;
+export default withRouter(Kosts);

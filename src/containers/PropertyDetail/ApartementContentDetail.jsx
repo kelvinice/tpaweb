@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-class CheckOut extends Component {
+class ApartementContentDetail extends Component {
     render() {
         return (
             <div>
-                
+                apartement
             </div>
         );
     }
 }
 
-export default CheckOut;
+export default ApartementContentDetail;

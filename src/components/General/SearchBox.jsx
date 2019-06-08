@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {connect} from "react-redux";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {withRouter} from 'react-router-dom'
 
 const AllWrapper = styled('div')`
 background-color: white;
@@ -13,9 +14,13 @@ margin: 5px 0;
 width: 50%;
 max-width: 300px;
 border-radius: 4px;
+&:hover{
+color:green;
+}
+
 @media (max-width: 900px){
 width: 100%;
-margin: 10px 0 55px 10px;
+margin: 5px 0 5px 10px;
 }
 `
 
@@ -37,11 +42,15 @@ const SearchInput = styled('div')`
 `
 
 class SearchBox extends Component {
+    redirect(){
+        this.props.history.push("/cari");
+    }
+
     render() {
         return (
             <Fragment>
                 {!this.props.isShowMobileNav &&
-                <AllWrapper>
+                <AllWrapper onClick={()=>this.redirect()}>
                     <SearchField>
                         <LeftSearchIcon><FontAwesomeIcon icon={faSearch}/></LeftSearchIcon>
                         <SearchInput>Cari sesuatu...</SearchInput>
@@ -64,4 +73,4 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps)(SearchBox);
+export default withRouter(connect(MapStateToProps,MapDispatchToProps)(SearchBox));

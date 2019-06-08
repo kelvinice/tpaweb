@@ -8,8 +8,10 @@ const NavInfo = styled('div')`
   padding: 5px 10px;
   border-bottom: 1px solid darkgrey;
   box-sizing: border-box;
-  font-family: "Titillium Web";
+  font-family: "Titillium Web",serif;
   width: 100%;
+  overflow-y: hidden;
+  white-space: nowrap;
   ${'a'}{
       ${'p'}{
         margin: 0; 

@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
-import styled from "styled-components";
+import React, {Component,Fragment} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHome, faRedo, faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
-import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
-import {faBed} from "@fortawesome/free-solid-svg-icons/faBed";
+import {faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+import {faPercent} from "@fortawesome/free-solid-svg-icons/faPercent";
 
 
 const AllWrapper = styled('div')`
 width: 100%;
 height: 80px;
-background-color: #fb84d7;
+
 margin-bottom: 5px;
-cursor: pointer;
+
 display: flex;
 justify-content: flex-end;
 //padding-right: 10px;
@@ -74,14 +74,16 @@ const ButtonReset = styled('div')`
   background-color: #614ffb;
   color: white;
   height: 100%;
-  width: 80px;
+  width: 100%;
   min-width: 80px;
   display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     @media (max-width: 900px){
       width: 100%;
     }
+    cursor: pointer;
 `
 
 const ButtonWrapper = styled('div')`
@@ -91,14 +93,7 @@ const ButtonWrapper = styled('div')`
   @media (max-width: 900px){
       width: 100%;
     }
-`
-
-const BigProfile = styled('div')`
-  background-position: center;
-  background-size: cover;
-  width: 80px;
-  height: 100%;
-  display: inline-block;
+    cursor: pointer;
 `
 
 const TextWrapper = styled('div')`
@@ -108,21 +103,36 @@ const TextWrapper = styled('div')`
   flex-flow: column;
   justify-content: center;
   font-weight: bold;
+  width: 100%;
+  background-color: #fba078;
+  &:hover{
+  background-color: #dac6bc;
+  color: #d78a72;
+  }
+  cursor: unset;
+`
+
+const PriceWrapper = styled('div')`
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  font-weight: bold;
+  background-color: #61dafb;
+  width: 100%;
+  &:hover{
+   background-color: #90d2fb;
+  color: #4d7be2;
+  }
 `
 
 
-class FacilitiesOnManages extends Component {
-    handleProfilePicture(){
-        if(this.props.data.picture_id != null)
-            return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
-        else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
-    }
-
-    handleType(){
-        if(this.props.data.group===1){
-            return <FontAwesomeIcon icon={faHome}/>;
+class PremiumProductOnManages extends Component {
+    handlePromo(){
+        if(this.props.data.promo===0){
+            return <span>Promo : <FontAwesomeIcon icon={faTimes}/></span>
         }else{
-            return <FontAwesomeIcon icon={faBed}/>;
+            return <span>Promo : {this.props.data.promo} <FontAwesomeIcon icon={faPercent}/></span>
         }
     }
 
@@ -130,18 +140,17 @@ class FacilitiesOnManages extends Component {
         return (
             <AllWrapper>
                 <AttributeContainer>
-                    {this.handleProfilePicture()}
-                    <TextWrapper>{this.props.data.name}</TextWrapper>
+                    <TextWrapper>{this.props.data.duration} Days</TextWrapper>
+                    <PriceWrapper>Rp. {this.props.data.price}</PriceWrapper>
                 </AttributeContainer>
+                <ButtonReset onClick={(target)=>this.props.setTarget({premium:this.props.data,type:"promo"})}>{this.handlePromo()}</ButtonReset>
                 <ButtonWrapper>
-                    <ButtonReset>{this.handleType()}</ButtonReset>
-                    <ButtonBan onClick={(target)=>this.props.setTarget({facility:this.props.data,type:"update"})}><FontAwesomeIcon icon={faRedoAlt}/></ButtonBan>
-                    <ButtonDelete onClick={(target)=>this.props.setTarget({facility:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
+                    <ButtonBan onClick={(target)=>this.props.setTarget({premium:this.props.data,type:"update"})}><FontAwesomeIcon icon={faRedoAlt}/></ButtonBan>
+                    <ButtonDelete onClick={(target)=>this.props.setTarget({premium:this.props.data,type:"delete"})}><FontAwesomeIcon icon={faTrashAlt}/></ButtonDelete>
                 </ButtonWrapper>
-
             </AllWrapper>
         );
     }
 }
 
-export default FacilitiesOnManages;
+export default PremiumProductOnManages;

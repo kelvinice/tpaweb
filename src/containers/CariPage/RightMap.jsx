@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import styled from 'styled-components'
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
 import {connect} from "react-redux";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
+import L from 'leaflet';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -24,7 +24,7 @@ const AllWrapper = styled('div')`
       }
   }
 `
-var marker = {};
+
 class RightMap extends Component {
     state = {
         zoom: 13,
@@ -34,12 +34,16 @@ class RightMap extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition( (position) =>{
                 this.props.updateCurrentPosition([position.coords.latitude,position.coords.longitude])
+                // console.log(position.coords.latitude)
+                this.props.refreshFilter();
+            },()=>{
+                this.props.updateCurrentPosition([-6.20,106.78]);
+                this.props.refreshFilter();
             })
         }
     }
 
     onMapClick(e){
-
         this.props.updateCurrentPosition([e.latlng.lat,e.latlng.lng])
         this.props.refreshFilter();
         // console.log(e.latlng)

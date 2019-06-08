@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component,Fragment} from 'react';
 import styled, {keyframes} from "styled-components";
 
 const keys1 = keyframes`
@@ -11,6 +11,19 @@ const keys1 = keyframes`
       height: 20px;
       width: 20px;
       background-color: green;
+  }
+`
+
+const keys2 = keyframes`
+  from{
+    height: 50px;
+    width: 50px;
+    background-color: rgba(123,76,186,0.65);
+  }
+  to{
+      height: 20px;
+      width: 20px;
+      background-color: #473c79;
   }
 `
 
@@ -55,6 +68,22 @@ const GreenDot = styled('div')`
   animation-delay: 0.2s;
 `
 
+const PurpleDot = styled('div')`
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 20px;
+  animation: ${keys2} 0.6s alternate infinite;
+  &:first-child{
+    animation-delay: 0s;
+  }
+  &:last-child{
+    animation-delay: 0.4s;
+  }
+  animation-delay: 0.2s;
+`
+
+
 class BeautyLoading extends Component {
     render() {
         return (
@@ -70,13 +99,28 @@ class BeautyLoading extends Component {
 }
 
 class InnerBeautyLoading extends Component {
+    handleDot(){
+        if(this.props.isPurple){
+            return <Fragment>
+                <PurpleDot/>
+                <PurpleDot/>
+                <PurpleDot/>
+            </Fragment>
+        }else{
+            return <Fragment>
+                <GreenDot/>
+                <GreenDot/>
+                <GreenDot/>
+            </Fragment>
+        }
+
+    }
+
     render() {
         return (
             <InnerSuperWhite>
                 <Wrapper>
-                    <GreenDot/>
-                    <GreenDot/>
-                    <GreenDot/>
+                    {this.handleDot()}
                 </Wrapper>
             </InnerSuperWhite>
         );

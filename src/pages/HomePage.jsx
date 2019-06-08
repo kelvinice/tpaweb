@@ -11,6 +11,7 @@ import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
 import KotaBesar from "../containers/HomePage/KotaBesar";
 import UserVerificator from "../components/General/UserVerificator";
+import {BeautyInput} from "../components/General/BeautyComponent";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
@@ -47,9 +48,10 @@ class HomePage extends Component {
                 <NavBar position={"fixed"} animatedGreen={true} rightSide={<RightSideNav pencariClick={()=>this.pencariOnClick()} /> }/>
 
                 <PromotionHeading/>
-                {this.state.pencariToogle ? <LoginPopup autoFocus={true} exitCalled={() => this.pencariExitCalled()} /> : null}
+                {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
                 <Pads>
                     Promo <br/>
+
 
                     Anggap aja ini slider
 
