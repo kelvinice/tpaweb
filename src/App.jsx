@@ -13,6 +13,7 @@ import OwnerDashboardPage from "./pages/OwnerDashboardPage";
 import PremiumPage from "./pages/PremiumPage";
 import CheckOutPage from "./pages/CheckOutPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
+import HistoryPage from "./pages/HistoryPage";
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
                     <Route path="/premium/:id" component={CheckOutPage}/>
                     <Route path="/premium" component={PremiumPage}/>
                     <Route path="/detail/:slug" component={PropertyDetailPage}/>
+                    <Route path="/history" component={HistoryPage}/>
                     <Route component={NotFoundPage} />
                 </Switch>
             </div>

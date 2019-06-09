@@ -40,6 +40,22 @@ const PopMessager = styled('div')`
   }
 `
 
+const PurePopMessager = styled('div')`
+  width: 500px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  @media (max-width: 900px){
+    width: 100%;
+  }
+  @media (max-width: 900px){
+    margin: 0 0;
+  }
+`
+
 const BigGreyText = styled('div')`
   color: #404040;
   font-size: 20px;
@@ -119,4 +135,4 @@ const BoldDiv = styled('div')`
 `
 
 
-export {BoldDiv,SuccessImage,LinearWrapper,InputInformation,HeaderWrapper,BoldRed,PopHolder,PopMessager,BigGreyText,MidButtonWrapper}
+export {PurePopMessager,BoldDiv,SuccessImage,LinearWrapper,InputInformation,HeaderWrapper,BoldRed,PopHolder,PopMessager,BigGreyText,MidButtonWrapper}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../../styles/HomePageStyle.css'
 import styled from 'styled-components'
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link,withRouter} from "react-router-dom";
 import PromotionLocationSearchBox from "../../components/HomePage/PromotionLocationSearchBox";
 import SearchBox from "../../components/General/SearchBox";
 
@@ -73,9 +73,7 @@ class NavBar extends Component {
 
     render() {
         return (
-
             <nav className={this.handleNavMobile()}  style={{position:this.props.position}} >
-
                 {this.state.isScrollOver?
                     <Coverer id="nav-cover" className="nav-after"/>:
                     <Coverer id="nav-cover" className="nav-before"/>
@@ -84,7 +82,11 @@ class NavBar extends Component {
                 <div style={{height:"inherit",position:"relative"}}>
                     <Link to={"/"}><LogoImage/></Link>
                 </div>
-                <SearchBox/>
+
+                {this.props.location.pathname != "/" &&
+                    <SearchBox/>
+                }
+
                 <NavWrapper>
 
                 {this.props.isShowMobileNav ?
@@ -146,4 +148,4 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps)(NavBar);
+export default withRouter(connect(MapStateToProps,MapDispatchToProps)(NavBar));

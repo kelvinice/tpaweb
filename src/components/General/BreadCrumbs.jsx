@@ -46,10 +46,11 @@ class BreadCrumbs extends Component {
         )
 
         for(let i=1;i<r.length;i++){
+            if(r[i]==="")continue;
             url+='/'+r[i];
             links.push(
                 <span key={url}>
-                    <span style={{fontWeight:"bold",color:"#123300"}}> > </span>
+                    <span style={{color:"#808285"}}> > </span>
                     <GreenNavLinkWrapper>
                         <Link to={url}><p>{BreadCrumbs.capitalize_Words(r[i].replace(/[\W_]+/g," "))}</p></Link>
                     </GreenNavLinkWrapper>

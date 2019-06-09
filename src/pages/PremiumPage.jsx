@@ -72,7 +72,7 @@ class PremiumPage extends Component {
 
         const axios = require('axios');
 
-        axios.get(`${BACKENDLINK}cgetTrueAllPremiumProducts`).then(response=>{
+        axios.get(`${BACKENDLINK}getTrueAllPremiumProducts`).then(response=>{
             this.setState({
                 premiums:response.data.premiums,
                 isLoading : false,

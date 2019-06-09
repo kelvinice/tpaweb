@@ -37,7 +37,7 @@ class RightMap extends Component {
                 // console.log(position.coords.latitude)
                 this.props.refreshFilter();
             },()=>{
-                this.props.updateCurrentPosition([-6.20,106.78]);
+                this.props.updateCurrentPosition([-6.20,106.78]);  //Default Value kalo gk di enable geo
                 this.props.refreshFilter();
             })
         }

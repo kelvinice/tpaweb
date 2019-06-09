@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMedal} from "@fortawesome/free-solid-svg-icons";
 import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
 import {withRouter} from 'react-router-dom'
+import {BACKENDLINK} from "../../Define";
 
 const AllWrapper = styled('div')`
   width: 50%;
@@ -32,7 +33,8 @@ const Content = styled('div')`
 const ProfileImage = styled('div')`
   height: 250px;
   width: 100%;
-  background-image: url("/assets/images/dummy.jpg");
+  background-color: #e4e4e4;
+  background-image:${props => props.pictures_id == null ? "url('/assets/images/house-grey.svg');" : "url(" + BACKENDLINK + "storage/images/" + props.pictures_id + ");"};
   background-size: cover;
   background-position: 50%;
   overflow: hidden;
@@ -102,7 +104,7 @@ class Kosts extends Component {
             <AllWrapper onClick={()=>this.handleClick()}>
                 <Content>
                     {/*{console.log(this.props.data)}*/}
-                    <ProfileImage/>
+                    <ProfileImage pictures_id={this.props.data.pictures_id}/>
                     <ContentWrapper>
                         <GoodDiv>
                             {this.genderHandler()}

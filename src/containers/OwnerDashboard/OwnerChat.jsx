@@ -27,7 +27,7 @@ class OwnerChat extends Component {
 
     async componentWillMount() {
         await this.connection();
-        this.live_chat('6bae4f0e-18b2-3295-9605-63293c2f4f17');
+        this.live_chat('5e4c9ce5-3b34-36ba-8a00-a07be6ee8c80');
     }
 
     handleChange(e){

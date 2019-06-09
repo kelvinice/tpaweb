@@ -6,15 +6,16 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faCheckCircle,
     faCommentAlt,
-    faFax,
     faMedal,
-    faStopCircle,
     faTimesCircle
 } from "@fortawesome/free-solid-svg-icons";
 import {faBullhorn} from "@fortawesome/free-solid-svg-icons/faBullhorn";
 import {BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import {BoldDiv} from "../../components/General/CustomComponent";
 import FacilityCard from "../../components/OwnerManagePage/FacilityCard";
+import {connect} from "react-redux";
+import {BACKENDLINK} from "../../Define";
+import {withRouter} from 'react-router-dom'
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -82,8 +83,6 @@ width: 100%;
 const PremiumDiv = styled('div')`
   color: #e8a95a;
   font-size: 30px;
- 
-  
   @media (max-width: 900px){
    background-color: #ff5659;
 text-align: center;
@@ -97,9 +96,11 @@ width: 100%;
 
 const FacilityDiv = styled('div')`
 display: flex;
-
 `
 
+const SecretHidden = styled('div')`
+  //color: white;
+`
 
 class HouseContentDetail extends Component {
     genderHandler(){
@@ -152,6 +153,38 @@ class HouseContentDetail extends Component {
             return <div style={{color:"#e64b4c"}}><FontAwesomeIcon icon={faTimesCircle}/> Telepon belum terverifikasi</div>
         }
     }
+
+    handleReport(){
+        if(this.props.UserLogin){
+            if(this.props.UserLogin.type === 1){
+                return <BeautyTomatoButton onClick={()=>this.props.setTarget("report")}>Report <FontAwesomeIcon icon={faBullhorn}/></BeautyTomatoButton>;
+            }else if(this.props.UserLogin.type === 3){
+                return <BeautyTomatoButton onClick={()=>this.props.setTarget("banned")}>Ban Kost <FontAwesomeIcon icon={faBullhorn}/></BeautyTomatoButton>;
+            }
+        }
+    }
+
+    handleChat(){
+        const id = this.props.data.owner.id;
+
+        this.props.setTarget("loading");
+
+        const axios = require('axios');
+        let token = localStorage.getItem('token');
+
+        let data = {"token":token,"id" : id, headers: {
+                Authorization: `Bearer ${token}`
+            }}
+        axios.post(`${BACKENDLINK}guestGetOrCreateChannel`,data).then(response=>{
+            this.props.setTarget(null);
+            // console.log(response.data);
+            this.props.history.push(`/history/chat/${response.data.channel.id}`)
+        }).catch(error => {
+            console.log(error.response);
+        })
+
+    }
+
 
     render() {
         return (
@@ -207,6 +240,14 @@ class HouseContentDetail extends Component {
                     <br/>
 
                     <BoldDiv>
+                        Pemilik
+                    </BoldDiv>
+                    <TitleDiv>
+                        <div style={{fontSize:"17px"}}>{this.props.data.owner.name}</div>
+                        <SecretHidden>{this.props.data.owner.phone}</SecretHidden>
+                    </TitleDiv>
+
+                    <BoldDiv>
                         Verifikasi
                     </BoldDiv>
                     <div>
@@ -214,8 +255,8 @@ class HouseContentDetail extends Component {
                     </div>
 
                     <br/>
+                    {this.handleReport()}
 
-                    <BeautyTomatoButton>Report <FontAwesomeIcon icon={faBullhorn}/></BeautyTomatoButton>
                 </LeftSide>
                 <RightSide>
                     <SisaKamarDiv>
@@ -229,11 +270,26 @@ class HouseContentDetail extends Component {
                         <span>/bulan</span>
                     </PriceDiv>
                     <br/>
-                    <BeautyTomatoButton><FontAwesomeIcon icon={faCommentAlt}/> Hubungi Kost</BeautyTomatoButton>
+
+
+                    {(this.props.UserLogin && this.props.UserLogin.type == 1) &&
+                        <BeautyTomatoButton onClick={()=>this.handleChat()}><FontAwesomeIcon icon={faCommentAlt}/> Chat Pemilik</BeautyTomatoButton>
+                    }
                 </RightSide>
             </AllWrapper>
         );
     }
 }
 
-export default HouseContentDetail;
+const MapStateToProps = state => {
+    return {
+        UserLogin : state.UserLogin
+    }
+}
+const MapDispatchToProps = dispatch => {
+    return {
+        updateUserlogin : (key)=>dispatch({type : "updateUserlogin",value:key})
+    }
+}
+
+export default withRouter(connect(MapStateToProps,MapDispatchToProps)(HouseContentDetail));

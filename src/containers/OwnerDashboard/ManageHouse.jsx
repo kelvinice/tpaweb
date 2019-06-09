@@ -10,6 +10,7 @@ import {
     PopHolder,
     PopMessager
 } from "../../components/General/CustomComponent";
+import {BACKENDLINK} from "../../Define";
 
 class ManageHouse extends Component {
     constructor(props){
@@ -40,7 +41,7 @@ class ManageHouse extends Component {
         let data = {"token":token,"id" : id, headers: {
                 Authorization: `Bearer ${token}`
             }}
-        axios.delete(`http://localhost:8000/delete-house/${id}`,data).then(response=>{
+        axios.delete(`${BACKENDLINK}delete-house/${id}`,data).then(response=>{
             console.log(response);
             if(response.data.message==="success"){
                 this.setState({
