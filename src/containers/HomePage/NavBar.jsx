@@ -3,7 +3,6 @@ import '../../styles/HomePageStyle.css'
 import styled from 'styled-components'
 import {connect} from "react-redux";
 import {Link,withRouter} from "react-router-dom";
-import PromotionLocationSearchBox from "../../components/HomePage/PromotionLocationSearchBox";
 import SearchBox from "../../components/General/SearchBox";
 
 const IconBar = styled('span')`
@@ -83,9 +82,7 @@ class NavBar extends Component {
                     <Link to={"/"}><LogoImage/></Link>
                 </div>
 
-                {this.props.location.pathname != "/" &&
-                    <SearchBox/>
-                }
+                <SearchBox/>
 
                 <NavWrapper>
 

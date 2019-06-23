@@ -80,7 +80,7 @@ const Menu = styled('div')`
 class LeftUserProfile extends Component {
     handleProfilePicture(){
         if(this.props.UserLogin && this.props.UserLogin.picture_id != null)
-            return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.UserLogin.picture_id+")"}}/>;
+            return  <BigProfile style={{backgroundImage:"url(http://127.0.0.1:8000/storage/images/"+this.props.UserLogin.picture_id+")"}}/>;
         else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
     }
 

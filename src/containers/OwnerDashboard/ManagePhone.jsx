@@ -1,10 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import styled from "styled-components";
-import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/General/BeautyComponent";
+import { BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import {connect} from "react-redux";
 import GoodInput from "../../components/General/GoodInput";
 import {faPhone} from "@fortawesome/free-solid-svg-icons/faPhone";
-import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 

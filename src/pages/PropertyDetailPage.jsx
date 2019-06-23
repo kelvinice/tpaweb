@@ -13,6 +13,7 @@ import {BeautyTomatoButton} from "../components/General/BeautyComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
+import {Link,withRouter} from "react-router-dom";
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -99,10 +100,45 @@ class PropertyDetailPage extends Component {
 
     fetchData(){
         const axios = require('axios');
-        axios.get(`${BACKENDLINK}propertiesBySlug/${this.props.match.params.slug}`).then(response=>{
-            // console.log(response.data)
+        const token = localStorage.getItem('token');
 
-            this.setState({data: response.data.property})
+        axios.get(`${BACKENDLINK}propertiesBySlug/${this.props.match.params.slug}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            ).then(response=>{
+            console.log(response.data)
+
+            this.setState({data: response.data.property},()=>{
+                this.forceUpdate();
+            })
+
+        }).catch(err=>{
+            console.log(err.response)
+            if(err.response.status===404){
+                this.props.history.push("/")
+            }
+        });
+    }
+
+    fetchData2(slug){
+        const axios = require('axios');
+        const token = localStorage.getItem('token');
+
+        axios.get(`${BACKENDLINK}propertiesBySlug/${slug}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        ).then(response=>{
+            console.log(response.data)
+
+            this.setState({data: response.data.property},()=>{
+                this.forceUpdate();
+            })
 
         }).catch(err=>{
             console.log(err.response)
@@ -115,12 +151,15 @@ class PropertyDetailPage extends Component {
     componentDidMount() {
         this.fetchData();
     }
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.fetchData2(nextProps.match.params.slug);
+    }
 
-    handlePropertyType(){
-        if(this.state.data.house!= null){
-            return <HouseContentDetail data={this.state.data} setTarget={(target)=>this.setTarget(target)}/>
-        }else if(this.state.data.apartement!= null){
-            return <ApartementContentDetail data={this.state.data} setTarget={(target)=>this.setTarget(target)}/>
+    handlePropertyType(data){
+        if(data.house!= null){
+            return <HouseContentDetail data={data} setTarget={(target)=>this.setTarget(target)}/>
+        }else if(data.apartement!= null){
+            return <ApartementContentDetail data={data} setTarget={(target)=>this.setTarget(target)}/>
         }else{
             return null;
         }
@@ -205,12 +244,14 @@ class PropertyDetailPage extends Component {
     render() {
         return (
             <AllWrapper>
-                {console.log(this.state.data)}
+                {/*{console.log(this.state.data)}*/}
                 {this.handlePop()}
                 <UserVerificator noRedirect={true}/>
                 <UserNavBar/>
                 <BreadCrumbs/>
                 <HeaderWrapper>
+                    {/*<Link to={"/detail/jaydon-harbors"}>Test</Link>*/}
+                    {/*<Link to={"/detail/monahan-alley"}>Test2</Link>*/}
                     {this.handleHeader()}
                     <MenuButton>
                         <CustomBlackButton onClick={()=>this.setState({showMap:false})}>Photo</CustomBlackButton>
@@ -218,13 +259,14 @@ class PropertyDetailPage extends Component {
                     </MenuButton>
                 </HeaderWrapper>
                 <MiddleContentWrapper>
-                    {this.handlePropertyType()}
+                    {this.handlePropertyType(this.state.data)}
                 </MiddleContentWrapper>
                 <Footer/>
+
             </AllWrapper>
         );
     }
 }
 
-export default PropertyDetailPage;
+export default withRouter(PropertyDetailPage)  ;
 

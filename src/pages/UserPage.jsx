@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import UserNavBar from "../containers/UserPage/UserNavBar";
-import {Route,Link,Switch,withRouter} from 'react-router-dom'
+import {Route,Switch} from 'react-router-dom'
 import UserVerificator from "../components/General/UserVerificator";
 import styled from 'styled-components'
-import {GreenNavLinkWrapper} from "../components/General/BeautyComponent";
 import NotFoundPage from "./NotFoundPage";
 import LeftUserProfile from "../containers/UserPage/LeftUserProfile";
 import RightUserVerifikasi from "../containers/UserPage/RightUserVerifikasi";
@@ -146,7 +145,7 @@ class UserPage extends Component {
     render() {
         return (
             <div>
-                <UserVerificator onRef={ref => (this.userVerificator = ref)} roleOnly={1}/>
+                <UserVerificator onRef={ref => (this.userVerificator = ref)} roleExcept={3}/>
                 {this.MessageHandler()}
 
                 <UserNavBar/>

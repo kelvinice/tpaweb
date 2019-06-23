@@ -27,7 +27,7 @@ class GoodInput extends Component {
 
     render() {
         return (
-            <BeautyInputOutlined ref={ref => (this.focused = ref)} value={this.state.value} name={this.props.name} type={(this.props.type) ? this.props.type : "text"} onChange={(e)=>this.valueChange(e)}>
+            <BeautyInputOutlined placeholder={this.props.placeholder} ref={ref => (this.focused = ref)} value={this.state.value} name={this.props.name} type={(this.props.type) ? this.props.type : "text"} onChange={(e)=>this.valueChange(e)}>
             </BeautyInputOutlined>
         );
     }

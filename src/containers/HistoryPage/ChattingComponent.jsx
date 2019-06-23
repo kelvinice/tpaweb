@@ -4,6 +4,7 @@ import {BACKENDLINK} from "../../Define";
 import {BeautyInputOutlined, BeautyTomatoButton} from "../../components/General/BeautyComponent";
 import styled from 'styled-components'
 import {connect} from "react-redux";
+import moment from 'moment'
 
 const Bulletin = styled('div')`
 height: 50vh;
@@ -23,6 +24,9 @@ border-radius: 20px;
 height: 100%;
 word-break: break-word;
 white-space: normal;
+@media (max-width: 900px){
+max-width: 80%;
+}
 `
 
 const WhiteMessage = styled('div')`
@@ -44,6 +48,16 @@ justify-content: ${props=>props.isRight && "flex-end"};
 padding: 5px 3px;
 box-sizing: border-box;
 `
+
+const VerticalCenterer = styled('div')`
+display: flex;
+justify-content: flex-end;
+flex-direction: column;
+margin-right: 4px;
+color: white;
+font-size: 12px;
+`
+
 
 
 class ChattingComponent extends Component {
@@ -71,7 +85,7 @@ class ChattingComponent extends Component {
             }}
         axios.get(`${BACKENDLINK}getAllChatInChannel/${id}`,data).then(response=>{
             // console.log(response.data);
-            this.setState({messages:response.data.chats},()=>this.handleBulletin())
+            this.setState({messages:response.data.chats.reverse()},()=>this.handleBulletin())
             // this.setState({channels:response.data.channels})
         }).catch(error => {
             console.log(error.response);
@@ -80,14 +94,17 @@ class ChattingComponent extends Component {
 
     live_chat(channelID){
         window.Echo.channel(`chat.${channelID}`).listen('MessageSend',e=>{
-            this.setState({messages:this.state.messages.concat({message:e.message,sent_time:e.time.date,sender:e.sender.id})})
+            this.setState({messages:this.state.messages.concat({message:e.message,sent_time:e.time.date,sender:e.sender.id
+                    ,"updated_at":moment().format('YYYY-MM-DD hh:mm:ss')})})
             // console.log(e);
         })
+
 
         // this.setState({channelID,})
     }
 
     componentWillMount() {
+
         this.fetchChat()
        this.connection();
         this.live_chat(this.props.match.params.id);
@@ -125,8 +142,14 @@ class ChattingComponent extends Component {
     }
 
     handleMessage(item,key){
+        // {console.log(item)}
         if(this.props.UserLogin.id===item.sender) {
             return <ChatWrapper key={item.sent_time+item.message+Math.random()} isRight={true}>
+                <VerticalCenterer>
+                    <div>Read</div>
+                    <div>{moment(item.updated_at,"YYYY-MM-DD hh:mm:ss").format("hh:mm")}</div>
+
+                </VerticalCenterer>
                 <GreenMessage>
                     {item.message}
                 </GreenMessage>
@@ -151,7 +174,6 @@ class ChattingComponent extends Component {
     render() {
         return (
             <div>
-
                 <Bulletin id={"bulletin"}>
                     {this.state.messages.map(
                         (item,key)=> this.handleMessage(item,key)
@@ -162,7 +184,6 @@ class ChattingComponent extends Component {
                     <BeautyInputOutlined type="text" value={this.state.message} name={"message"} onChange={(e)=>this.handleChange(e)}/>
                     <BeautyTomatoButton>Send</BeautyTomatoButton>
                 </form>
-
             </div>
         );
     }

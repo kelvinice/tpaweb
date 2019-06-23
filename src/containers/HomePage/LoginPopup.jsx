@@ -119,7 +119,7 @@ class LoginPopup extends Component{
     }
 
     continueLogin(){
-        let token = localStorage.getItem('token');
+        // let token = localStorage.getItem('token');
         // console.log(token)
         window.location.reload();
     }

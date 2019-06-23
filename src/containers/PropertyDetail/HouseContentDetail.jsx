@@ -15,7 +15,8 @@ import {BoldDiv} from "../../components/General/CustomComponent";
 import FacilityCard from "../../components/OwnerManagePage/FacilityCard";
 import {connect} from "react-redux";
 import {BACKENDLINK} from "../../Define";
-import {withRouter} from 'react-router-dom'
+import {withRouter,Link} from 'react-router-dom'
+import FavoriteButton from "../../components/General/FavoriteButton";
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -182,9 +183,7 @@ class HouseContentDetail extends Component {
         }).catch(error => {
             console.log(error.response);
         })
-
     }
-
 
     render() {
         return (
@@ -243,7 +242,9 @@ class HouseContentDetail extends Component {
                         Pemilik
                     </BoldDiv>
                     <TitleDiv>
+                        <Link to={`/seller/${this.props.data.owner.id}`}>
                         <div style={{fontSize:"17px"}}>{this.props.data.owner.name}</div>
+                        </Link>
                         <SecretHidden>{this.props.data.owner.phone}</SecretHidden>
                     </TitleDiv>
 
@@ -270,9 +271,10 @@ class HouseContentDetail extends Component {
                         <span>/bulan</span>
                     </PriceDiv>
                     <br/>
-
-
-                    {(this.props.UserLogin && this.props.UserLogin.type == 1) &&
+                    {this.props.UserLogin && this.props.UserLogin.type===1 &&
+                        <FavoriteButton data={this.props.data}/>
+                    }
+                    {(this.props.UserLogin && this.props.UserLogin.type === 1) &&
                         <BeautyTomatoButton onClick={()=>this.handleChat()}><FontAwesomeIcon icon={faCommentAlt}/> Chat Pemilik</BeautyTomatoButton>
                     }
                 </RightSide>

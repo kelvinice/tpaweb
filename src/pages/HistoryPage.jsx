@@ -52,12 +52,11 @@ class HistoryPage extends Component {
                         <HistoryPanel/>
                         <InnerAllWrapper>
                             <Switch>
-                                <Route path={`${this.props.match.url}/`} render={()=><Redirect to={"history/chat"}/>} exact />
+                                <Route path={`${this.props.match.url}/`} render={()=><Redirect to={"history/view"}/>} exact />
                                 <Route path={`${this.props.match.url}/chat/:id`} component={ChattingComponent} exact />
                                 <Route path={`${this.props.match.url}/chat`} component={HistoryChat} exact />
                                 <Route path={`${this.props.match.url}/view`} component={HistoryView} exact />
                                 <Route path={`${this.props.match.url}/favourite`} component={HistoryFavourites} exact />
-
                                 <Route component={NotFoundPage}/>
                             </Switch>
                         </InnerAllWrapper>

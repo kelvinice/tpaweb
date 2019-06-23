@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import styled from "styled-components";
+// import styled from "styled-components";
 
 
 class ManageTransaction extends Component {

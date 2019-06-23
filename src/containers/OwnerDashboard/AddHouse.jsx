@@ -75,10 +75,7 @@ class AddHouse extends Component {
         axios.get(`${BACKENDLINK}cities`).then(response=>{
             this.setState({city_list:response.data.cities});
         });
-
-
     }
-
 
     componentDidMount() {
         this.fetchCity();
@@ -124,7 +121,7 @@ class AddHouse extends Component {
         let token = localStorage.getItem('token');
         const axios = require('axios');
         let formData = new FormData();
-        console.log(this.state.publicFacilities)
+        // console.log(this.state.publicFacilities)
         formData.append('publicFacilities',JSON.stringify(this.state.publicFacilities));
         formData.append('roomFacilities',JSON.stringify(this.state.roomFacilities));
         formData.append('latitude',this.props.currentPosition[0]);

@@ -12,6 +12,7 @@ import {
     PopHolder,
     PopMessager
 } from "../../components/General/CustomComponent";
+import {BACKENDLINK} from "../../Define";
 
 class AddFacility extends Component {
     state={
@@ -43,7 +44,7 @@ class AddFacility extends Component {
             }
         }
 
-        axios.post("http://localhost:8000/insert-facility", formData,config).then(
+        axios.post(`${BACKENDLINK}/insert-facility`, formData,config).then(
             (response)=>{
                 this.setState({target:"success", errors: {}})
                 console.log(response);

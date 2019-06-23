@@ -13,6 +13,7 @@ import AddHouse from "../containers/OwnerDashboard/AddHouse";
 import ManageApartement from "../containers/OwnerDashboard/ManageApartement";
 import OwnerChat from "../containers/OwnerDashboard/OwnerChat";
 import HistoryPremium from "../containers/OwnerDashboard/HistoryPremium";
+import ChattingComponent from "../containers/HistoryPage/ChattingComponent";
 
 const AllWrapper = styled('div')`
   height: 100%;
@@ -62,6 +63,7 @@ class OwnerDashboardPage extends Component {
                                 <Route path={`${this.props.match.url}/manage-house`} component={ManageHouse} exact />
                                 <Route path={`${this.props.match.url}/manage-apartement`} component={ManageApartement} exact />
                                 <Route path={`${this.props.match.url}/chat`} component={OwnerChat} exact />
+                                <Route path={`${this.props.match.url}/chat/:id`} component={ChattingComponent} exact />
                                 {/*<Route path={`${this.props.match.url}/checkout`} component={CheckOutPage} exact />*/}
                                 <Route path={`${this.props.match.url}/history-premium`} component={HistoryPremium} exact />
                                 <Route path={`${this.props.match.url}/phone`} component={ManagePhone} exact />

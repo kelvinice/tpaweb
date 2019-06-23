@@ -6,7 +6,7 @@ import BreadCrumbs from "../components/General/BreadCrumbs";
 import {BACKENDLINK} from "../Define";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPercent} from "@fortawesome/free-solid-svg-icons/faPercent";
-import {BeautyTomatoButton, OrangeOutlineButton} from "../components/General/BeautyComponent";
+import {BeautyTomatoButton} from "../components/General/BeautyComponent";
 import {connect} from "react-redux";
 import {PopHolder, PopMessager, SuccessImage} from "../components/General/CustomComponent";
 import {InnerBeautyLoading} from "../components/General/BeautyLoading";

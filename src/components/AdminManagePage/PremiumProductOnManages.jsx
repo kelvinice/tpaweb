@@ -1,4 +1,4 @@
-import React, {Component,Fragment} from 'react';
+import React, {Component} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";

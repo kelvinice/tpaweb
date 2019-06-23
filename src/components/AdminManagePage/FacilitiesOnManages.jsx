@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHome, faRedo, faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
-import {faBan} from "@fortawesome/free-solid-svg-icons/faBan";
+import {faHome, faRedoAlt, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {faBed} from "@fortawesome/free-solid-svg-icons/faBed";
 
 
@@ -114,7 +113,7 @@ const TextWrapper = styled('div')`
 class FacilitiesOnManages extends Component {
     handleProfilePicture(){
         if(this.props.data.picture_id != null)
-            return  <BigProfile style={{backgroundImage:"url("+"http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
+            return  <BigProfile style={{backgroundImage:"url(http://127.0.0.1:8000/storage/images/"+this.props.data.picture_id+")"}}/>;
         else return <BigProfile style={{backgroundImage:"url(/assets/images/default-user-image.png)"}}/>;
     }
 

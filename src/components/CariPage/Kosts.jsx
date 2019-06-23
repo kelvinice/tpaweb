@@ -113,9 +113,12 @@ class Kosts extends Component {
                         </GoodDiv>
                         <GoodDiv>
                             {this.sisaKamarHandler()}
+                            <span>  {this.props.data.price} / <b>Bulan</b></span>
                         </GoodDiv>
                         <GoodDiv>
                             Kost {this.props.data.name}
+                            <MiddleSpan > · </MiddleSpan>
+                            {this.props.data.city.name}
                         </GoodDiv>
                         <GoodDiv>
                             {this.updateHandler()}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled,{keyframes} from 'styled-components'
-import {NavLink,withRouter} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faBuilding,
@@ -8,7 +8,6 @@ import {
     faHome,
     faMailBulk,
 } from "@fortawesome/free-solid-svg-icons";
-import {faShoppingCart} from "@fortawesome/free-solid-svg-icons/faShoppingCart";
 import {faCompass} from "@fortawesome/free-solid-svg-icons/faCompass";
 import {faPhone} from "@fortawesome/free-solid-svg-icons/faPhone";
 

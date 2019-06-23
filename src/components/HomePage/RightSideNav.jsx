@@ -123,11 +123,13 @@ class RightSideNav extends Component {
                     <div className=" mobile-nav-item">Premium Barbarkos</div>
                 </div>
             </Link>
+            {(this.props.UserLogin && this.props.UserLogin.type === 1) &&
             <Link to="/history">
                 <div className="wrapper">
                     <div className=" mobile-nav-item">History</div>
                 </div>
             </Link>
+                }
             {this.navHandler()}
         </div>;
     }

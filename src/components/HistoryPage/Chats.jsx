@@ -63,9 +63,17 @@ display: none;
 `
 
 class Chats extends Component {
+    handlePush(){
+        if(this.props.reversed){
+            this.props.history.push(`/owner/chat/${this.props.data.id}`);
+        }else{
+            this.props.history.push(`/history/chat/${this.props.data.id}`);
+        }
+    }
+
     render() {
         return (
-            <AllWrapper onClick={()=>this.props.history.push(`/history/chat/${this.props.data.id}`)}>
+            <AllWrapper onClick={()=>this.handlePush()}>
                 {/*{console.log(this.props)}*/}
                 <IdentityWrapper style={{backgroundColor:"#6bc159"}}>
                     {this.props.data.guest.name}

@@ -34,7 +34,6 @@ class CariKostPage extends Component {
                     <RightMap refreshFilter={()=>this.refreshFilter()}/>
                 </div>
                 <LeftKost ref={"leftkosts"} filter = {this.state}/>
-
             </div>
         );
     }

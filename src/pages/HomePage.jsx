@@ -11,7 +11,6 @@ import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
 import KotaBesar from "../containers/HomePage/KotaBesar";
 import UserVerificator from "../components/General/UserVerificator";
-import {BeautyInput} from "../components/General/BeautyComponent";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
