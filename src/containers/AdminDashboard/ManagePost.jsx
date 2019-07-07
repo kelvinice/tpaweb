@@ -1,13 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import {
-    BeautyInputOutlined,
-    BeautyInputWrapper, BeautySelectInput,
     BeautyTomatoButton,
     CustomButtonWrapper
 } from "../../components/General/BeautyComponent";
 import {Link} from "react-router-dom";
 import {
-    BigGreyText, BoldRed,
+    BigGreyText,
     HeaderWrapper,
     MidButtonWrapper,
     PopHolder,
@@ -19,8 +17,6 @@ import styled from "styled-components";
 import {InnerBeautyLoading} from "../../components/General/BeautyLoading";
 
 const PostsWrapper = styled('div')`
-//display: flex;
-//flex-wrap: wrap;
 columns: 100px 4;
 @media (max-width: 1200px){
 columns: 100px 2;
@@ -28,9 +24,6 @@ columns: 100px 2;
 @media (max-width: 900px){
 columns: 100px 1;
 }
-
-
-
 `
 
 class ManagePost extends Component {

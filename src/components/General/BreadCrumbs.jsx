@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 
 const NavInfo = styled('div')`
+  background-color: white;
   padding: 5px 10px;
   border-bottom: 1px solid darkgrey;
   box-sizing: border-box;
@@ -19,9 +20,7 @@ const NavInfo = styled('div')`
       }
       ${'p'}::first-letter{
         text-transform: uppercase;
-        
       }
- 
   }
 `
 

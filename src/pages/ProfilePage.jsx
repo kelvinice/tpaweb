@@ -6,7 +6,7 @@ import BreadCrumbs from "../components/General/BreadCrumbs";
 import {connect} from "react-redux";
 import moment from 'moment'
 import 'moment/min/locales'
-import Kosts from "../components/CariPage/Kosts";
+// import Kosts from "../components/CariPage/Kosts";
 import {BACKENDLINK} from "../Define";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheckCircle, faTimesCircle} from "@fortawesome/free-solid-svg-icons";
@@ -68,15 +68,15 @@ const BigProfile = styled('div')`
 `
 
 
-const WrapperBottom = styled('div')`
-  height: 100%;
-  width: 100%;
-  flex-wrap: wrap;
-  display: flex;
-  ${Kosts} {
-    background-color: #f0ffe8;
-  }
-`
+// const WrapperBottom = styled('div')`
+//   height: 100%;
+//   width: 100%;
+//   flex-wrap: wrap;
+//   display: flex;
+//   ${Kosts} {
+//     background-color: #f0ffe8;
+//   }
+// `
 
 class ProfilePage extends Component {
     state={

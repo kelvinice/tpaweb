@@ -145,7 +145,6 @@ class TextEditor extends Component {
                 </FontEditorWrapper>
                 <TextField className='editor' dangerouslySetInnerHTML={ {__html: this.props.content}}/>
 
-
             </AllWrapper>
 
         )

@@ -9,11 +9,12 @@ import ApartementContentDetail from "../containers/PropertyDetail/ApartementCont
 import Footer from "../containers/HomePage/Footer";
 import {BigGreyText, MidButtonWrapper, PopHolder, PurePopMessager} from "../components/General/CustomComponent";
 import {InnerBeautyLoading} from "../components/General/BeautyLoading";
-import {BeautyTomatoButton} from "../components/General/BeautyComponent";
+import {BeautyTextAreaOutlined, BeautyTomatoButton, CustomButtonWrapper} from "../components/General/BeautyComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
-import {Link,withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import StarInput from "../components/General/StarInput";
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -91,39 +92,36 @@ width: 100%;
 }
 `
 
+const CustomTextArea = styled('textarea')`
+    width: 100%;
+    height: 300px;
+`
+
+const ReviewWrapper = styled('div')`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  ${'div'}{
+  text-align: center;
+  padding: 10px;
+  }
+`
+
+
 class PropertyDetailPage extends Component {
     state={
         data :{},
         target:null,
         showMap:false,
+
+        cleanliness:0,
+        roomFacilities:0,
+        publicFacilities:0,
+        security:0
+
     }
 
-    fetchData(){
-        const axios = require('axios');
-        const token = localStorage.getItem('token');
-
-        axios.get(`${BACKENDLINK}propertiesBySlug/${this.props.match.params.slug}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
-            ).then(response=>{
-            console.log(response.data)
-
-            this.setState({data: response.data.property},()=>{
-                this.forceUpdate();
-            })
-
-        }).catch(err=>{
-            console.log(err.response)
-            if(err.response.status===404){
-                this.props.history.push("/")
-            }
-        });
-    }
-
-    fetchData2(slug){
+    fetchData(slug){
         const axios = require('axios');
         const token = localStorage.getItem('token');
 
@@ -149,10 +147,10 @@ class PropertyDetailPage extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchData(this.props.match.params.slug);
     }
     componentWillReceiveProps(nextProps, nextContext) {
-        this.fetchData2(nextProps.match.params.slug);
+        this.fetchData(nextProps.match.params.slug);
     }
 
     handlePropertyType(data){
@@ -191,6 +189,36 @@ class PropertyDetailPage extends Component {
         })
     }
 
+    reportProperty(e){
+        e.preventDefault();
+        this.setState({target:"loading"});
+        const axios = require('axios');
+        let token = localStorage.getItem('token');
+        let id = this.state.data.id;
+        let description = e.target.elements["description"].value;
+        console.log(description);
+        let data = {
+            "token":token,
+            "property_id" : id,
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            "description" : description,
+        }
+        axios.post(`${BACKENDLINK}report-property`,data).then(response=>{
+            console.log(response);
+            if(response.data.message==="success") {
+                this.setState({
+                    target: null,
+                }, () => this.fetchData());
+            }
+
+        }).catch(error => {
+            console.log(error.response);
+        })
+
+    }
+
     handlePop(){
         if(this.state.data.status === 1){
             return <PopHolder>
@@ -219,6 +247,23 @@ class PropertyDetailPage extends Component {
                     </MidButtonWrapper>
                 </PurePopMessager>
             </PopHolder>
+        }else if(this.state.target === "report"){
+            return <PopHolder>
+                <PurePopMessager>
+                    <BigGreyText>Report Property</BigGreyText>
+                    <form onSubmit={(e)=>this.reportProperty(e)}>
+                        <h3>Description</h3>
+                        <div>
+                            <CustomTextArea name={"description"}/>
+                        </div>
+
+                        <MidButtonWrapper>
+                            <BeautyTomatoButton type={"button"} onClick={(target) => this.setTarget(null)}>Cancel</BeautyTomatoButton>
+                            <BeautyTomatoButton>Confirm</BeautyTomatoButton>
+                        </MidButtonWrapper>
+                    </form>
+                </PurePopMessager>
+            </PopHolder>
         }
     }
 
@@ -241,6 +286,11 @@ class PropertyDetailPage extends Component {
     }
 
 
+    handleSubmit(e){
+        e.preventDefault();
+        console.log(e.target.elements["test"]);
+    }
+
     render() {
         return (
             <AllWrapper>
@@ -260,7 +310,37 @@ class PropertyDetailPage extends Component {
                 </HeaderWrapper>
                 <MiddleContentWrapper>
                     {this.handlePropertyType(this.state.data)}
+                    <BigGreyText style={{textAlign:"center"}}>Review</BigGreyText>
+                    <form onSubmit={(e)=>this.handleSubmit(e)}>
+                        <div style={{fontWeight:"bold"}}>Add Review</div>
+                        <ReviewWrapper>
+                            <div>
+                                <span>Cleanliness</span>
+                                <StarInput value={this.state.cleanliness} changeValue={(value)=>this.setState({cleanliness:value})}/>
+                            </div>
+                            <div>
+                                <span>Room Facilities</span>
+                                <StarInput value={this.state.roomFacilities} changeValue={(value)=>this.setState({roomFacilities:value})}/>
+                            </div>
+                            <div>
+                                <span>Public Facilities</span>
+                                <StarInput value={this.state.publicFacilities} changeValue={(value)=>this.setState({publicFacilities:value})}/>
+                            </div>
+                            <div>
+                                <span>Security</span>
+                                <StarInput value={this.state.security} changeValue={(value)=>this.setState({security:value})}/>
+                            </div>
+
+                        </ReviewWrapper>
+                        <div>Description</div>
+                        {<BeautyTextAreaOutlined name={"description"}/>}
+                        {<CustomButtonWrapper>
+                            <BeautyTomatoButton>Submit</BeautyTomatoButton>
+                        </CustomButtonWrapper>}
+
+                    </form>
                 </MiddleContentWrapper>
+
                 <Footer/>
 
             </AllWrapper>

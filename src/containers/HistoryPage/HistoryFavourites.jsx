@@ -2,7 +2,7 @@ import React, {Component,Fragment} from 'react';
 import {BACKENDLINK} from "../../Define";
 import Kosts from "../../components/CariPage/Kosts";
 import styled from "styled-components";
-import {BeautyTomatoButton, CustomButtonWrapper} from "../../components/General/BeautyComponent";
+import {CustomButtonWrapper} from "../../components/General/BeautyComponent";
 
 const AllWrapper = styled('div')`
   height: 100%;

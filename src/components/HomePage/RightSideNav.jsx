@@ -84,7 +84,7 @@ class RightSideNav extends Component {
                         <div id="login-wrapper" className="child-wrapper">
                             {this.props.UserLogin.type===1 && <Link style={{color:"black"}} to="/user"><div className="mobile-nav-item">Halaman Profil</div></Link>}
                             {this.props.UserLogin.type===2 && <Link style={{color:"black"}} to="/user/edit-profil"><div className="mobile-nav-item">Edit Profil</div></Link>}
-
+                            {this.props.UserLogin.type===1 && <Link style={{color:"black"}} to="/following"><div className="mobile-nav-item">Following</div></Link>}
                             {this.props.UserLogin.type===3 && <Link style={{color:"black"}} to="/admin"><div className="mobile-nav-item">Admin Dashboard</div></Link>}
                             {this.props.UserLogin.type===2 && <Link style={{color:"black"}} to="/owner"><div className="mobile-nav-item">Owner Dashboard</div></Link>}
                             <div id="pemilik-masuk-btn" className="mobile-nav-item"

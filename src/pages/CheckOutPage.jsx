@@ -18,7 +18,6 @@ height: 100%;
 `
 
 const AttributeWrapper = styled('div')`
-
 background-color: ${(props)=>props.promoActive ? "#774ac1" : "#858fda"};
 width: 100%;
 height: 100%;
@@ -89,10 +88,11 @@ class CheckOutPage extends Component {
         premium : {
             price:0,
             promo:0
-        }
+        },
+        active_transaction:null,
     }
 
-    componentDidMount() {
+    fetchData(){
         let token = localStorage.getItem('token');
         const axios = require('axios');
         axios.get(`${BACKENDLINK}/premium-product/${this.props.match.params.id}`,
@@ -103,17 +103,19 @@ class CheckOutPage extends Component {
                 }
             }
         ).then(response=>{
-            this.setState({premium:response.data.premium})
-            // console.log(response)
+            this.setState({premium:response.data.premium,active_transaction:response.data.active_transaction})
+            console.log(response)
         }).catch(err=>{
             console.log(err.response);
         })
     }
 
+    componentDidMount() {
+        this.fetchData();
+    }
+
     handleCheckOut(){
-
         this.setState({target:"loading"})
-
 
         const axios = require('axios');
         let token = localStorage.getItem('token');
@@ -128,9 +130,9 @@ class CheckOutPage extends Component {
             }
         }
 
-        axios.post(`${BACKENDLINK}submit-user-premium/${product_id}`,null,config).then(
+        axios.post(`${BACKENDLINK}checkout/${product_id}`,null,config).then(
             (response)=>{
-                this.setState({target:"success"})
+                this.setState({target:"success"},()=>this.fetchData())
                 console.log(response);
             }
         ).catch(error => {
@@ -154,8 +156,31 @@ class CheckOutPage extends Component {
 
         axios.delete(`${BACKENDLINK}cancel-user-premium/${premium_id}`,config).then(
             (response)=>{
-                this.setState({target:"success"})
-                console.log(response);
+                this.setState({target:"success"},()=>this.fetchData())
+                // console.log(response);
+            }
+        ).catch(error => {
+            console.log(error.response);
+        });
+    }
+
+    cancelTransaction(){
+        this.setState({target:"loading"})
+
+        const axios = require('axios');
+        let token = localStorage.getItem('token');
+        let transaction_id = this.state.active_transaction.id;
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        axios.delete(`${BACKENDLINK}cancel-transaction/${transaction_id}`,config).then(
+            (response)=>{
+                this.setState({target:"success"},()=>this.fetchData());
+                // console.log(response);
             }
         ).catch(error => {
             console.log(error.response);
@@ -164,16 +189,25 @@ class CheckOutPage extends Component {
 
     handleButton(){
         if(this.props.UserLogin){
-            if(!this.props.UserLogin.active)
+            if(this.state.active_transaction != null) {
+                return <Fragment>
+                    <AttentionWrapper>
+                        <div>You Already Have Active Transaction</div>
+                    </AttentionWrapper>
+                    <br/>
+                    <BeautyTomatoButton onClick={() => this.cancelTransaction()}>Cancel Transaction</BeautyTomatoButton>
+                </Fragment>
+            }
+            else if(!this.props.UserLogin.active){
                 return <BeautyTomatoButton onClick={()=>this.handleCheckOut()}>Check Out</BeautyTomatoButton>
-            else{
+            }else{
                 return <Fragment>
                     <AttentionWrapper>
                         <div>You Already Have Active Premium Until :</div>
                         <div>{this.props.UserLogin.active.end_date}</div>
 
                     </AttentionWrapper>
-                    <br/>
+
                     <BeautyTomatoButton onClick={()=>this.cancelPremium()}>Cancel my Active Premium</BeautyTomatoButton>
                 </Fragment>
             }

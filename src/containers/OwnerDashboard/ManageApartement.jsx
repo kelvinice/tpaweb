@@ -87,7 +87,6 @@ class ManageApartement extends Component {
                 Authorization: `Bearer ${token}`
             }
         }).then(response=>{
-
             this.setState({
                 apartements:this.state.apartements.concat(response.data.apartements.data),
                 link:response.data.apartements.next_page_url,
