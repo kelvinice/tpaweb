@@ -50,8 +50,24 @@ class TextEditor extends Component {
         fontSize:"",
     }
 
-    command = (e,name,size) => {
+    componentDidMount(){
+        const editor = document.querySelector('.editor');
+        editor.contentEditable = true; //bikin tagnya jadi edittable
+
+        let observer = new MutationObserver(this.observer);
+        let config = {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            subtree: true,
+        };
+
+        observer.observe(editor, config);
+    }
+
+    command = (e, name, size) => {
         let success;
+
         if(name === 'fontSize'){
             try {
                 success = document.execCommand(name, false, size);
@@ -78,29 +94,13 @@ class TextEditor extends Component {
         return document.queryCommandSupported(name);
     }
 
-    observer = (mutations) => {
-        mutations.forEach(this.checkMutation);
-    }
-
     checkMutation = (mutation) => {
         const editor = document.querySelector('.editor').innerHTML;
         this.props.updateContent(editor);
     }
 
-    componentDidMount(){
-        const editor = document.querySelector('.editor');
-        editor.contentEditable = true;
-
-        let observer = new MutationObserver(this.observer);
-
-        let config = {
-            attributes: true,
-            childList: true,
-            characterData: true,
-            subtree: true,
-        };
-
-        observer.observe(editor, config);
+    observer = (mutations) => {
+        mutations.forEach(this.checkMutation);
     }
 
     dataChange(event){
@@ -108,9 +108,10 @@ class TextEditor extends Component {
     }
 
     getAttribute = (mutation) => {
-        return mutation.target.parentElement && mutation.target.parentElement.attributes[0] && mutation.target.parentElement.attributes[0].value;
+        return mutation.target.parentElement
+            && mutation.target.parentElement.attributes[0]
+            && mutation.target.parentElement.attributes[0].value;
     }
-
 
     render(){
         return(
@@ -125,18 +126,17 @@ class TextEditor extends Component {
                     <button onClick={((e) => this.command(e, 'underline',null))}>
                         <FontAwesomeIcon icon={faUnderline}/>
                     </button>
-
-                    <button onClick={((e) => this.command(e, 'justifyCenter',null))}>
-                        <FontAwesomeIcon icon={faAlignCenter}/>
+                    <button onClick={((e) => this.command(e, 'strikeThrough',null))}>
+                        <FontAwesomeIcon icon={faStrikethrough}/>
                     </button>
                     <button onClick={((e) => this.command(e, 'justifyLeft',null))}>
                         <FontAwesomeIcon icon={faAlignLeft}/>
                     </button>
+                    <button onClick={((e) => this.command(e, 'justifyCenter',null))}>
+                        <FontAwesomeIcon icon={faAlignCenter}/>
+                    </button>
                     <button onClick={((e) => this.command(e, 'justifyRight',null))}>
                         <FontAwesomeIcon icon={faAlignRight}/>
-                    </button>
-                    <button onClick={((e) => this.command(e, 'strikeThrough',null))}>
-                        <FontAwesomeIcon icon={faStrikethrough}/>
                     </button>
                 </div>
                 <FontEditorWrapper>

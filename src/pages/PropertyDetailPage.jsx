@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import styled from 'styled-components'
 import {BACKENDLINK} from "../Define";
 import UserNavBar from "../containers/UserPage/UserNavBar";
@@ -7,7 +7,13 @@ import UserVerificator from "../components/General/UserVerificator";
 import HouseContentDetail from "../containers/PropertyDetail/HouseContentDetail";
 import ApartementContentDetail from "../containers/PropertyDetail/ApartementContentDetail";
 import Footer from "../containers/HomePage/Footer";
-import {BigGreyText, MidButtonWrapper, PopHolder, PurePopMessager} from "../components/General/CustomComponent";
+import {
+    BigGreyText, BoldRed,
+    MidButtonWrapper,
+    PopHolder,
+    PopMessager,
+    PurePopMessager
+} from "../components/General/CustomComponent";
 import {InnerBeautyLoading} from "../components/General/BeautyLoading";
 import {BeautyTextAreaOutlined, BeautyTomatoButton, CustomButtonWrapper} from "../components/General/BeautyComponent";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -15,6 +21,7 @@ import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import {withRouter} from "react-router-dom";
 import StarInput from "../components/General/StarInput";
+import Reviews from "../components/General/Reviews";
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -113,12 +120,15 @@ class PropertyDetailPage extends Component {
         data :{},
         target:null,
         showMap:false,
-
         cleanliness:0,
         roomFacilities:0,
         publicFacilities:0,
-        security:0
-
+        security:0,
+        reviews: [],
+        nextPage:null,
+        prevPage:null,
+        link : `${BACKENDLINK}showReviewBySlug/${this.props.match.params.slug}`,
+        errors: [],
     }
 
     fetchData(slug){
@@ -134,8 +144,8 @@ class PropertyDetailPage extends Component {
         ).then(response=>{
             console.log(response.data)
 
-            this.setState({data: response.data.property},()=>{
-                this.forceUpdate();
+            this.setState({data: response.data.property,reviews:response.data.reviews},()=>{
+                // this.forceUpdate();
             })
 
         }).catch(err=>{
@@ -143,6 +153,35 @@ class PropertyDetailPage extends Component {
             if(err.response.status===404){
                 this.props.history.push("/")
             }
+        });
+    }
+
+    fetchMore(slug){
+        if(this.state.link==null)return;
+
+        this.setState({
+            isLoading : true
+        });
+        const token = localStorage.getItem('token');
+        const axios = require('axios');
+
+        axios.get(`${this.state.link}`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response=>{
+            console.log(response.data);
+            this.setState({
+                reviews:response.data.reviews.data,
+                nextPage:response.data.reviews.next_page_url,
+                prevPage:response.data.reviews.prev_page_url,
+                link:null
+            });
+
+        }).catch((error) => {
+            console.log("ini error:");
+            console.log(error.response);
+
         });
     }
 
@@ -285,10 +324,78 @@ class PropertyDetailPage extends Component {
         }
     }
 
-
     handleSubmit(e){
         e.preventDefault();
-        console.log(e.target.elements["test"]);
+        this.setState({target:"loading"});
+
+        let description = e.target.elements["description"].value;
+        const axios = require('axios');
+
+        let token = localStorage.getItem('token');
+
+        axios.post(`${BACKENDLINK}reviews`,{
+            description:description,
+            cleanliness:this.state.cleanliness,
+            room_facilities:this.state.roomFacilities,
+            public_facilities:this.state.publicFacilities,
+            security:this.state.security,
+            target:this.state.data.id
+        },{headers: {
+                Authorization: `Bearer ${token}`
+            }}).then(
+            (response) => {
+                // console.log(response)
+                this.setState({target:null});
+            }
+        ).catch((error) => {
+            console.log("ini error:")
+            console.log(error.response)
+            this.setState({
+                target: null,
+                errors:error.response.data.errors
+            });
+        });
+    }
+
+    handlePageChanger(){
+        return <Fragment>
+
+            {this.state.prevPage &&
+            <CustomButtonWrapper>
+                <button onClick={() => {
+                    this.setState({link:this.state.prevPage},
+                        ()=>{
+                            this.fetchMore();
+                        }
+                    )
+                }}>Prev Page</button>
+            </CustomButtonWrapper>
+            }
+            {
+                this.state.nextPage &&
+                <CustomButtonWrapper>
+                    <button onClick={() => {
+                        this.setState({link:this.state.nextPage},
+                            ()=>{
+                                this.fetchMore();
+                            }
+                        )
+                    }}>Next Page</button>
+                </CustomButtonWrapper>
+            }
+            {
+                this.state.link &&
+                <CustomButtonWrapper>
+                    <button onClick={() => {
+                        this.setState({link:this.state.link},
+                            ()=>{
+                                this.fetchMore();
+                            }
+                        )
+                    }}>View More</button>
+                </CustomButtonWrapper>
+            }
+        </Fragment>
     }
 
     render() {
@@ -310,39 +417,46 @@ class PropertyDetailPage extends Component {
                 </HeaderWrapper>
                 <MiddleContentWrapper>
                     {this.handlePropertyType(this.state.data)}
-                    <BigGreyText style={{textAlign:"center"}}>Review</BigGreyText>
+                    <BigGreyText style={{textAlign:"center"}}>Review : {this.state.data.average}  <StarInput value={this.state.data.average} changeValue={(value)=>this.setState({a:value})}/></BigGreyText>
+                    {this.state.reviews.map(
+                        (item,key)=><Reviews key={item.id} data={item}/>
+                    )}
+                    {this.handlePageChanger()}
+
                     <form onSubmit={(e)=>this.handleSubmit(e)}>
                         <div style={{fontWeight:"bold"}}>Add Review</div>
                         <ReviewWrapper>
                             <div>
                                 <span>Cleanliness</span>
                                 <StarInput value={this.state.cleanliness} changeValue={(value)=>this.setState({cleanliness:value})}/>
+                                <BoldRed>{this.state.errors.cleanliness && this.state.errors.cleanliness[0]}</BoldRed>
                             </div>
                             <div>
                                 <span>Room Facilities</span>
                                 <StarInput value={this.state.roomFacilities} changeValue={(value)=>this.setState({roomFacilities:value})}/>
+                                <BoldRed>{this.state.errors.room_facilities && this.state.errors.room_facilities[0]}</BoldRed>
                             </div>
                             <div>
                                 <span>Public Facilities</span>
                                 <StarInput value={this.state.publicFacilities} changeValue={(value)=>this.setState({publicFacilities:value})}/>
+                                <BoldRed>{this.state.errors.public_facilities && this.state.errors.public_facilities[0]}</BoldRed>
                             </div>
                             <div>
                                 <span>Security</span>
                                 <StarInput value={this.state.security} changeValue={(value)=>this.setState({security:value})}/>
+                                <BoldRed>{this.state.errors.security && this.state.errors.security[0]}</BoldRed>
                             </div>
-
                         </ReviewWrapper>
                         <div>Description</div>
                         {<BeautyTextAreaOutlined name={"description"}/>}
+                        <BoldRed>{this.state.errors.description && this.state.errors.description[0]}</BoldRed>
                         {<CustomButtonWrapper>
                             <BeautyTomatoButton>Submit</BeautyTomatoButton>
                         </CustomButtonWrapper>}
-
                     </form>
                 </MiddleContentWrapper>
 
                 <Footer/>
-
             </AllWrapper>
         );
     }

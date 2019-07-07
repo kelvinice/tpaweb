@@ -1,8 +1,9 @@
 import React, {Component,Fragment} from 'react';
-import styled from 'styled-components'
+import styled from "styled-components";
 import {BACKENDLINK} from "../../Define";
-import Kosts from "../../components/CariPage/Kosts";
 import {BigGreyText} from "../../components/General/CustomComponent";
+import Kosts from "../../components/CariPage/Kosts";
+
 
 const WrapperFavourite = styled('div')`
   width: 100%;
@@ -27,7 +28,7 @@ const ContentDecription = styled('div')`
   padding: 13px;
 `
 
-class FavouriteKost extends Component {
+class FavouriteApartement extends Component {
     state = {
         properties : [],
     }
@@ -49,7 +50,7 @@ class FavouriteKost extends Component {
                     }
                 }
 
-                axios.post(`${BACKENDLINK}favoriteHouse`, formData,config).then(
+                axios.post(`${BACKENDLINK}favoriteApartement`, formData,config).then(
                     (response)=>{
                         this.setState({properties:response.data.properties})
                         console.log(response)
@@ -69,7 +70,7 @@ class FavouriteKost extends Component {
     render() {
         return (
             <Fragment>
-                {<BigGreyText style={{textAlign:"center"}}>Top 4 House</BigGreyText>}
+                {<BigGreyText style={{textAlign:"center"}}>Top 4 Apartement</BigGreyText>}
                 <WrapperFavourite>
                     {this.state.properties.map(
                         (item,key)=><Kosts key = {item.id} data = {item}/>
@@ -83,4 +84,6 @@ class FavouriteKost extends Component {
     }
 }
 
-export default FavouriteKost;
+
+
+export default FavouriteApartement;

@@ -28,6 +28,8 @@ class ManagePremium extends Component {
         premiums : [],
         popState : null,
         target : null,
+        nextPage:null,
+        prevPage:null,
         link : `${BACKENDLINK}getAllPremiumProducts`,
         isLoading : false,
         innerLoading : false,

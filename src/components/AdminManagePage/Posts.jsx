@@ -5,6 +5,7 @@ import {BeautyTomatoButton} from "../General/BeautyComponent";
 import moment from 'moment'
 import 'moment/min/locales'
 import {TagsWrapper} from "../../containers/AdminDashboard/AddPost";
+import {withRouter} from 'react-router-dom'
 
 const AllWrapper = styled('div')`
 width: 100%;
@@ -95,7 +96,7 @@ class Posts extends Component {
                 </TopWrapper>
                 {/*{console.log(this.props.data)}*/}
                 <BottomWrapper>
-                    <BeautyTomatoButton>View More</BeautyTomatoButton>
+                    <BeautyTomatoButton onClick={()=>this.props.history.push(`/post/${this.props.data.slug}`)}>View More</BeautyTomatoButton>
                 </BottomWrapper>
                 {this.props.setTarget &&
 
@@ -111,4 +112,4 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+export default withRouter(Posts);

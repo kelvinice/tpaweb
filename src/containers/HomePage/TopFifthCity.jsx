@@ -1,35 +1,18 @@
-import React, {Component,Fragment} from 'react';
-import styled from 'styled-components'
+import React, {Component, Fragment} from 'react';
 import {BACKENDLINK} from "../../Define";
-import Kosts from "../../components/CariPage/Kosts";
+import City from "../../components/HomePage/City";
+import styled from "styled-components";
 import {BigGreyText} from "../../components/General/CustomComponent";
 
-const WrapperFavourite = styled('div')`
-  width: 100%;
-  display: flex;
-  overflow: auto;
-
+const AllWrapper = styled('div')`
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
 `
 
-const ContentWrapper = styled('div')`
-  padding: 10px;
-`
-
-const DummyImage = styled('div')`
-    background-image: url("assets/images/dummy.jpg");
-    width: 300px;
-    height: 250px;
-    background-position: 50%;
-    background-size: cover;
-`
-
-const ContentDecription = styled('div')`
-  padding: 13px;
-`
-
-class FavouriteKost extends Component {
+class TopFifthCity extends Component {
     state = {
-        properties : [],
+        cities : [],
     }
 
     componentDidMount() {
@@ -49,10 +32,10 @@ class FavouriteKost extends Component {
                     }
                 }
 
-                axios.post(`${BACKENDLINK}favoriteHouse`, formData,config).then(
+                axios.post(`${BACKENDLINK}nearestCity`, formData,config).then(
                     (response)=>{
-                        this.setState({properties:response.data.properties})
-                        console.log(response)
+                        this.setState({cities:response.data.cities})
+                        // console.log(response)
                     }
                 ).catch(error => {
                     console.log(error.response);
@@ -69,18 +52,15 @@ class FavouriteKost extends Component {
     render() {
         return (
             <Fragment>
-                {<BigGreyText style={{textAlign:"center"}}>Top 4 House</BigGreyText>}
-                <WrapperFavourite>
-                    {this.state.properties.map(
-                        (item,key)=><Kosts key = {item.id} data = {item}/>
-                    )
-                    }
-
-                </WrapperFavourite>
+                {<BigGreyText style={{textAlign:"center"}}>Top 5 Nearest City</BigGreyText>}
+                <AllWrapper>
+                {this.state.cities.map(
+                    (item,key)=><City data={item} key={item.name}/>
+                )}
+                </AllWrapper>
             </Fragment>
-
         );
     }
 }
 
-export default FavouriteKost;
+export default TopFifthCity;

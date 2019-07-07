@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck} from "@fortawesome/free-solid-svg-icons/faCheck";
-import {faTimes} from "@fortawesome/free-solid-svg-icons/faTimes";
+
 
 const AllWrapper = styled('div')`
   width: 100%;
@@ -19,43 +17,22 @@ ${'div'}{
     ${'svg'}{
       margin: 0 auto;
     }
+    display: flex;
+    justify-content: space-evenly;
+    
 }
 @media (max-width: 900px){
+${'div'}{
 
-  height: 160px;
+    flex-direction: column;
+    
+}
+  height: auto;
   flex-direction: column;
   padding-right: 0;
 }
 `
 
-const ButtonApprove = styled('div')`
-  background-color: green;
-  color: white;
-  height: 100%;
-  width: 80px;
-   min-width: 80px;
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    @media (max-width: 900px){
-      width: 100%;
-    }
-`
-
-const ButtonDeny = styled('div')`
-  background-color: #eb0003;
-  color: white;
-  height: 100%;
-  width: 80px;
-  min-width: 80px;
-  display: flex;
-    flex-direction: column;
-    justify-content: center;
-    @media (max-width: 900px){
-      width: 100%;
-    }
-    
-`
 
 const Header = styled('div')`
 display: flex;
@@ -64,23 +41,27 @@ flex-direction: column;
 width: 100%;
 ${'div'}{
 width: 100%;
+${'span'}{
+width: 100%;
+}
 ${'span'}:first-child{
 font-weight: bold;
+width: 30%;
 }
 }
-`
-
-const ButtonWrapper = styled('div')`
-  display: flex;
-  width: unset;
-  flex-direction: column;
-  
-  @media (max-width: 900px){
-      width: 100%;
-    }
 `
 
 class TransactionOnManages extends Component {
+    handleStatus(){
+        if(this.props.data.premium.deleted_at != null){
+            return "Cancelled";
+        }else if(new Date(this.props.data.premium.end_date) > new Date()){
+            return "Active";
+        }else{
+            return "Inactive";
+        }
+    }
+
     render() {
         return (
             <AllWrapper>
@@ -112,7 +93,7 @@ class TransactionOnManages extends Component {
                     <div>
                         <span>Status : </span>
                         <span>
-                            {new Date(this.props.data.premium.end_date) > new Date() ? "Active" : "Inactive"}
+                            {this.handleStatus()}
                         </span>
                     </div>
                 </Header>

@@ -5,12 +5,14 @@ import LoginPopup from '../containers/HomePage/LoginPopup';
 import Footer from "../containers/HomePage/Footer";
 import AppPromotion from "../containers/HomePage/AppPromotion";
 import AdsPromotion from "../containers/HomePage/AdsPromotion";
-// import FavouriteKost from "../containers/HomePage/FavouriteKost";
+import FavouriteKost from "../containers/HomePage/FavouriteKost";
 import styled from 'styled-components'
 import RightSideNav from "../components/HomePage/RightSideNav";
 import {connect} from 'react-redux'
 import KotaBesar from "../containers/HomePage/KotaBesar";
 import UserVerificator from "../components/General/UserVerificator";
+import TopFifthCity from "../containers/HomePage/TopFifthCity";
+import FavouriteApartement from "../containers/HomePage/FavouriteApartement";
 
 const Pads = styled('div')`
     @media (max-width: 600px) {
@@ -49,17 +51,12 @@ class HomePage extends Component {
                 <PromotionHeading/>
                 {this.state.pencariToogle ? <LoginPopup exitCalled={() => this.pencariExitCalled()} /> : null}
                 <Pads>
-                    Promo <br/>
-
-
-                    Anggap aja ini slider
-
+                    {<TopFifthCity/>}
                     <br/>
+                    <FavouriteKost/>
                     <br/>
-                    {/*Lokasi favorit kost di ...*/}
+                    <FavouriteApartement/>
                     <br/>
-                    {/*<FavouriteKost/>*/}
-                    <br/><br/>
                     <KotaBesar/>
                     <AdsPromotion/>
                     <br/>

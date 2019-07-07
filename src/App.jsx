@@ -17,6 +17,7 @@ import HistoryPage from "./pages/HistoryPage";
 import ProfilePage from "./pages/ProfilePage";
 import OwnerPage from "./pages/OwnerPage";
 import FollowingPage from "./pages/FollowingPage";
+import PostPage from "./pages/PostPage";
 
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
                     <Route path="/people/:id" component={ProfilePage}/>
                     <Route path="/seller/:id" component={OwnerPage}/>
                     <Route path="/following" component={FollowingPage}/>
+                    <Route path="/post" component={PostPage}/>
                     <Route component={NotFoundPage} />
                 </Switch>
             </div>

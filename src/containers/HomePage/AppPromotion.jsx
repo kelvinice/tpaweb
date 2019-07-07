@@ -10,7 +10,7 @@ const BodyWrapper = styled('div')`
 const LeftImage = styled('div')`
   width: 50%;
   height: 500px;
-  background-image: url("assets/images/smartphone.png");
+  background-image: url("/assets/images/smartphone.png");
   background-size: auto;
   background-position: center;
   padding: 0 150px;

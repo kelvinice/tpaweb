@@ -77,7 +77,6 @@ class FollowingPage extends Component {
         }
     }
 
-
     render() {
         return (
             <AllWrapper>
