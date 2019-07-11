@@ -12,22 +12,6 @@ const WrapperFavourite = styled('div')`
 
 `
 
-const ContentWrapper = styled('div')`
-  padding: 10px;
-`
-
-const DummyImage = styled('div')`
-    background-image: url("assets/images/dummy.jpg");
-    width: 300px;
-    height: 250px;
-    background-position: 50%;
-    background-size: cover;
-`
-
-const ContentDecription = styled('div')`
-  padding: 13px;
-`
-
 class FavouriteApartement extends Component {
     state = {
         properties : [],

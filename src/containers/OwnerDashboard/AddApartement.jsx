@@ -1,16 +1,14 @@
-import React, {Component, Fragment} from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
-import styled from 'styled-components'
-import {connect} from "react-redux";
+import React, {Component,Fragment} from 'react';
+import {BACKENDLINK} from "../../Define";
+import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import {
     BeautyInputOutlined,
     BeautyInputWrapper,
-    BeautyTextAreaOutlined,
-    BeautyTomatoButton,
-    BeautySelectInputOutlined, CustomButtonWrapper
+    BeautySelectInputOutlined, BeautyTextAreaOutlined, BeautyTomatoButton, CustomButtonWrapper
 } from "../../components/General/BeautyComponent";
-import {BACKENDLINK} from "../../Define";
 import FacilityCard from "../../components/OwnerManagePage/FacilityCard";
+import {connect} from "react-redux";
+import styled from "styled-components";
 
 const AllWrapper =styled('div')`
   width: 100%;
@@ -42,7 +40,7 @@ justify-content: center;
 flex-wrap: wrap;
 `
 
-class AddHouse extends Component {
+class AddApartement extends Component {
     state = {
         page:0,
         city_list:[],
@@ -58,8 +56,11 @@ class AddHouse extends Component {
         city:2,
         description:"",
         additionalInformation:"",
-        roomLeft:1,
-        genderType:0,
+        condition:1,
+        type:1,
+        furnished:1,
+        floor:1,
+        unit:0,
         name:"",
         parkingFacilities:0,
         pictures:null,
@@ -132,8 +133,10 @@ class AddHouse extends Component {
         formData.append('city_id',this.state.city);
         formData.append('description',this.state.description);
         formData.append('additionalInformation',this.state.additionalInformation);
-        formData.append('roomLeft',this.state.roomLeft);
-        formData.append('genderType',this.state.genderType);
+        formData.append('condition',this.state.condition);
+        formData.append('type',this.state.type);
+        formData.append('furnished',this.state.furnished);
+        formData.append('floor',this.state.floor);
         formData.append('parkingFacilities',this.state.parkingFacilities);
         formData.append('pictures',this.state.pictures);
         formData.append('bannerPicture',this.state.bannerPicture);
@@ -141,6 +144,7 @@ class AddHouse extends Component {
         formData.append('video',this.state.video);
         formData.append('price',this.state.price);
         formData.append('area',this.state.area);
+        formData.append('unit',this.state.unit);
 
         const config = {
             headers: {
@@ -148,7 +152,7 @@ class AddHouse extends Component {
                 Authorization: `Bearer ${token}`
             }
         }
-        axios.post(`${BACKENDLINK}insertHouse`, formData,config).then(response=>{
+        axios.post(`${BACKENDLINK}insertApartement`, formData,config).then(response=>{
             console.log(response)
         }).catch(error => {
             console.log(error.response)
@@ -214,23 +218,23 @@ class AddHouse extends Component {
                 </BeautyInputWrapper>
             </Fragment>
         }else if(this.state.page===1){
-           return <Fragment>
-               <BeautyInputWrapper>
-                   Name
-                   <BeautyInputOutlined name={"name"} value={this.state.name} onChange={(e)=>this.inputChanged(e)}/>
-               </BeautyInputWrapper>
+            return <Fragment>
+                <BeautyInputWrapper>
+                    Name
+                    <BeautyInputOutlined name={"name"} value={this.state.name} onChange={(e)=>this.inputChanged(e)}/>
+                </BeautyInputWrapper>
 
-               <BeautyInputWrapper>
-                   Description
-                   <BeautyTextAreaOutlined name={"description"} value={this.state.description} onChange={(e)=>this.inputChanged(e)}/>
-               </BeautyInputWrapper>
+                <BeautyInputWrapper>
+                    Description
+                    <BeautyTextAreaOutlined name={"description"} value={this.state.description} onChange={(e)=>this.inputChanged(e)}/>
+                </BeautyInputWrapper>
 
-               <BeautyInputWrapper>
-                   Additional Information
-                   <BeautyInputOutlined name={"additionalInformation"} value={this.state.additionalInformation} onChange={(e)=>this.inputChanged(e)}/>
-               </BeautyInputWrapper>
+                <BeautyInputWrapper>
+                    Additional Information
+                    <BeautyInputOutlined name={"additionalInformation"} value={this.state.additionalInformation} onChange={(e)=>this.inputChanged(e)}/>
+                </BeautyInputWrapper>
 
-           </Fragment>
+            </Fragment>
         }else if(this.state.page===2){
             return <Fragment>
 
@@ -286,19 +290,36 @@ class AddHouse extends Component {
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
-                    Room Left
-                    <BeautyInputOutlined name={"roomLeft"} value={this.state.roomLeft} onChange={(e)=>this.inputChanged(e)}/>
+                    Floor
+                    <BeautyInputOutlined name={"floor"} value={this.state.floor} onChange={(e)=>this.inputChanged(e)}/>
                 </BeautyInputWrapper>
 
                 <BeautyInputWrapper>
-                    Gender Type
-                    <BeautySelectInputOutlined name={"genderType"} value={this.state.genderType} onChange={(e)=>this.inputChanged(e)}>
-                        <option value="0">Semua</option>
-                        <option value="1">Campur</option>
-                        <option value="2">Khusus Putra</option>
-                        <option value="3">Khusus Putri</option>
-                        <option value="4">Putra dan Campur</option>
-                        <option value="5">Putri dan Campur</option>
+                    Unit Left
+                    <BeautyInputOutlined name={"unit"} value={this.state.unit} onChange={(e)=>this.inputChanged(e)}/>
+                </BeautyInputWrapper>
+
+                <BeautyInputWrapper>
+                    Type
+                    <BeautySelectInputOutlined name={"type"} value={this.state.type} onChange={(e)=>this.inputChanged(e)}>
+                        <option value="1">Single room</option>
+                        <option value="2">Campur</option>
+                    </BeautySelectInputOutlined>
+                </BeautyInputWrapper>
+
+                <BeautyInputWrapper>
+                    Condition
+                    <BeautySelectInputOutlined name={"condition"} value={this.state.condition} onChange={(e)=>this.inputChanged(e)}>
+                        <option value="1">Good</option>
+                        <option value="2">Not Good</option>
+                    </BeautySelectInputOutlined>
+                </BeautyInputWrapper>
+
+                <BeautyInputWrapper>
+                    Furnish
+                    <BeautySelectInputOutlined name={"furnished"} value={this.state.furnished} onChange={(e)=>this.inputChanged(e)}>
+                        <option value="1">Furnished</option>
+                        <option value="2">Not furnished</option>
                     </BeautySelectInputOutlined>
                 </BeautyInputWrapper>
 
@@ -333,15 +354,15 @@ class AddHouse extends Component {
                 </CustomButtonWrapper>
                 }
                 {this.state.page < 3 ?
-                <CustomButtonWrapper>
-                    <button onClick={() => {
-                        this.setState({page:(this.state.page + 1)*-1},
-                            ()=>{
-                                this.setState({page:(this.state.page)*-1});
-                            }
-                        )
-                    }}>Next Page</button>
-                </CustomButtonWrapper> :
+                    <CustomButtonWrapper>
+                        <button onClick={() => {
+                            this.setState({page:(this.state.page + 1)*-1},
+                                ()=>{
+                                    this.setState({page:(this.state.page)*-1});
+                                }
+                            )
+                        }}>Next Page</button>
+                    </CustomButtonWrapper> :
                     <BeautyTomatoButton onClick={()=>this.formSubmit()}>Submit</BeautyTomatoButton>
                 }
             </HeaderWrapper>
@@ -354,7 +375,6 @@ class AddHouse extends Component {
                 {this.handlePageContent()}
                 {this.handlePageChanger()}
             </AllWrapper>
-
         );
     }
 }
@@ -370,4 +390,4 @@ const MapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(MapStateToProps,MapDispatchToProps)(AddHouse);
+export default connect(MapStateToProps,MapDispatchToProps)(AddApartement);

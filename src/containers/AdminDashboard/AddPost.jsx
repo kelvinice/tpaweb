@@ -42,6 +42,7 @@ white-space: nowrap;
 box-sizing: border-box;
 border-radius: 5px;
 border: 1px solid #35b216;
+z-index: 50;
 ${'div'}{
     &:hover{
       background-color: #67cd00;
@@ -158,7 +159,6 @@ class AddPost extends Component {
             let idx = this.state.availableTags.indexOf(tag)
             let available = this.state.availableTags;
             available.splice(idx,1);
-        // console.log(JSON.stringify(this.state.tags));
             this.setState({availableTags:available});
         })
     }

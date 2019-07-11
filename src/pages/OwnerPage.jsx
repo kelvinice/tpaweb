@@ -15,7 +15,6 @@ import Kosts from "../components/CariPage/Kosts";
 const AllWrapper = styled('div')`
 width: 100%;
 height: 100%;
-
 `
 
 const HeaderContext = styled('div')`

@@ -3,29 +3,22 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/pages/LoginPage.jsx" line="34" />
     <bookmark url="file://$PROJECT_DIR$/src/pages/LoginPage.jsx" line="139" />
-    <bookmark url="file://$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" description="&#10;const MapStateToProps = state =&gt; {&#10;    return {&#10; ..." line="284" />
+    <bookmark url="file://$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" description="&#10;const MapStateToProps = state =&gt; {&#10;    return {&#10; ..." line="276" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42afbb3f-d7ed-47e3-83f3-8e533d5cb193" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/General/Reviews.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HomePage/City.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/HomePage/TopFifthCity.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/PostPage/AllPost.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/PostPage/PostDetail.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/PostPage.jsx" afterDir="false" />
+    <list default="true" id="42afbb3f-d7ed-47e3-83f3-8e533d5cb193" name="Default Changelist" comment="73">
+      <change afterPath="$PROJECT_DIR$/src/containers/OwnerDashboard/AddApartement.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminManagePage/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminManagePage/Posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AdminManagePage/TransactionOnManages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AdminManagePage/TransactionOnManages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/General/TextEditor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/General/TextEditor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomePage/RightSideNav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage/RightSideNav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/AdminDashboard/ManagePremium.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AdminDashboard/ManagePremium.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/HomePage/AppPromotion.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/HomePage/AppPromotion.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/HomePage/FavouriteKost.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/HomePage/FavouriteKost.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/OwnerDashboard/HistoryPremium.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/OwnerDashboard/HistoryPremium.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FollowingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FollowingPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AdminDashboard/AdminDashboardInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AdminDashboard/AdminDashboardInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/OwnerDashboard/OwnerDashboardInformation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/OwnerDashboard/OwnerDashboardInformation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/OwnerDashboardPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/OwnerDashboardPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/OwnerPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/OwnerPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -43,26 +36,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/HomePageStyle.css">
+        <entry file="file://$PROJECT_DIR$/src/App.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5151" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/HomePage.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+            <state relative-caret-position="289">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
+            <state relative-caret-position="167">
+              <caret line="160" column="93" selection-start-line="160" selection-start-column="93" selection-end-line="160" selection-end-column="93" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -71,10 +60,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/HomePage/FavouriteKost.jsx">
+        <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AdminDashboardInformation.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="83" selection-end-column="1" />
+            <state relative-caret-position="1581">
+              <caret line="142" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="142" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/OwnerDashboardPage.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="122">
+              <caret line="61" column="101" lean-forward="true" selection-start-line="61" selection-start-column="101" selection-end-line="61" selection-end-column="101" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -83,52 +81,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CariKostPage.jsx">
+        <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/OwnerDashboardInformation.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/CariPage/LeftKost.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="103" column="17" lean-forward="true" selection-start-line="100" selection-start-column="16" selection-end-line="103" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/HomePage/TopFifthCity.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="54" column="92" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="92" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/HomePage/City.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="130" column="6" lean-forward="true" selection-start-line="130" selection-start-column="6" selection-end-line="151" />
+            <state relative-caret-position="352">
+              <caret line="145" column="31" lean-forward="true" selection-start-line="145" selection-start-column="31" selection-end-line="145" selection-end-column="31" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -136,11 +92,59 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/OwnerPage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="389" column="45" selection-start-line="389" selection-start-column="45" selection-end-line="389" selection-end-column="45" />
+            <state relative-caret-position="102">
+              <caret line="108" column="88" lean-forward="true" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="88" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/CheckOutPage.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1462">
+              <caret line="97" column="78" selection-start-line="97" selection-start-column="76" selection-end-line="97" selection-end-column="78" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/AddApartement.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2125">
+              <caret line="135" column="35" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="96" column="15" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4063">
+              <caret line="257" column="28" selection-start-line="257" selection-start-column="28" selection-end-line="257" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,11 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
-      <find>hous</find>
-      <find>allkosts</find>
-      <find>marker</find>
-      <find>doL</find>
       <find>AutoF</find>
       <find>autof</find>
       <find>pope</find>
@@ -187,6 +186,11 @@
       <find>foll</find>
       <find>text</find>
       <find>update</find>
+      <find>hous</find>
+      <find>unit</find>
+      <find>hover</find>
+      <find>changeV</find>
+      <find>ban</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -195,21 +199,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/General/FavoriteButton.jsx" />
-        <option value="$PROJECT_DIR$/src/components/CariPage/Kosts.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" />
-        <option value="$PROJECT_DIR$/src/pages/UserPage.jsx" />
-        <option value="$PROJECT_DIR$/src/components/OwnerManagePage/ButtonFollow.jsx" />
         <option value="$PROJECT_DIR$/src/containers/CariPage/LeftKost.jsx" />
         <option value="$PROJECT_DIR$/src/containers/HistoryPage/HistoryView.jsx" />
-        <option value="$PROJECT_DIR$/src/pages/OwnerPage.jsx" />
         <option value="$PROJECT_DIR$/src/pages/AdminDashboardPage.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/GoodInput.jsx" />
         <option value="$PROJECT_DIR$/src/containers/AdminDashboard/AddPremiumProduct.jsx" />
         <option value="$PROJECT_DIR$/src/containers/AdminDashboard/AddFacility.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/BreadCrumbs.jsx" />
         <option value="$PROJECT_DIR$/src/components/HomePage/Following.jsx" />
         <option value="$PROJECT_DIR$/src/components/AdminManagePage/Reports.jsx" />
@@ -218,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/containers/AdminDashboard/ManageReport.jsx" />
         <option value="$PROJECT_DIR$/src/containers/AdminDashboard/ManageTransaction.jsx" />
         <option value="$PROJECT_DIR$/src/pages/CheckOutPage.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/UserVerificator.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/StarInput.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/Reviews.jsx" />
@@ -231,7 +225,6 @@
         <option value="$PROJECT_DIR$/src/pages/FollowingPage.jsx" />
         <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/HistoryPremium.jsx" />
         <option value="$PROJECT_DIR$/src/components/AdminManagePage/TransactionOnManages.jsx" />
-        <option value="$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx" />
         <option value="$PROJECT_DIR$/src/components/General/TextEditor.jsx" />
         <option value="$PROJECT_DIR$/src/containers/PostPage/AllPost.jsx" />
         <option value="$PROJECT_DIR$/src/components/AdminManagePage/Posts.jsx" />
@@ -244,8 +237,19 @@
         <option value="$PROJECT_DIR$/src/containers/HomePage/TopHouse.jsx" />
         <option value="$PROJECT_DIR$/src/containers/HomePage/TopFifthCity.jsx" />
         <option value="$PROJECT_DIR$/src/containers/HomePage/FavouriteKost.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx" />
         <option value="$PROJECT_DIR$/src/pages/HomePage.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/OwnerDashboardPage.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/AddApartement.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/AdminDashboard/AdminDashboardInformation.jsx" />
+        <option value="$PROJECT_DIR$/src/pages/OwnerPage.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/OwnerDashboard/OwnerDashboardInformation.jsx" />
       </list>
     </option>
   </component>
@@ -261,10 +265,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1426" />
-    <option name="y" value="-8" />
-    <option name="width" value="1026" />
-    <option name="height" value="576" />
+    <option name="x" value="-6" />
+    <option name="y" value="-6" />
+    <option name="width" value="493" />
+    <option name="height" value="864" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -339,6 +343,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="HomePage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tpawebke" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tpawebke" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="OwnerDashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tpawebke" type="b2602c69:ProjectViewProjectNode" />
@@ -505,7 +516,9 @@
       <workItem from="1561612333945" duration="721000" />
       <workItem from="1561854643782" duration="17607000" />
       <workItem from="1562207946162" duration="2436000" />
-      <workItem from="1562379899705" duration="54198000" />
+      <workItem from="1562379899705" duration="58213000" />
+      <workItem from="1562724913558" duration="17319000" />
+      <workItem from="1562772033135" duration="9300000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1555480883597</created>
@@ -717,11 +730,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562471782181</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="71.5">
+      <created>1562520672414</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1562520672414</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="923713000" />
+    <option name="totallyTimeSpent" value="954347000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,16 +753,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1448" y="-8" width="1456" height="916" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.19181946" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49789914" visible="true" weight="0.22767857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" sideWeight="0.5021008" side_tool="true" weight="0.2157969" />
       <window_info id="Favorites" order="3" sideWeight="0.5021008" side_tool="true" weight="0.2157969" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32822478" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18390805" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22427036" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -761,7 +781,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="udh bisa login pake jwt" />
     <MESSAGE value="Udh bisa redux" />
     <MESSAGE value="Lagi Update Profile" />
     <MESSAGE value="Udh ada kota besar,verify email." />
@@ -786,161 +805,14 @@
     <MESSAGE value="sudah bisa chatting" />
     <MESSAGE value="bisa post" />
     <MESSAGE value="star input" />
-    <option name="LAST_COMMIT_MESSAGE" value="star input" />
+    <MESSAGE value="71.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="71.5" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/AdminManagePage/Reports.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/HistoryPage/HistoryFavourites.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HomePage/Following.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="132" lean-forward="true" selection-start-line="132" selection-end-line="132" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/ManageReport.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="145" column="5" lean-forward="true" selection-start-line="113" selection-start-column="2" selection-end-line="145" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/HomePage/PremiumProductCard.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="131" column="41" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/ManageHouse.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="146" column="16" selection-start-line="146" selection-start-column="16" selection-end-line="148" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/OwnerManagePage/ApartementOnManage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="136" column="34" selection-start-line="136" selection-start-column="34" selection-end-line="136" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/General/UserVerificator.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/EditProfilPage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/General/BreadCrumbs.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/HomePage/NavBar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="121" column="39" lean-forward="true" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
           <caret line="297" column="8" selection-start-line="297" selection-start-column="8" selection-end-line="297" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="52" column="3" selection-start-line="52" selection-start-column="3" selection-end-line="59" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CheckOutPage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1602">
-          <caret line="157" column="25" lean-forward="true" selection-start-line="157" selection-start-column="25" selection-end-line="157" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1619">
-          <caret line="173" column="8" lean-forward="true" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/General/StarInput.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -950,16 +822,6 @@
           <caret line="76" column="48" lean-forward="true" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1098,16 +960,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/PostPage/PostDetail.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="112" column="94" lean-forward="true" selection-start-line="112" selection-start-column="94" selection-end-line="112" selection-end-column="94" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/HomePage/AppPromotion.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1139,16 +991,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="130" column="6" lean-forward="true" selection-start-line="130" selection-start-column="6" selection-end-line="151" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HomePage/Kota.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -1163,11 +1005,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/HomePageStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5151" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/HomePage/TopHouse.jsx" />
     <entry file="file://$PROJECT_DIR$/src/components/HomePage/City.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -1175,27 +1013,6 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/HomePage/TopHouse.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CariKostPage.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/CariPage/LeftKost.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="103" column="17" lean-forward="true" selection-start-line="100" selection-start-column="16" selection-end-line="103" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1209,6 +1026,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/CariPage/LeftKost.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="103" column="17" lean-forward="true" selection-start-line="100" selection-start-column="16" selection-end-line="103" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CariKostPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/HomePage/FavouriteKost.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1219,27 +1050,198 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/HomePageStyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5151" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/AddHouse.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5729">
+          <caret line="349" selection-start-line="349" selection-end-line="349" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/ManageApartement.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/HomePage/FavouriteApartement.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
+        <state relative-caret-position="51">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/HomePage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/General/UserVerificator.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="95" column="39" lean-forward="true" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Define.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/General/StarInput.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/HomePage.jsx">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es2015.core.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+        <state relative-caret-position="924">
+          <caret line="416" column="7" lean-forward="true" selection-start-line="416" selection-start-column="7" selection-end-line="416" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/PropertyDetailPage.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="389" column="45" selection-start-line="389" selection-start-column="45" selection-end-line="389" selection-end-column="45" />
+        <state relative-caret-position="6086">
+          <caret line="382" column="21" selection-start-line="382" selection-start-column="21" selection-end-line="382" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/PostPage/PostDetail.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1598">
+          <caret line="103" column="25" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/AdminDashboardPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="62" column="104" selection-start-line="62" selection-start-column="104" selection-end-line="62" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/ManageGuest.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="52" column="5" selection-start-line="20" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CheckOutPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="97" column="78" selection-start-line="97" selection-start-column="76" selection-end-line="97" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/AddApartement.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="135" column="35" selection-start-line="135" selection-start-column="35" selection-end-line="135" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AddPost.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="96" column="15" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/PropertyDetail/ApartementContentDetail.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4063">
+          <caret line="257" column="28" selection-start-line="257" selection-start-column="28" selection-end-line="257" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/AdminDashboard/AdminDashboardInformation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="142" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/OwnerDashboardPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="61" column="101" lean-forward="true" selection-start-line="61" selection-start-column="101" selection-end-line="61" selection-end-column="101" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/OwnerPage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="108" column="88" lean-forward="true" selection-start-line="108" selection-start-column="22" selection-end-line="108" selection-end-column="88" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/OwnerDashboard/OwnerDashboardInformation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="145" column="31" lean-forward="true" selection-start-line="145" selection-start-column="31" selection-end-line="145" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/PropertyDetail/HouseContentDetail.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="160" column="93" selection-start-line="160" selection-start-column="93" selection-end-line="160" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

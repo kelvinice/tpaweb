@@ -231,14 +231,6 @@ class HouseContentDetail extends Component {
                     <br/>
 
                     <BoldDiv>
-                        Review
-                    </BoldDiv>
-                    <div>
-
-                    </div>
-                    <br/>
-
-                    <BoldDiv>
                         Pemilik
                     </BoldDiv>
                     <TitleDiv>

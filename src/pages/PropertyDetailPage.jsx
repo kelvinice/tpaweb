@@ -22,6 +22,7 @@ import {Map, Marker, Popup, TileLayer} from "react-leaflet";
 import {withRouter} from "react-router-dom";
 import StarInput from "../components/General/StarInput";
 import Reviews from "../components/General/Reviews";
+import Kosts from "../components/CariPage/Kosts";
 
 const AllWrapper  =styled('div')`
 width: 100%;
@@ -114,6 +115,11 @@ const ReviewWrapper = styled('div')`
   }
 `
 
+const WrapperFavourite = styled('div')`
+  width: 100%;
+  display: flex;
+  overflow: auto;
+`
 
 class PropertyDetailPage extends Component {
     state={
@@ -129,6 +135,8 @@ class PropertyDetailPage extends Component {
         prevPage:null,
         link : `${BACKENDLINK}showReviewBySlug/${this.props.match.params.slug}`,
         errors: [],
+        recomends : [],
+        tab:1,
     }
 
     fetchData(slug){
@@ -144,7 +152,12 @@ class PropertyDetailPage extends Component {
         ).then(response=>{
             console.log(response.data)
 
-            this.setState({data: response.data.property,reviews:response.data.reviews},()=>{
+            this.setState({
+                data: response.data.property,
+                reviews:response.data.reviews,
+                recomends:response.data.recomends
+
+            },()=>{
                 // this.forceUpdate();
             })
 
@@ -407,8 +420,6 @@ class PropertyDetailPage extends Component {
                 <UserNavBar/>
                 <BreadCrumbs/>
                 <HeaderWrapper>
-                    {/*<Link to={"/detail/jaydon-harbors"}>Test</Link>*/}
-                    {/*<Link to={"/detail/monahan-alley"}>Test2</Link>*/}
                     {this.handleHeader()}
                     <MenuButton>
                         <CustomBlackButton onClick={()=>this.setState({showMap:false})}>Photo</CustomBlackButton>
@@ -454,6 +465,14 @@ class PropertyDetailPage extends Component {
                             <BeautyTomatoButton>Submit</BeautyTomatoButton>
                         </CustomButtonWrapper>}
                     </form>
+                    {<BigGreyText style={{textAlign:"center"}}>Sugested</BigGreyText>}
+                    <WrapperFavourite>
+                        {this.state.recomends.map(
+                            (item,key)=><Kosts key = {item.id} data = {item}/>
+                        )
+                        }
+
+                    </WrapperFavourite>
                 </MiddleContentWrapper>
 
                 <Footer/>

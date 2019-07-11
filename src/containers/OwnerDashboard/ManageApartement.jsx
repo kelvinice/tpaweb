@@ -124,7 +124,7 @@ class ManageApartement extends Component {
                 {this.handlePop()}
                 <HeaderWrapper>
                     <CustomButtonWrapper>
-                        <Link to={"/owner/add-apartement"}>
+                        <Link to={"/owner/manage-apartement/add-apartement"}>
                             <button>Add New Apartement</button>
                         </Link>
                     </CustomButtonWrapper>
